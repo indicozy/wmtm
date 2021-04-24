@@ -1,0 +1,9 @@
+[Unit]
+Description=Check for new upstream AUR versions of NPM packages
+
+[Timer]
+OnStartupSec=5min
+OnUnitActiveSec=6h
+
+[Install]
+WantedBy=timers.target

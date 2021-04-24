@@ -1,0 +1,96 @@
+{
+    "layer": "bottom", 
+    "position": "bottom", 
+    "height": 20, 
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "tray", "idle_inhibitor", "network", "battery"],
+
+   "sway/workspaces": {
+       "persistent_workspaces": {
+           "1": [],
+           "2": [],
+           "3": [],
+           "4": [],
+		   "5": []
+       },
+        "format-default": "{name}",
+        "format": "{icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+			"5": "",
+            //"urgent": "",
+            //"focused": "",
+            //"default": ""
+        },
+       "disable-scroll": false,
+       "all-outputs": false
+    },
+
+    "sway/window": {
+        "format": "{}",
+        "max-length": 30,
+        "tooltip": false
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
+    },
+
+    "clock": {
+        "format": "{: %H:%M}",
+        "format-alt": "{: %A,%e. %B %Y}",
+        "tooltip": false
+    },
+
+    "battery": {
+        "bat": "BAT0",
+        "states": {
+            "full": 100,
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}",
+        //"format-good": "", // An empty format will hide the module
+        //"format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "network": {
+        "interface": "wlp2s0", // (Optional) To force the use of this interface
+        "format-wifi": "",
+        "format-ethernet": "{ifname} ",
+        "format-disconnected": "", //An empty format will hide the module.
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) "
+    },
+
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "tooltip": false
+     },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+        "tooltip": false
+    }
+}

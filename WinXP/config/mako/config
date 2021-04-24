@@ -1,0 +1,16 @@
+max-visible=3
+anchor=top-right
+font=Sans
+default-timeout=5000
+icons=1
+markup=1
+
+padding=5
+
+background-color=#ffffe1
+progress-color=#eef3f5
+text-color=#121213
+
+border-color=#eef3f5
+border-size=2
+border-radius=3

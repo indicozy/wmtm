@@ -1,0 +1,182 @@
+@import 'gruvbox.css';
+
+
+* {
+	font-size: 16px;
+	font-family: "Windows Command Prompt";
+	padding: 0px;
+	margin: 0px;
+}
+
+window#waybar {
+	color: @background;
+	border-radius: 0;
+}
+
+window#waybar.left {
+	background: @green;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	border-top: none;
+	margin: 0;
+}
+
+window#waybar.bottom {
+	padding-top: 0px;
+	background: @foreground;
+	border-bottom-left-radius: 0px;
+	margin: 0;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+	margin: 0;
+	padding: 0;
+}
+
+/* Base styling for modules */
+#mode,
+#idle_inhibitor,
+#custom-weather,
+#pulseaudio,
+#memory,
+#cpu,
+#clock,
+#battery,
+#backlight,
+#disk,
+#custom-updates,
+#custom-auroch,
+#custom-swap,
+#custom-shutdown,
+#custom-reboot,
+#custom-covid,
+#language,
+#network,
+#tray {
+	padding: 0px 3px 0 3px;
+	color: @background;
+	margin: 3px 1px;
+	padding: 0px 2px 0px 2px;
+	border-style:solid;
+	border-width:1px;
+	border-color: @fore @background @background @fore;
+}
+
+#custom-shutdown{
+	padding: 0px 10px 0px 10px;
+	font-size:14px;
+	margin-right:5px;
+}
+#custom-view{
+	padding: 1px 14px 0px 14px;
+	font-size:18px;
+}
+#custom-separator {
+	padding: 0px;
+	color: @fore;
+	font-size: 20px;
+	text-shadow: 1px 1px 1px @background;
+}
+#idle_inhibitor,#network, #battery, #memory, #cpu, #backlight, #pulseaudio{
+	font-size: 15px;
+}
+#workspaces {
+	border-style:inset;
+	border-width:0px;
+	margin: 3px;
+	border-color: @background @fore @fore @backlight;
+}
+#workspaces button {
+	color: @background;
+	margin: 0px 2px;
+	padding: 0px 4px 0px 4px;
+	border-style:solid;
+	border-width:1px;
+	border-color: @fore @background @background @fore;
+}
+
+#workspaces button.focused {
+	border-style:solid;
+	border-width:1px;
+	border-color: @background @fore @fore @backlight;
+	color: @background;
+}
+
+#mode {
+	color: @orange;
+}
+
+
+#battery.warning,
+#cpu.warning,
+#memory.warning {
+	color: @orange;
+}
+
+#battery.critical,
+#cpu.critical,
+#custom-auroch.error,
+#custom-updates.error,
+#disk.1.critical,
+#disk.2.critical,
+#memory.critical {
+	color: @red;
+}
+
+#custom-auroch.no-updates,
+#custom-covid.DOWN,
+#custom-updates.no-updates {
+	color: @yellow;
+}
+#custom-updates.updates,
+#custom-auroch.updates {
+	color: @yellow;
+}
+
+#taskbar,
+#tray,
+#window {
+	padding: 0;
+	margin: 0 0px 0 0px;
+}
+#taskbar {
+	margin-top: 0px;
+}
+#taskbar button {
+	border-style:inset;
+	border-width:2px;
+	margin: 2px;
+	border-color: @fore @background @background @fore;
+	color: @background;
+	border-radius: 0px;
+	padding: 0px 9px 0px 9px;
+}
+#custom-menu{
+	padding: 0px 7px 0px 7px;
+	font-size: 15px;
+	border-style:inset;
+	border-width:2px;
+	margin: 2px;
+	margin-left: 5px;
+	border-color: @fore @background @background @fore;
+	background-image: url('logo.png');
+	background-repeat: no-repeat;
+  background-position: 3% 100%;
+  background-size: 18px;
+}
+#taskbar button.active {
+	border-style:inset;
+	border-width:2px;
+	margin: 2px;
+	border-color: @background @fore @fore @background;
+}
+
+#tray {
+	padding: 0 3px 0px 3px;
+
+}
+#window{
+	padding: 0px 10px 0px 10px;
+}

@@ -1,0 +1,16 @@
+max-visible=3
+anchor=top-right
+font=Hack
+default-timeout=5000
+icons=1
+markup=1
+
+padding=5
+
+background-color=#d2dfeb
+progress-color=#eef3f5
+text-color=#19252c
+
+border-color=#eef3f5
+border-size=1
+border-radius=0

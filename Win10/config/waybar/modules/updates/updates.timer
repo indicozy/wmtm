@@ -1,0 +1,9 @@
+[Unit]
+Description=Check for Pacman/AUR/git package updates
+
+[Timer]
+OnStartupSec=5min
+OnUnitActiveSec=1h
+
+[Install]
+WantedBy=timers.target

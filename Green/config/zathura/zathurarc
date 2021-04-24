@@ -1,0 +1,66 @@
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+set page-padding 1
+map r reload
+map R rotate
+map K zoom in
+map J zoom out
+map i recolor
+map t toggle_statusbar
+
+set selection-clipboard clipboard
+set default-bg "#323732"
+set statusbar-bg "#323732"
+set inputbar-bg "#323732"
+
+# Lighthaus Color theme for Zathura
+# GIT: https://github.com/lighthaus-theme/zathura
+# Author: Adhiraj Sirohi (https://github.com/brutuski)
+#         Vasundhara Sharma (https://github.com/vasundhasauras)
+
+# Copyright © 2020-Present Lighthaus Theme
+# Copyright © 2020-Present Adhiraj Sirohi
+# Copyright © 2020-Present Vasundhara Sharma
+
+
+
+# Lighthaus Colors:
+
+set notification-error-bg       "#CC6668" 
+set notification-error-fg       "#323732" 
+set notification-warning-bg     "#CC6668" 
+set notification-warning-fg     "#323732" 
+set notification-bg             "#CECB00" 
+set notification-fg             "#323732" 
+
+set completion-bg               "#18191E" 
+set completion-fg               "#44B273" 
+set completion-group-bg         "#18191E" 
+set completion-group-fg         "#44B273" 
+set completion-highlight-bg     "#68CC66" 
+set completion-highlight-fg     "#323732" 
+
+set index-bg                    "#18191E" 
+set index-fg                    "#44B273" 
+set index-active-bg             "#21252D" 
+set index-active-fg             "#FFFF00" 
+
+set inputbar-bg                 "#323732" 
+set inputbar-fg                 "#EBDBB2" 
+set statusbar-bg                "#EBDBB2" 
+set statusbar-fg                "#323732" 
+
+set highlight-color             "#D68EB2" 
+set highlight-active-color      "#ff79c6" 
+
+set default-bg                  "#323732" 
+set default-fg                  "#EBDBB2" 
+
+set render-loading              false
+set render-loading-fg           "#FFEE79" 
+set render-loading-bg           "#18191E" 
+
+# Recolor mode settings
+set recolor
+set recolor-lightcolor          "#323732" 
+set recolor-darkcolor           "#EBDBB2" 

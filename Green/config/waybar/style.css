@@ -1,0 +1,142 @@
+@import 'gruvbox.css';
+
+
+* {
+	font-size: 14px;
+	font-family: "Fira Mono";
+	padding: 0px;
+	margin: 0px;
+}
+
+window#waybar {
+	color: @foreground;
+	border-radius: 0;
+}
+
+window#waybar.left {
+	background: @green;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	border-top: none;
+	margin: 0;
+}
+
+window#waybar.bottom {
+	padding-top: 0px;
+	background: @green;
+	border-bottom-left-radius: 0px;
+	margin: 0;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+	margin: 0;
+	padding: 0;
+}
+
+/* Base styling for modules */
+#workspaces,
+#mode,
+#window,
+#idle_inhibitor,
+#custom-weather,
+#pulseaudio,
+#memory,
+#cpu,
+#clock,
+#battery,
+#backlight,
+#disk,
+#custom-updates,
+#custom-auroch,
+#custom-swap,
+#custom-separator,
+#custom-shutdown,
+#custom-reboot,
+#custom-covid,
+#taskbar,
+#tray {
+	padding: 0px 7px 0 7px;
+}
+
+#custom-separator {
+	opacity: 0;
+	padding: 0px;
+}
+
+#workspaces {
+	padding: 0px 0px 0px 0px;
+	margin-left: 0px;
+}
+#workspaces button {
+	color: @foreground;
+	margin: 0;
+	padding: 0px 0px 0px 0px;
+	border-radius: 0px;
+}
+
+#workspaces button.focused {
+	border-style: solid;
+	border-width: 2 0 0 0;
+	border-color: @foreground;
+	border-radius: 0;
+	color: @foreground;
+}
+
+#mode {
+	color: @orange;
+}
+
+
+#battery.warning,
+#cpu.warning,
+#memory.warning {
+	color: @orange;
+}
+
+#battery.critical,
+#cpu.critical,
+#custom-auroch.error,
+#custom-updates.error,
+#disk.1.critical,
+#disk.2.critical,
+#memory.critical {
+	color: @red;
+}
+
+#custom-auroch.no-updates,
+#custom-covid.DOWN,
+#custom-updates.no-updates {
+	color: @yellow;
+}
+#custom-updates.updates,
+#custom-auroch.updates {
+	color: @yellow;
+}
+
+
+#taskbar,
+#tray,
+#window {
+	padding: 0;
+	margin: 0 0px 0 0px;
+}
+#taskbar {
+	margin-top: 0px;
+}
+#taskbar button {
+	color: @foreground;
+	border-radius: 0px;
+	padding: 0px 3px 0px 3px;
+}
+#taskbar button.active {
+	border-style: dashed;
+	border-width: 2 0 0 0;
+	border-color: @foreground;
+	border-radius: 20;
+}
+
+#tray {
+	padding: 0 3px 0px 3px;
+}

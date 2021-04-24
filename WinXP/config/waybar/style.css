@@ -1,0 +1,178 @@
+@import 'gruvbox.css';
+
+
+* {
+	font-size: 12px;
+	font-family: Sans;
+	/* font-family: "Windows Command Prompt"; */
+	padding: 0px;
+	margin: 0px;
+}
+
+window#waybar {
+	color: @fore;
+	border-radius: 0;
+}
+
+window#waybar.left {
+	background: @green;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	border-top: none;
+	margin: 0;
+}
+
+window#waybar.bottom {
+	padding-top: 0px;
+	background: @foreground;
+	border-style: solid;
+	border-color: @blue-border;
+	border-width: 3px 0px 0px 0px;
+	border-bottom-left-radius: 0px;
+	margin: 0;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+	margin: 0;
+	padding: 0;
+}
+
+/* Base styling for modules */
+#mode,
+#idle_inhibitor,
+#custom-weather,
+#pulseaudio,
+#memory,
+#cpu,
+#clock,
+#battery,
+#backlight,
+#disk,
+#custom-updates,
+#custom-auroch,
+#custom-swap,
+#custom-shutdown,
+#custom-reboot,
+#custom-covid,
+#language,
+#network,
+#tray {
+	padding: 0px 3px 0 3px;
+	background-color:#1399ED;
+	border-style: solid;
+	border-color: @cyan-border;
+	border-width: 2px 0px 0px 0px;
+}
+
+#custom-shutdown{
+	padding: 0px 8px 0px 3px;
+	font-size:12px;
+}
+#custom-view{
+	padding: 1px 14px 0px 14px;
+	font-size:18px;
+}
+#custom-separator {
+	padding: 0px;
+	color: @background;
+	font-size: 20px;
+	text-shadow: 1px 1px 1px @background;
+}
+#idle_inhibitor,#network, #battery, #memory, #cpu, #backlight, #pulseaudio{
+	font-size: 13px;
+}
+#custom-winxp_separator{
+	border-style: solid;
+	border-color: @background;
+	border-width: 0px 1px 0px 0px;
+}
+#idle_inhibitor{
+	padding: 0px 0px 0px 8px;
+	border-width: 2px 0px 0px 2px;
+}
+#workspaces {
+	margin: 3px;
+}
+
+
+#mode {
+	color: @orange;
+}
+
+
+#battery.warning,
+#cpu.warning,
+#memory.warning {
+	color: @orange;
+}
+
+#battery.critical,
+#cpu.critical,
+#custom-auroch.error,
+#custom-updates.error,
+#disk.1.critical,
+#disk.2.critical,
+#memory.critical {
+	color: @red;
+}
+
+#custom-auroch.no-updates,
+#custom-covid.DOWN,
+#custom-updates.no-updates {
+	color: @yellow;
+}
+#custom-updates.updates,
+#custom-auroch.updates {
+	color: @yellow;
+}
+
+#taskbar,
+#tray,
+#window {
+	padding: 0;
+	margin: 0 0px 0 0px;
+}
+#taskbar {
+}
+#taskbar button, #workspaces button {
+	margin: 4px 0px 2px 1px;
+	color: @fore;
+	padding: 0px 5px 0px 5px;
+	background-color: @blue-taskbar;
+	border-style:solid;
+	border-color: @blue-border;
+	border-width: 1px;
+	border-radius:3px;
+}
+#custom-menu{
+	padding: 0px 15px 0px 7px;
+	font-size: 14px;
+	text-shadow:1px 1px 2px @background;
+	font-style: Italic;
+	margin: 2px 0px 0px 0px;
+	border-style:solid;
+	border-width:2px 0px 0px 0px;
+	border-radius:0px 8px  10px 0px;
+	border-color:@green_fore;
+	background-color: @green;
+	background-image: url('logo.png');
+	background-repeat: no-repeat;
+  background-position: 15% 35%;
+  background-size: 16px;
+  font-weight: bold;
+}
+#taskbar button.active, #workspaces button.focused {
+	background-color:@blue-taskbar-active;
+	border-color:@blue-border-dark;
+	border-width: 1px 1px 1px 2px;
+}
+
+#tray {
+	padding: 0 3px 0px 3px;
+
+}
+#window{
+	padding: 0px 10px 0px 10px;
+}
