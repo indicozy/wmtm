@@ -1,4 +1,15 @@
-@import 'gruvbox.css';
+@define-color background	#121213;
+@define-color foreground	#efefef;
+@define-color selection		#44475a;
+@define-color unfocused		#6272a4;
+@define-color cyan			#6cb4e9;
+@define-color green			#3e6656;
+@define-color orange		#d65d0e;
+@define-color pink			#ff5370;
+@define-color purple		#b16286;
+@define-color red			#bf6374;
+@define-color yellow		#d79921;
+@define-color fore          #eef3f5;
 
 
 * {
@@ -23,7 +34,10 @@ window#waybar.left {
 
 window#waybar.bottom {
 	padding-top: 0px;
-	background-color: rgba(28,100,175,0);
+	border-style:solid;
+	border-width: 1px;
+	border-color: rgba(16,16,16,.5);
+	background-color: rgba(28,100,175,.7);
 	border-bottom-left-radius: 0px;
 	margin: 0;
 }
@@ -142,11 +156,12 @@ window#waybar.bottom {
 	padding: 0px 20px 0px 20px;
 	background-image: url('logo.png');
 	background-repeat: no-repeat;
-  background-position: center;
-  background-size: 28px;
+  background-position: 50% 50% ;
+  background-size: 30px;
 }
 #taskbar button.active {
-	border-color: @background;
+	background-color: rgba(255,255,255,.5);
+	border-color: rgba(16,17,16,.3);
 	border-width: 1px;
 	border-radius: 2px;
 }

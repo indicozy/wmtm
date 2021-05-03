@@ -27,6 +27,7 @@
 		"backlight",
 		"pulseaudio",
 		"tray",
+		"sway/language",
 		"clock",
 		"custom/shutdown",
 	],
@@ -60,6 +61,11 @@
 			"deactivated": ""
 		}
 	},
+	"wlr/taskbar":{
+		"format": {},
+		"max-length": 6,
+	},
+
 "wlr/taskbar": {
 		"all-outputs": false,
 		"format": "{icon}",

@@ -19,21 +19,18 @@ configuration {
     levenshtein-sort: true;
     //matching: "fuzzy";
 }
+
 element {                  
 orientation: vertical; 
 spacing: 5px;          
 }    
 
 element-icon {             
-
 size: 40;              
-
-}                          
+}
 
 element-text {             
-
 horizontal-align: 0.5; 
-
 }                          
 
 * {
@@ -170,4 +167,3 @@ horizontal-align: 0.5;
     padding: 3 7 3 0;
 }
 
-/* vim:ft=css

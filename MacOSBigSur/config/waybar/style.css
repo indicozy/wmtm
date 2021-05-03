@@ -1,0 +1,160 @@
+@import 'gruvbox.css';
+
+
+* {
+	font-size: 10px;
+	font-family: Sans;
+	padding: 0px;
+	margin: 0px;
+}
+
+window#waybar {
+	color: white;
+	border-radius: 0;
+}
+
+window#waybar.top {
+	background: rgba(255,255,255,.14);
+	margin: 0;
+}
+
+window#waybar.bottom {
+	background: rgba(255,255,255,.1);
+	border-radius: 13px;
+	border-color: rgba(255,255,255,.2);
+	border-style: solid;
+	border-width: 1px;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+	margin: 0;
+	padding: 0;
+}
+#custom-view{
+	padding: 1px 14px 0px 14px;
+	font-size:18px;
+}
+#custom-separator {
+	padding: 0px;
+	color: @background;
+	font-size: 20px;
+}
+#idle_inhibitor,#network, #battery, #memory, #cpu, #backlight, #pulseaudio{
+	font-size: 13px;
+}
+#idle_inhibitor{
+	padding: 0px 0px 0px 8px;
+	border-width: 2px 0px 0px 2px;
+}
+#workspaces {
+}
+#workspaces button{
+	margin: 1px 0px 0px 0px;
+text-shadow:1px 1px 2px rgba(0,0,0,.6);
+	padding: 0px 5px;
+	color: white;
+	background-color: rgba(0,0,0,0);
+	border-color: rgba(0,0,0,0);
+}
+#workspaces button.focused {
+	font-weight: bold;
+}
+
+
+#mode {
+	color: @orange;
+}
+
+
+#battery.warning,
+#cpu.warning,
+#memory.warning {
+	color: @orange;
+}
+
+#battery.critical,
+#cpu.critical,
+#custom-auroch.error,
+#custom-updates.error,
+#disk.1.critical,
+#disk.2.critical,
+#memory.critical {
+	color: @red;
+}
+
+#custom-auroch.no-updates,
+#custom-covid.DOWN,
+#custom-updates.no-updates {
+	color: @yellow;
+}
+#custom-updates.updates,
+#custom-auroch.updates {
+	color: @yellow;
+}
+
+#taskbar,
+#tray{
+	padding: 0;
+	margin: 0 0px 0 0px;
+}
+#taskbar {
+}
+#taskbar button {
+	margin: 4px 0px 2px 1px;
+	color: @fore;
+	padding: 0px 5px 0px 5px;
+	border-radius:13px;
+}
+#taskbar button.active {
+	border-width: 0 0 2 0;
+	border-style: solid;
+	border-color: rgba(255,255,255,.2);
+}
+#custom-menu{
+	padding: 0px 15px 0px 15px;
+	font-size: 17px;
+	text-shadow:1px 1px 2px rgba(0,0,0,.6);
+	font-style: Italic;
+	margin: 0px 0px 0px 0px;
+  font-weight: bold;
+}
+
+#tray {
+	padding: 0 5px 0px 5px;
+
+}
+#window{
+	text-shadow:1px 1px 2px rgba(0,0,0,.6);
+	padding: 0px 10px 0px 10px;
+	margin: 2 0 0 0 ;
+}
+
+/* Base styling for modules */
+#idle_inhibitor,
+#pulseaudio,
+#memory,
+#cpu,
+#battery,
+#backlight,
+#custom-updates,
+#custom-auroch,
+#tray {
+	padding: 0px 15px 0 15px;
+	font-size: 18px;
+text-shadow:1px 1px 2px rgba(0,0,0,.6);
+}
+
+#language,
+#clock{
+	padding: 0px 5px 0 5px;
+text-shadow:1px 1px 2px rgba(0,0,0,.6);
+	margin: 1px 0px 0px 0px;
+}
+
+#custom-shutdown{
+	padding: 0px 15px 0px 15px;
+	font-size: 16px;
+text-shadow:1px 1px 2px rgba(0,0,0,.6);
+}

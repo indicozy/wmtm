@@ -1,4 +1,15 @@
-@import 'gruvbox.css';
+@define-color background	#19252c;
+@define-color foreground	#c6e4ee;
+@define-color selection		#44475a;
+@define-color unfocused		#6272a4;
+@define-color cyan			#6cb4e9;
+@define-color green			#3e6656;
+@define-color orange		#d65d0e;
+@define-color pink			#ff5370;
+@define-color purple		#b16286;
+@define-color red			#bf6374;
+@define-color yellow		#d79921;
+@define-color fore          #eef3f5;
 
 
 * {

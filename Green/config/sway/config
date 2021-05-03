@@ -7,7 +7,18 @@
 
 #<[# QUICK SETTINGS ########################################################
 #--- Include --------------------------------------------------------------
-include gruvbox
+set $background		#3e6656
+set $foreground		#d1c29d
+set $selection		#6272a4
+set $unfocused		#44475a
+set $cyan			#689d6a
+set $green			#98971a
+set $orange			#d65d0e
+set $pink			#FF5370
+set $purple			#b16286
+set $red			#bf6374
+set $yellow			#d79921
+set $dark           #323732
 
 #--- Programs --------------------------------------------------------------
 set
@@ -46,7 +57,7 @@ set
 	$titletxt    	#ebdbb1
 	$titlepad		3	
 	$gaps_inner  	10
-	$gaps_outer  	10
+	$gaps_outer  	30
 }
 
 #--- Workspace Names -------------------------------------------------------
@@ -90,7 +101,7 @@ input type:touchpad {
 	drag enabled
 	click_method clickfinger
 }
-
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id telegram-desktop -autostart
 exec --no-startup-id cpupower-gui
 exec --no-startup-id blueman-applet
@@ -98,9 +109,9 @@ exec --no-startup-id
 exec --no-startup-id keepassxc
 exec --no-startup-id xset b off
 exec_always killall mako
+exec_always killall hybridbar
 exec_always --no-startup-id mako
-exec --no-startup-id nm-applet --indicator
-
+exec nm-applet --indicator
 #]>#########################################################################
 
 #<[# STARTUP ###############################################################
@@ -125,11 +136,13 @@ floating_modifier       	$layer1
 #]>#########################################################################
 
 #<[# APPEARANCE ############################################################
+seat seat0 xcursor_theme $cursor_theme 12
 #--- Colors ----------------------------------------------------------------
 client.focused          $focus   $focus   $titletxt $focus    $focus
 client.focused_inactive $nofocus $nofocus $titletxt $nofocus  $nofocus
 client.unfocused        $nofocus $nofocus $titletxt $nofocus  $nofocus
 client.urgent           $nofocus $nofocus $titletxt $nofocus  $nofocus
+seat seat0 xcursor_theme $cursor_theme 12
 
 #--- Bars ------------------------------------------------------------------
 bar
