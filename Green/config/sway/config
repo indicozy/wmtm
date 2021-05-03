@@ -7,18 +7,7 @@
 
 #<[# QUICK SETTINGS ########################################################
 #--- Include --------------------------------------------------------------
-set $background		#3e6656
-set $foreground		#d1c29d
-set $selection		#6272a4
-set $unfocused		#44475a
-set $cyan			#689d6a
-set $green			#98971a
-set $orange			#d65d0e
-set $pink			#FF5370
-set $purple			#b16286
-set $red			#bf6374
-set $yellow			#d79921
-set $dark           #323732
+include gruvbox
 
 #--- Programs --------------------------------------------------------------
 set
@@ -111,7 +100,8 @@ exec --no-startup-id xset b off
 exec_always killall mako
 exec_always killall hybridbar
 exec_always --no-startup-id mako
-exec nm-applet --indicator
+exec --no-startup-id nm-applet --indicator
+
 #]>#########################################################################
 
 #<[# STARTUP ###############################################################
@@ -136,13 +126,11 @@ floating_modifier       	$layer1
 #]>#########################################################################
 
 #<[# APPEARANCE ############################################################
-seat seat0 xcursor_theme $cursor_theme 12
 #--- Colors ----------------------------------------------------------------
 client.focused          $focus   $focus   $titletxt $focus    $focus
 client.focused_inactive $nofocus $nofocus $titletxt $nofocus  $nofocus
 client.unfocused        $nofocus $nofocus $titletxt $nofocus  $nofocus
 client.urgent           $nofocus $nofocus $titletxt $nofocus  $nofocus
-seat seat0 xcursor_theme $cursor_theme 12
 
 #--- Bars ------------------------------------------------------------------
 bar

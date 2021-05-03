@@ -1,0 +1,19 @@
+@define-color background	#121213;
+@define-color foreground	#2259d8;
+@define-color selection		#44475a;
+@define-color unfocused		#6272a4;
+@define-color cyan			#6cb4e9;
+@define-color green			#39a639;
+@define-color green_fore	#96c496;
+@define-color orange		#d65d0e;
+@define-color pink			#ff5370;
+@define-color purple		#b16286;
+@define-color red			#bf6374;
+@define-color yellow		#d79921;
+@define-color fore          #eef3f5;
+@define-color blue-border	#4d94e6;
+@define-color cyan-border	#1fbced;
+@define-color blue-border-dark	#123787;
+@define-color blue-taskbar	#4b8afb;
+@define-color blue-taskbar-active	#1951b9;
+

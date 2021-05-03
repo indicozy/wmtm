@@ -1,0 +1,11 @@
+set $background		#282a36
+set $foreground		#f8f8f2
+set $selection		#44475a
+set $unfocused		#6272a4
+set $cyan			#8be9fd
+set $green			#50fa7b
+set $orange			#ffb86c
+set $pink			#ff79c6
+set $purple			#bd93f9
+set $red			#ff5555
+set $yellow			#f1fa8c
