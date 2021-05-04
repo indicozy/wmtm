@@ -1,7 +1,0 @@
-[Unit]
-Description=Check for new upstream AUR versions of maintained NPM packages
-
-[Service]
-Type=oneshot
-WorkingDirectory=%h/.config/waybar/modules/auroch
-ExecStart=go run %h/.config/waybar/modules/auroch/auroch.go
