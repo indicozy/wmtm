@@ -168,7 +168,6 @@ window#waybar.bottom {
 	padding: 0px 15px 0px 7px;
 	font-size: 14px;
 	text-shadow:1px 1px 2px @background;
-	font-style: Italic;
 	margin: 2px 0px 0px 0px;
 	border-style:solid;
 	border-width:2px 0px 0px 0px;

@@ -141,7 +141,6 @@ window#waybar.bottom {
 #custom-menu{
 	padding: 0px 15px 0px 15px;
 	font-size: 17px;
-	font-style: Italic;
 	margin: 0px 0px 1px 0px;
   font-weight: bold;
 	background-image: url('logo.png');
