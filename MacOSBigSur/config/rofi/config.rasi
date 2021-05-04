@@ -41,7 +41,7 @@ vertical-align:0;
 
 * {
     /* Base */
-    default-background: rgba(57, 57, 88, 90%); // <- change this for transparency
+    default-background: rgba(255, 255, 255, 14%); // <- change this for transparency
     default-foreground: white;
     default-border: #8ec7dd;
     default-selection:#2C82f2;
