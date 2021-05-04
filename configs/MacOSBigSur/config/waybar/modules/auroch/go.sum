@@ -1,0 +1,12 @@
+github.com/esiqveland/notify v0.9.1 h1:hX6ZD3FCQJXI46AzUM/iWekcMfnZ9TPE4uIu9Hrn1D4=
+github.com/esiqveland/notify v0.9.1/go.mod h1:63UbVSaeJwF0LVJARHFuPgUAoM7o1BEvCZyknsuonBc=
+github.com/godbus/dbus/v5 v5.0.3 h1:ZqHaoEF7TBzh4jzPmqVhE/5A1z9of6orkAe5uHoAeME=
+github.com/godbus/dbus/v5 v5.0.3/go.mod h1:xhWf0FNVPg57R7Z0UbKHbJfkEywrmjJnf7w5xrFpKfA=
+github.com/google/go-github v17.0.0+incompatible h1:N0LgJ1j65A7kfXrZnUDaYCs/Sf4rEjNlfyDHW9dolSY=
+github.com/google/go-github v17.0.0+incompatible/go.mod h1:zLgOLi98H3fifZn+44m+umXrS52loVEgC2AApnigrVQ=
+github.com/google/go-querystring v1.0.0 h1:Xkwi/a1rcvNg1PPYe5vI8GbeBY/jrVuDX5ASuANWTrk=
+github.com/google/go-querystring v1.0.0/go.mod h1:odCYkC5MyYFN7vkCjXpyrEuKhc/BUO6wN/zVPAxq5ck=
+github.com/mikkeloscar/aur v0.0.0-20200113170522-1cb4e2949656 h1:j679+jxcDkCFblYk+I+G71HQTFxM3PacYbVCiYmhRhU=
+github.com/mikkeloscar/aur v0.0.0-20200113170522-1cb4e2949656/go.mod h1:nYOKcK8tIj69ZZ8uDOWoiT+L25NvlOQaraDqTec/idA=
+github.com/nboughton/dotfiles/waybar/modules/gobar v0.0.0-20201211010159-7e71ce72bdd2 h1:pftffFyq1uETwEL7tCHGgCQBeH19xc8jZEKC1wCqt9o=
+github.com/nboughton/dotfiles/waybar/modules/gobar v0.0.0-20201211010159-7e71ce72bdd2/go.mod h1:9MC4JW6muedO0QtIPqhZLM01B7ZjUGD6mDjdePRA1M0=

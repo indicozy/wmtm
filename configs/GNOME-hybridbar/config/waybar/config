@@ -1,0 +1,27 @@
+ {
+	"layer": "bottom",
+	"height":50,
+	"position": "left",
+	"margin-top": 0,
+	"margin-right": 0,
+	"margin-left": 0,
+	"margin-bottom":0,
+	"modules-center": [
+		
+	],
+	"modules-left": [
+		"wlr/taskbar",
+	],
+	"modules-right": [
+	],
+"wlr/taskbar": {
+		"rotate": 90,
+		"all-outputs": false,
+		"format": "{icon}",
+		"icon-theme": "Tela-grey-dark",
+		"icon-size": 42,
+		"on-click": "activate",
+		"on-click-right": "minimize",
+		"on-click-middle": "close"
+	} }
+	

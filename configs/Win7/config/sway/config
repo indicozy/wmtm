@@ -1,0 +1,299 @@
+#   _____      ____ _ _   _
+#  / __\ \ /\ / / _` | | | |
+#  \__ \\ V  V / (_| | |_| |
+#  |___/ \_/\_/ \__,_|\__, |
+#                     |___/
+# Wayland is sane. Use it.
+
+#<[# QUICK SETTINGS ########################################################
+#--- Include --------------------------------------------------------------
+set $background		#010100
+set $foreground		#d8d8d8
+set $selection		#6272a4
+set $unfocused		#44475a
+set $cyan			#689d6a
+set $green			#98971a
+set $orange			#d65d0e
+set $pink			#FF5370
+set $purple			#b16286
+set $red			#bf6374
+set $yellow			#d79921
+set $dark           #817e80
+
+#--- Programs --------------------------------------------------------------
+set
+{
+	$term			alacritty
+	$lock 			swaylock
+	#$launcher		rofi -combi-modi drun,ssh, -show combi
+	$screenshot		grim -c -s 2 ~/Pictures/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
+}
+
+#--- Font ------------------------------------------------------------------
+set $font			"Sans 12"
+
+#--- GUI -------------------------------------------------------------------
+set
+{
+	$gtk_theme	'Windows-7-2.1'
+	$icon_theme		'Windows 7 Ultimate'
+	$cursor_theme	'Win-10'
+}
+
+#--- Keybindings -----------------------------------------------------------
+set
+{
+	$layer1			Mod4
+	$layer2			Mod4+Shift
+	
+}
+
+#--- Window Decortations ---------------------------------------------------
+set
+{
+   	$border      	2
+  	$nofocus     	$background
+	$focus       	$foreground
+	$titletxt    	$dark
+	$titlepad		3	
+	$gaps_inner  	0
+	$gaps_outer  	0
+}
+
+#--- Workspace Names -------------------------------------------------------
+set
+{
+	$ws1 1
+	$ws2 2
+	$ws3 3
+	$ws4 4
+	$ws5 5
+	$ws6 6
+	$ws7 7
+	$ws8 8
+	$ws9 9
+	$ws10 10
+}
+
+#]>#########################################################################
+
+#<[# OUTPUTS ###############################################################
+output "*" bg ~/Pictures/Wallpapers/win7.jpg fill
+
+#]>#########################################################################
+
+#<[# INPUTS ################################################################
+#input * xkb_layout "us"
+input * {
+    xkb_layout "us,ru"
+    xkb_options "grp:alt_shift_toggle"
+}
+#input "Synaptics_s3203"
+#{
+#	tap enabled
+#	middle_emulation enabled
+#}
+input type:touchpad {
+    tap enabled
+	scroll_factor 0.53
+    natural_scroll enabled
+	middle_emulation disabled
+	drag enabled
+	click_method clickfinger
+}
+
+exec --no-startup-id telegram-desktop -autostart
+exec --no-startup-id cpupower-gui
+exec --no-startup-id blueman-applet
+exec --no-startup-id 
+exec --no-startup-id keepassxc
+exec --no-startup-id xset b off
+exec_always killall mako
+exec_always --no-startup-id mako
+exec nm-applet --indicator
+#]>#########################################################################
+
+#<[# STARTUP ###############################################################
+exec swayidle -w \
+	timeout 900 	'systemctl suspend; swaylock'
+    #before-sleep	'$lock'
+
+exec_always
+{
+	
+	gsettings set org.gnome.desktop.interface font-name $font
+	gsettings set org.gnome.desktop.interface gtk-theme		$gtk_theme
+	gsettings set org.gnome.desktop.interface icon-theme	$icon_theme
+	gsettings set org.gnome.desktop.interface cursor-theme	$cursor_theme
+}
+#<[# BEHAVIOUR #############################################################
+focus_follows_mouse     	yes
+focus_wrapping          	false
+popup_during_fullscreen 	leave_fullscreen
+floating_modifier       	$layer1
+
+#]>#########################################################################
+
+#<[# APPEARANCE ############################################################
+seat seat0 xcursor_theme $cursor_theme 12
+#--- Colors ----------------------------------------------------------------
+client.focused          $focus   $focus   $titletxt $focus    $focus
+client.focused_inactive $nofocus $nofocus $titletxt $nofocus  $nofocus
+client.unfocused        $nofocus $nofocus $titletxt $nofocus  $nofocus
+client.urgent           $nofocus $nofocus $titletxt $nofocus  $nofocus
+
+#--- Bars ------------------------------------------------------------------
+bar
+{
+	swaybar_command	waybar
+}
+
+#--- Gaps ------------------------------------------------------------------
+gaps inner $gaps_inner
+gaps outer $gaps_outer
+
+#--- Titlebar --------------------------------------------------------------
+font $font
+for_window [title="."] title_format "%title"
+titlebar_border_thickness 0
+titlebar_padding $titlepad $titlepad
+title_align center
+
+#--- Default Borders -------------------------------------------------------
+default_floating_border	pixel	$border
+default_border			pixel	$border
+
+#]>#########################################################################
+
+#<[# SPECIAL WINDOW RULES ##################################################
+#--- Floating Rules --------------------------------------------------------
+for_window [app_id="mpv"] floating enable
+for_window [app_id="zenity"] floating enable
+for_window [app_id="xfce4-appfinder"] floating enable
+for_window [app_id="zoom"] floating enable
+for_window [app_id="keepassxc"] floating enable
+for_window [app_id="imv"] floating enable
+for_window [app_id="cpupower-gui"] floating enable
+
+#--- Workspace Assignment --------------------------------------------------
+
+#]>#########################################################################
+
+#<[# KEYBINDS ##############################################################
+#---- Generic keybinds------------------------------------------------------
+bindsym
+{
+	$layer1+Return			exec $term
+	$layer1+d				exec "rofi -combi-modi drun,ssh -show combi"
+
+	$layer2+c				reload
+	$layer2+e				exec swaymsg exit
+
+	Print					exec $screenshot
+
+	XF86AudioRaiseVolume 	exec --no-startup-id pamixer -i 5
+	XF86AudioLowerVolume	exec --no-startup-id pamixer -d 5
+	XF86AudioMute			exec --no-startup-id pamixer -t
+
+	XF86AudioPlay			exec --no-startup-id playerctl play-pause
+	XF86AudioNext			exec --no-startup-id playerctl next
+	XF86AudioPrev			exec --no-startup-id playerctl previous
+
+	$layer1+F2	exec --no-startup-id light -U 5
+	$layer1+F3		exec --no-startup-id light -A 5
+	XF86MonBrightnessUp		exec --no-startup-id light -A 5
+	XF86MonBrightnessDown	exec --no-startup-id light -U 5
+	
+	$layer1+q exec chromium
+	$layer1+t exec thunar
+
+	$layer1+Escape			exec $lock
+	$layer2+Escape			exec wlogout
+	
+}
+
+#---- Window Management Keybinds -------------------------------------------
+bindsym
+{
+	$layer2+q     			kill
+
+	$layer1+h	    		focus left
+	$layer1+j 	  			focus down
+	$layer1+k 	  			focus up
+	$layer1+l 	  			focus right
+
+  	$layer2+h     			move left
+  	$layer2+j     			move down
+ 	$layer2+k     			move up
+  	$layer2+l     			move right
+
+  	$layer1+b 				splith
+  	$layer1+v 				splitv
+
+  	$layer1+s 				layout stacking
+  	$layer1+w 				layout tabbed
+  	$layer1+e 				layout toggle split
+
+  	$layer1+f 				fullscreen
+
+  	$layer2+space 			floating toggle
+	$layer1+space 			focus mode_toggle
+
+  	$layer1+a 				focus parent
+
+	$layer1+r     			mode "resize"
+}
+mode "resize" {
+    bindsym
+    {
+		h 		resize shrink width 10px
+		j 		resize shrink height 10px
+		k 		resize grow height 10px
+		l 		resize grow width 10px
+		Left 	resize shrink width 10px
+		Down 	resize shrink height 10px
+		Up 		resize grow height 10px
+		Right	resize grow width 10px
+		Return 	mode "default"
+		Escape 	mode "default"
+    }
+}
+
+#---- Workspace Keybinds ---------------------------------------------------
+bindsym
+{
+	$layer1+left workspace prev
+	$layer1+right workspace next
+
+	$layer2+left move container to workspace prev
+	$layer2+right move container to workspace next
+
+  	$layer2+down 			move scratchpad
+	$layer2+up 			scratchpad show
+
+  	$layer1+up 			floating toggle
+	
+	$layer1+1 workspace $ws1
+   	$layer1+2 workspace $ws2
+    $layer1+3 workspace $ws3
+    $layer1+4 workspace $ws4
+    $layer1+5 workspace $ws5
+    $layer1+6 workspace $ws6
+    $layer1+7 workspace $ws7
+    $layer1+8 workspace $ws8
+    $layer1+9 workspace $ws9
+    $layer1+0 workspace $ws10
+
+	$layer2+1 move container to workspace $ws1
+    $layer2+2 move container to workspace $ws2
+    $layer2+3 move container to workspace $ws3
+    $layer2+4 move container to workspace $ws4
+    $layer2+5 move container to workspace $ws5
+    $layer2+6 move container to workspace $ws6
+    $layer2+7 move container to workspace $ws7
+    $layer2+8 move container to workspace $ws8
+    $layer2+9 move container to workspace $ws9
+    $layer2+0 move container to workspace $ws10
+}
+
+#]>#########################################################################

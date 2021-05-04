@@ -1,0 +1,194 @@
+// -*- mode: json -*-
+{
+	"layer": "top",
+	"height":0,
+	"position": "bottom",
+	"margin-top": 0,
+	"margin-right": 0,
+	"margin-left": 0,
+	"margin-bottom":0,
+	"modules-center": [
+		"sway/workspaces"
+		
+	],
+	"modules-left": [
+		"custom/menu",
+		"wlr/taskbar",
+		"custom/separator",
+		"sway/window"
+	],
+	"modules-right": [
+		"sway/mode",
+		"idle_inhibitor",
+		"network",
+		"battery",
+		"memory",
+		"cpu",
+		"backlight",
+		"pulseaudio",
+		"tray",
+		"sway/language",
+		"clock",
+		"custom/shutdown",
+	],
+	"sway/workspaces": {
+"persistent_workspaces": {
+           "1": [],
+           "2": [],
+           "3": [],
+           "4": [],
+		   "5": []
+       },
+		"disable-scroll": false,
+ 		"all-outputs": false,
+ 		"format": "{icon}",
+		"format-default": "{name}",
+		"format-icons": {
+			"1": "",
+			"2": "",
+			"3": "",
+			"4": "",
+			"5": "",
+			"urgent": "",
+			"focused": "",
+			"default": ""
+		}
+	},
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		}
+	},
+	"wlr/taskbar":{
+		"format": {},
+		"max-length": 6,
+	},
+
+"wlr/taskbar": {
+		"all-outputs": false,
+		"format": "{icon}",
+		"icon-theme": "Tela-black-dark",
+		"icon-size": 16,
+		"on-click": "activate",
+		"on-click-right": "minimize",
+		"on-click-middle": "close"
+	},
+	"backlight": {
+		"format": "{icon}{percent}%",
+		"format-icons": ["", ""],
+		"on-scroll-up": "light -A 2",
+		"on-scroll-down": "light -U 2"
+	},
+	"sway/window": {
+	},
+	"sway/mode": {
+		"format": "{}",
+	},
+	"tray": {
+		"icon-size": 12,
+		"spacing":5
+	},
+	"sway/window": {
+        "format": "{}",
+        "max-length": 60,
+        "tooltip": false
+    },
+	"network": {
+       // "interface": "wlp2s0", // (Optional) To force the use of this interface
+        "format-wifi": "",
+        "format-ethernet": "",
+        "format-disconnected": "ﲁ", //An empty format will hide the module.
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) "
+    },
+	"clock": {
+		"format": "{:%H:%M}",
+        "format-alt": "{:%A %e, %B %Y}",
+        "tooltip": false
+	},
+	"pulseaudio": {
+		"format": "{icon}{volume}% {format_source}",
+		"format-bluetooth": "{icon}{volume}% {format_source}",
+		"format-bluetooth-muted": "{icon} {format_source}",
+		"format-muted": "{format_source}",
+		"format-source": "{volume}%",
+		"format-source-muted": "",
+
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": [
+				"",
+				"",
+				""
+			]
+		},
+		"on-click": "pavucontrol",
+		"on-scroll-up": "pamixer -i 2",
+		"on-scroll-down": "pamixer -d 2",
+		"on-click-middle": "pamixer -t",
+		"on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+		"tooltip": false
+	},
+	"memory": {
+		"states": {
+			"good": 0,
+			"warning": 60,
+			"critical": 80
+		},
+		"interval": 5,
+		"format": "{}%"
+	},
+	"cpu": {
+		"states": {
+			"good": 0,
+			"warning": 70,
+			"critical": 95
+		},
+		"interval": 1,
+		"format": "{usage:2}%"
+	},
+	 "battery": {
+        //"bat": "BAT0",
+        "states": {
+            "full": 100,
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}",
+        //"format-good": "", // An empty format will hide the module
+        //"format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+	"custom/separator": {
+		"format": " ",
+		"tooltip": false
+	},
+	"custom/shutdown": {
+		"format": "",
+		"on-click": "wlogout",
+		"tooltip": false
+	},
+	"custom/reboot": {
+		"format": "",
+		"on-click": "~/.config/waybar/modules/reboot.sh",
+		"tooltip": false
+	},
+	"custom/suspend": {
+		"format": "",
+		"on-click": "~/.config/waybar/modules/suspend.sh",
+		"tooltip": false
+	},
+	"custom/menu": {
+		"format": "  ",
+		"on-click": "rofi -combi-modi drun,ssh -show combi",
+		"tooltip": false
+	},
+
+}

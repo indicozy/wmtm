@@ -1,0 +1,80 @@
+#!/bin/bash
+#
+# Small script to scrape the Coronavirus
+
+# Base host where the API seems to be
+HOST="https://coronavirus.data.gov.uk"
+API_URL="$HOST/api/v1"
+
+# This is a static file that contains an ISO date showing when "the site
+# was last updated" even though the data always seems to be 5 days
+# beind this?
+TIMESTAMP_URL="$HOST/public/assets/dispatch/website_timestamp"
+
+# Formats the returned JSON into the JSON output that Waybar expects
+# (NB this expects the input object to have already been selected (as
+# this is different depending on endpoints) and needs the $name set for
+# the region name
+JQ_FORMAT='{
+    text: .rollingRate | tostring,
+    tooltip: (
+        $name +
+        "\nPer 100K: " + (.rollingRate | tostring) +
+        "\nTotal Cases: " + (.rollingSum | tostring) +
+            " (" + (.change | tostring) + " / " + (.changePercentage | tostring) + "%)"
+    ),
+    class: .direction,
+    percentage: (if .direction == "UP" then 100 else 0 end)
+}'
+
+usage() {
+    echo "Usage: $0 [Area Type] [Area Code]"
+}
+
+if [ $1 == "-h" ]
+then
+    usage
+    exit 0
+fi
+
+if ! [ $# -eq 2 ]
+then
+    usage
+    exit 1
+fi
+
+# For some reason the endpoint is different for MSOA types even though
+# format of the data should in theory be the same.
+# Of course this end point returns a completely different data object
+case $1 in
+    "msoa")
+        curl $API_URL'/soa?areaType=msoa&areaCode='$2 -s | \
+            jq -c '.areaName as $name | .latest.newCasesBySpecimenDate | '"$JQ_FORMAT"
+        ;;
+
+    ltla|utla)
+        # This endpoint needs to be queried by date. It seems that the
+        # interactive map always queries 5 days less than the last update
+        # time, which is given by this endpoint
+        date=$(dateadd -f '%Y-%m-%d' $(curl -s $TIMESTAMP_URL) -5d)
+
+        # This endpoint requires providing the designed returned format
+        # (graphQL style) but it does it in an awful URL encoded JSON object.
+        REQUEST_STRUCTURE=$(echo -n '%7B
+            "rollingRate": "newCasesBySpecimenDateRollingRate",
+            "direction":"newCasesBySpecimenDateDirection",
+            "rollingSum":"newCasesBySpecimenDateRollingSum",
+            "change":"newCasesBySpecimenDateChange",
+            "changePercentage":"newCasesBySpecimenDateChangePercentage",
+            "areaName":"areaName"
+        %7D' | tr '\n' ' ' | sed 's/ //g')
+
+        curl -s --compressed \
+            "$API_URL/data?filters=areaCode=$2;areaType=$1;date=$date&structure=$REQUEST_STRUCTURE" | \
+            jq -c '.data[0] | .areaName as $name | '"$JQ_FORMAT"
+        ;;
+    *)
+        echo "Area Type must be one of: msoa, ltla, utla!"
+        exit 1
+esac
+

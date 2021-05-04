@@ -1,0 +1,121 @@
+#        _                 _ _   _
+#   __ _| | __ _  ___ _ __(_) |_| |_ _   _
+#  / _` | |/ _` |/ __| '__| | __| __| | | |
+# | (_| | | (_| | (__| |  | | |_| |_| |_| |
+#  \__,_|_|\__,_|\___|_|  |_|\__|\__|\__, |
+#                                    |___/
+
+# Font configuration (changes require restart)
+font:
+  # The normal (roman) font face to use.
+  normal:
+    family: Pixel Operator
+    # Style can be specified to pick a specific face.
+    style: Bold
+
+  # The bold font face
+  bold:
+    family: Pixel Operator
+    # Style can be specified to pick a specific face.
+    #
+    #style: Bold
+
+  # The italic font face
+  italic:
+    family: Pixel Operator
+    # Style can be specified to pick a specific face.
+    style: Regular
+  size: 12.0
+
+# Colors (Dracula)
+colors:
+  # Default colors
+  primary:
+    background: '0xffffff'
+    foreground: '0x000000'
+
+    # Bright and dim foreground colors
+    #
+    # The dimmed foreground color is calculated automatically if it is not present.
+    # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
+    # is `false`, the normal foreground color will be used.
+    #dim_foreground: '0x9a9a9a'
+    #bright_foreground: '0xffffff'
+
+  # Cursor colors
+  #
+  # Colors which should be used to draw the terminal cursor. If these are unset,
+  # the cursor color will be the inverse of the cell color.
+  cursor:
+    text: '0xffffff'
+    cursor: '0x000000'
+
+  # Normal colors
+  normal:
+    black:   '#000000'
+    red:     '#600000'
+    green:   '#006000'
+    yellow:  '#606000'
+    blue:    '#000060'
+    magenta: '#600060'
+    cyan:    '#006060'
+    white:   '#a5a5a5'
+  # Bright colors
+  bright:
+    black:   '#303030'
+    red:     '#a00000'
+    green:   '#00a000'
+    yellow:  '#a0a000'
+    blue:    '#0000a0'
+    magenta: '#a00000'
+    cyan:    '#00a0a0'
+    white:   '#999999'
+
+  # Dim colors
+  #
+  # If the dim colors are not set, they will be calculated automatically based
+  # on the `normal` colors.
+  #dim:
+  #black:   '0x14151b'
+  # red:     '0xff2222'
+  # green:   '0x1ef956'
+  # yellow:  '0xebf85b'
+  # blue:    '0x4d5b86'
+  # magenta: '0xff46b0'
+  # cyan:    '0x59dffc'
+  # white:   '0xe6e6d1'
+
+  # Indexed Colors
+  #
+  # The indexed colors include all colors from 16 to 256.
+  # When these are not set, they're filled with sensible defaults.
+  #
+  # Example:
+  #   `- { index: 16, color: '0xff00ff' }`
+  #
+  indexed_colors: []
+
+
+background_opacity: 1
+
+env:
+        TERM: xterm-256color
+
+window:
+        dimesions:
+                columns: 0
+                lines:  0
+        padding:
+                x: 10
+                y: 10
+        dynamic_padding: false
+        decorations: full
+
+tabspace: 4
+
+draw_bold_text_with_bright_colors: true
+
+mouse:
+        hechidden_when_typing: true
+
+dynamic_title: true

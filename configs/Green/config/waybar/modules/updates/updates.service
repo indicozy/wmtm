@@ -1,0 +1,7 @@
+[Unit]
+Description=Check for Pacman and AUR/git package updates
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/.config/waybar/modules/updates
+ExecStart=go run %h/.config/waybar/modules/updates/updates.go
