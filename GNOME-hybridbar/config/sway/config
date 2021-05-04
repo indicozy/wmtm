@@ -101,7 +101,7 @@ input type:touchpad {
 	drag enabled
 	click_method clickfinger
 }
-exec hybridbar
+exec_always killall hybridbar
 exec --no-startup-id telegram-desktop -autostart
 exec --no-startup-id cpupower-gui
 exec --no-startup-id blueman-applet
@@ -111,6 +111,7 @@ exec --no-startup-id xset b off
 exec_always killall mako
 exec_always --no-startup-id mako
 exec nm-applet --indicator
+exec_always hybridbar
 #]>#########################################################################
 
 #<[# STARTUP ###############################################################
