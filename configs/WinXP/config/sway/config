@@ -297,3 +297,22 @@ bindsym
 }
 
 #]>#########################################################################
+	# Theme switch script
+	set
+	{
+	$layer3			Mod4+Ctrl
+	$code			~/sway-dotfiles-script/changetheme.sh
+}
+bindsym
+{
+	$layer3+1				exec $code GNOME-hybridbar 
+	$layer3+2				exec $code Green
+	$layer3+3				exec $code MacOS9 
+	$layer3+4				exec $code MacOSBigSur 
+	$layer3+5				exec $code Win7 
+	$layer3+6				exec $code Win10 
+	$layer3+7				exec $code Win98 
+	$layer3+8				exec $code WinXP 
+}
+
+
