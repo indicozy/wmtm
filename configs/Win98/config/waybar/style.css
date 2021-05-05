@@ -165,6 +165,7 @@ window#waybar.bottom {
 	padding: 0px 9px 0px 9px;
 }
 #custom-menu{
+	font-weight: bold;
 	padding: 0px 7px 0px 7px;
 	font-size: 15px;
 	border-style:inset;
