@@ -14,7 +14,7 @@ The script has several features:
 * Script accepts next/prev (for instance: "./changetheme next"), which changes to the next/previous theme; numbers (for instance: "./changetheme 1") which changes the theme to the N'th theme; or text (for instance: "./changetheme MacOSBigSur").
 * There are notifications enabled, which shows the theme used or an error you made
 * Auto-backup your previous config up to 8 histories at "~/Documents/sway_configs_saved"
-* Code automatically appends the code to the Sway config by which there is no need to manually config your sway config!
+* Code automatically appends hotkeys to the Sway config so there is no need to manually add it to your config!
 # Usage
 * Ctrl+Mod4(Super/Window)+(1-9) - change theme tho N'th theme
 * Ctrl+(left/right) - change theme to the next/previous one
