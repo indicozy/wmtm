@@ -77,7 +77,7 @@ set
 #]>#########################################################################
 
 #<[# OUTPUTS ###############################################################
-output "*" bg ~/Pictures/Wallpapers/windows 10.jpg fill
+output "*" bg windows 10.jpg fill
 
 #]>#########################################################################
 
@@ -100,7 +100,9 @@ input type:touchpad {
 	drag enabled
 	click_method clickfinger
 }
-
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+	 dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec --no-startup-id telegram-desktop -autostart
 exec --no-startup-id cpupower-gui
 exec --no-startup-id blueman-applet
@@ -178,7 +180,7 @@ for_window [app_id="cpupower-gui"] floating enable
 
 #<[# KEYBINDS ##############################################################
 #---- Generic keybinds------------------------------------------------------
-bindsym
+bindsym --to-code
 {
 	$layer1+Return			exec $term
 	$layer1+d				exec "rofi -combi-modi drun,ssh -show combi"
@@ -186,7 +188,9 @@ bindsym
 	$layer2+c				reload
 	$layer2+e				exec swaymsg exit
 
-	Print					exec $screenshot
+	Print					exec grim -c -s 2 ~/Pictures/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
+	Ctrl+Print				exec grim -g "$(slurp)" -s 2 ~/Pictures/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
+	Ctrl+Alt+Print			exec grim -g "$(slurp)" - | swappy -f -
 
 	XF86AudioRaiseVolume 	exec --no-startup-id pamixer -i 5
 	XF86AudioLowerVolume	exec --no-startup-id pamixer -d 5
@@ -210,7 +214,7 @@ bindsym
 }
 
 #---- Window Management Keybinds -------------------------------------------
-bindsym
+bindsym --to-code
 {
 	$layer2+q     			kill
 
@@ -241,7 +245,7 @@ bindsym
 	$layer1+r     			mode "resize"
 }
 mode "resize" {
-    bindsym
+    bindsym --to-code
     {
 		h 		resize shrink width 10px
 		j 		resize shrink height 10px
@@ -257,7 +261,7 @@ mode "resize" {
 }
 
 #---- Workspace Keybinds ---------------------------------------------------
-bindsym
+bindsym --to-code
 {
 	$layer1+left workspace prev
 	$layer1+right workspace next
@@ -294,22 +298,4 @@ bindsym
 }
 
 #]>#########################################################################
-	# Theme switch script
-	set
-	{
-	$layer3			Mod4+Ctrl
-	$code			~/sway-dotfiles-script/changetheme.sh
-}
-bindsym
-{
-	$layer3+1				exec $code GNOME-hybridbar 
-	$layer3+2				exec $code Green
-	$layer3+3				exec $code MacOS9 
-	$layer3+4				exec $code MacOSBigSur 
-	$layer3+5				exec $code Win7 
-	$layer3+6				exec $code Win10 
-	$layer3+7				exec $code Win98 
-	$layer3+8				exec $code WinXP 
-}
-
 
