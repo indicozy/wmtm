@@ -42,10 +42,10 @@ vertical-align:0.5;
 
 * {
     /* Base */
-    default-background: rgba(210, 223, 235, 100%); // <- change this for transparency
-    default-foreground: rgba(10, 14, 17, 100%);
+    default-background: #2c2e2f; // <- change this for transparency
+    default-foreground: #eeeeee;
     default-border: #8ec7dd;
-    default-selection:#eef3f5;
+    default-selection:#383a3b;
 	alternative-background: rgba(40, 42, 54, 100%);
     invisible: rgba(0, 0, 0, 0%);
 

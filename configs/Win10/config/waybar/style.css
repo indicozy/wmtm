@@ -1,5 +1,5 @@
-@define-color background	#19252c;
-@define-color foreground	#c6e4ee;
+@define-color background	#eeeeee;
+@define-color foreground	#2c2e2f;
 @define-color selection		#44475a;
 @define-color unfocused		#6272a4;
 @define-color cyan			#6cb4e9;
@@ -9,7 +9,7 @@
 @define-color purple		#b16286;
 @define-color red			#bf6374;
 @define-color yellow		#d79921;
-@define-color fore          #eef3f5;
+@define-color fore          #383a3b;
 
 
 * {
@@ -148,7 +148,7 @@ window#waybar.bottom {
 }
 #custom-menu{
 	padding: 0px 7px 0px 7px;
-	font-size: 18px;
+	font-size: 22px;
 }
 #taskbar button.active {
 	border-style: solid;
