@@ -294,6 +294,10 @@ function cleanBackupConfig () {
 }
 
 function wordCheck () {
+	cd $path
+	checkNextPrev #function
+	checkNum #function
+	checker=$(findFolder)
 	if [ "$folder" == "fuck" ]
 	then
 		echo "Hey, it's you messed that up, don't blame me for that. Or send an issue to github.com/indicozy"
@@ -334,7 +338,36 @@ function wordCheck () {
 			notify-send "Error at Theme Changer" "Wrong Argument, check your config."
 		fi
 }
+function runZenity () {
+	zenity_text='zenity --list --title="Theme Switcher" --text="Choose your theme" --width=300 --height=300 --column="Id" --column="Theme"'
+	cd $path/configs
+	folderNumber=($(ls -d *))
+	zenity_array+="\\ "
+	for (( i=0; i<${#folderNumber[@]}; i++ ))
+	do
+		zenity_array+="$(( i + 1 )) " 
+		zenity_array+="${folderNumber[i]} "
+		if ! [ "$(( $i + 1 ))" -eq ${#folderNumber[@]} ]
+		then
+		zenity_array+="\\ "
+			fi
+	done
+	zenity_text+=" $zenity_array"
+	now=($(eval $zenity_text))
+	echo $now
+	writeNow
+	changeFolder
+	wordCheck
+	cd $path
+}
 
+function changeFolder () {
+	folder=$now
+}
+
+function writeNow () {
+	echo $now > "$path/themeNumber.txt"
+}
 
 # Main function
 cd $path
@@ -350,9 +383,6 @@ then
 elif [ $# -eq 1 ]
 then
 	checksave #function
-	checkNextPrev #function
-	checkNum #function
-	checker=$(findFolder)
 	wordCheck
 else
 	echo "No arguments given."
