@@ -20,7 +20,6 @@
 	"modules-right": [
 		"sway/mode",
 		"idle_inhibitor",
-		"network",
 		"battery",
 		"memory",
 		"cpu",
@@ -94,13 +93,6 @@
         "format": "{}",
         "max-length": 60,
         "tooltip": false
-    },
-	"network": {
-       // "interface": "wlp2s0", // (Optional) To force the use of this interface
-        "format-wifi": "",
-        "format-ethernet": "",
-        "format-disconnected": "ﲁ", //An empty format will hide the module.
-        "tooltip-format-wifi": "{essid} ({signalStrength}%) "
     },
 	"clock": {
 		"format": "{:%H:%M}",

@@ -1,6 +1,6 @@
 #! /bin/bash
 
-path=~/Apps/git/sway-advanced-config
+path=~/sway-dotfiles-script
 
 function checksave () {
 	cd $path
