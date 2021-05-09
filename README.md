@@ -43,6 +43,7 @@ The script has several features:
 * polkit-gnome -> required addition for polkit
 * mako -> Notification daemon
 * zenity -> GUI application for my script
+* autotiling from https://github.com/nwg-piotr/autotiling
 
 Link for icons/cursors/themes (Required): https://drive.google.com/drive/folders/1QrF2_8l0AQaOtExoguOcq1iMjT7dkP9Q?usp=sharing
 ### Optional
