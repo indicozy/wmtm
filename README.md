@@ -11,17 +11,24 @@ The code is WM-free, meaning **you can use it with other WMs just by adding your
 
 
 The script has several features:
-* Script accepts next/prev (for instance: "./changetheme next"), which changes to the next/previous theme; numbers (for instance: "./changetheme 1") which changes the theme to the N'th theme; or text (for instance: "./changetheme MacOSBigSur").
-* There are notifications enabled, which shows the theme used or an error you made
+* Basic GUI
+* Easy and intuitive usage
+* Notifications
 * Auto-backup your previous config up to 8 histories at "~/Documents/sway_configs_saved"
-* Code automatically appends hotkeys to the Sway config so there is no need to manually add it to your config!
+* Hotkeys are automatically appended to the Sway config, so there is no need to manually add it to your config!
+
 # Usage
-* Ctrl+Mod4(Super/Window)+(1-9) - change theme tho N'th theme
-* Ctrl+(left/right) - change theme to the next/previous one
+* Ctrl+Super+Space - Open GUI of the app
+* Ctrl+Super+s - Save your config to the folder ~/Documents/sway_configs_saved
+* Ctrl+Super+(1-9) - change theme tho N'th theme
+* Ctrl+Super+(left/right) - change theme to the next/previous one
 * ./changetheme next - next theme
 * ./changetheme MacOSBigSur - change to an exact theme
 * ./changetheme (number) - change theme to an N'th theme
-### Before using a script, change the "path" value the location of the script
+* ./changetheme goback (or fuckgoback) - if you was editing your theme and suddenly used this script which overwrites your config, this command gets your overwritten files back, up to 7 saves!
+* ./changetheme fuck - well, it's just for fun, if you somehow messed up your config and want to swear at my code, feel free to do that, but I will defend myself ━╤デ╦︻(▀̿̿Ĺ̯̿̿▀̿ ̿)
+
+### Before using a script, make sure that the "path" value is pointing to the location of the script
 (I couldn't make it automatic, because Sway is launching it from Desktop)
 
 # Installation
@@ -35,6 +42,7 @@ The script has several features:
 * polkit -> authentification for stacer, gparted, etc
 * polkit-gnome -> required addition for polkit
 * mako -> Notification daemon
+* zenity -> GUI application for my script
 
 Link for icons/cursors/themes (Required): https://drive.google.com/drive/folders/1QrF2_8l0AQaOtExoguOcq1iMjT7dkP9Q?usp=sharing
 ### Optional
@@ -49,4 +57,4 @@ Preferred OS would be **Arch Linux**, since it's much easier to install packages
 Hope you found this repo helpful/inspirational!
 If you want to tip for a coffee, I will add bitcoin/monero/dogecoin later.
 
-P.S. I'm total noob in git and bash, so be careful. I made the code to be as safe as possible (so there's no rm -rf ~), yet, if you have some programming skills, please check my bash code :)
+P.S. FYI I'm total noob in git and bash. I made the code to be as safe as possible (so there's no rm -rf ~), yet if you have some programming skills, please check my bash script ( ͡^ ͜ʖ ͡^)
