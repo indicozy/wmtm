@@ -1,16 +1,16 @@
 max-visible=3
 anchor=top-right
-font=Hack
+font=Fira Mono
 default-timeout=5000
 icons=1
 markup=1
 
 padding=5
 
-background-color=#282828
+background-color=#fff6f6
 progress-color=#98971a
-text-color=#fbf1c7
+text-color=#000000
 
-border-color=#d79921
+border-color=#4f6878
 border-size=2
 border-radius=2

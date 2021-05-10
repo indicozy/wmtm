@@ -12,7 +12,7 @@ configuration {
     font: "Sans 9";
     //sidebar-mode: true;
     show-icons: true;
-    icon-theme: "Windows 98 (16 bits)";
+    icon-theme: "Windows 7 Ultimate";
 	terminal: "alacritty";
     disable-history: false;
     display-drun: "";

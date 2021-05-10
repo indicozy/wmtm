@@ -22,7 +22,6 @@
 		"sway/mode",
 		"custom/separator",
 		"idle_inhibitor",
-		"network",
 		"battery",
 		"cpu",
 		"backlight",
@@ -97,13 +96,6 @@
         "max-length": 60,
         "tooltip": false
     },
-	"network": {
-       // "interface": "wlp2s0", // (Optional) To force the use of this interface
-        "format-wifi": "",
-        "format-ethernet": "",
-        "format-disconnected": "ﲁ", //An empty format will hide the module.
-        "tooltip-format-wifi": "{essid} ({signalStrength}%) "
-    },
 	"clock": {
 		"format": "{:%H:%M}",
         "format-alt": "{:%A %e, %B %Y}",
@@ -112,8 +104,8 @@
 	"pulseaudio": {
 		"format": "{icon} {format_source}",
 		"format-bluetooth": "{icon}{volume}% {format_source}",
-		"format-bluetooth-muted": "{icon} {format_source}",
-		"format-muted": "{format_source}",
+		"format-bluetooth-muted": "婢{icon} {format_source}",
+		"format-muted": "婢 {format_source}",
 		//"format-source": "{volume}%",
 		"format-source": "",
 		"format-source-muted": "",

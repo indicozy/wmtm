@@ -98,9 +98,6 @@ window#waybar.bottom {
 	font-size: 20px;
 	text-shadow: 1px 1px 1px @background;
 }
-#idle_inhibitor,#network, #battery, #memory, #cpu, #backlight, #pulseaudio{
-	font-size: 13px;
-}
 #custom-winxp_separator{
 	border-style: solid;
 	border-color: @background;
@@ -192,4 +189,8 @@ window#waybar.bottom {
 }
 #window{
 	padding: 0px 10px 0px 10px;
+}
+#idle_inhibitor,#network, #battery, #memory, #cpu, #backlight, #pulseaudio{
+	font-size: 16px;
+	padding: 5px;
 }

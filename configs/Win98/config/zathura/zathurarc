@@ -62,6 +62,6 @@ set render-loading-bg           "#18191E"
 
 # Recolor mode settings
 #set recolor
-set recolor-lightcolor          "#010100" 
-set recolor-darkcolor           "#AAAAAA" 
+set recolor-lightcolor          "#a8a8a8" 
+set recolor-darkcolor           "#000000" 
 

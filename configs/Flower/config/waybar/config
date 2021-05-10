@@ -2,7 +2,7 @@
 {
 	"layer": "top",
 	"height":0,
-	"position": "bottom",
+	"position": "left",
 	"margin-top": 0,
 	"margin-right": 0,
 	"margin-left": 0,
@@ -14,13 +14,11 @@
 	"modules-left": [
 		"custom/menu",
 		"wlr/taskbar",
-		"custom/separator",
-		"sway/window"
+		"custom/separator"
 	],
 	"modules-right": [
 		"sway/mode",
 		"idle_inhibitor",
-		"network",
 		"battery",
 		"memory",
 		"cpu",
@@ -70,18 +68,16 @@
 		"all-outputs": false,
 		"format": "{icon}",
 		"icon-theme": "Tela-black-dark",
-		"icon-size": 16,
+		"icon-size": 18,
 		"on-click": "activate",
 		"on-click-right": "minimize",
 		"on-click-middle": "close"
 	},
 	"backlight": {
-		"format": "{icon}{percent}%",
+		"format": "{icon}",
 		"format-icons": ["", ""],
 		"on-scroll-up": "light -A 2",
 		"on-scroll-down": "light -U 2"
-	},
-	"sway/window": {
 	},
 	"sway/mode": {
 		"format": "{}",
@@ -90,28 +86,19 @@
 		"icon-size": 12,
 		"spacing":5
 	},
-	"sway/window": {
-        "format": "{}",
-        "max-length": 60,
-        "tooltip": false
-    },
-	"network": {
-       // "interface": "wlp2s0", // (Optional) To force the use of this interface
-        "format-wifi": "",
-        "format-ethernet": "",
-        "format-disconnected": "ﲁ", //An empty format will hide the module.
-        "tooltip-format-wifi": "{essid} ({signalStrength}%) "
-    },
 	"clock": {
-		"format": "{:%H:%M}",
-        "format-alt": "{:%A %e, %B %Y}",
+		"format": "{:%H
+%M}",
+        "format-alt": "{:%m
+%d
+%C}",
         "tooltip": false
 	},
 	"pulseaudio": {
-		"format": "{icon}{volume}% {format_source}",
+		"format": "{icon}",
 		"format-bluetooth": "{icon}{volume}% {format_source}",
-		"format-bluetooth-muted": "{icon} {format_source}",
-		"format-muted": "{format_source}",
+		"format-bluetooth-muted": "婢 {icon} {format_source}",
+		"format-muted": "婢",
 		"format-source": "{volume}%",
 		"format-source-muted": "",
 
@@ -142,7 +129,7 @@
 			"critical": 80
 		},
 		"interval": 5,
-		"format": "{}%"
+		"format": ""
 	},
 	"cpu": {
 		"states": {
@@ -151,9 +138,10 @@
 			"critical": 95
 		},
 		"interval": 1,
-		"format": "{usage:2}%"
+		"format": ""
 	},
 	 "battery": {
+	 "rotate": 90,
         //"bat": "BAT0",
         "states": {
             "full": 100,

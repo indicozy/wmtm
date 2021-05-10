@@ -7,8 +7,8 @@
 
 #<[# QUICK SETTINGS ########################################################
 #--- Include --------------------------------------------------------------
-set $background		#3e6656
-set $foreground		#d1c29d
+set $background		#4f6878
+set $foreground		#fff6f6
 set $selection		#6272a4
 set $unfocused		#44475a
 set $cyan			#689d6a
@@ -19,6 +19,7 @@ set $purple			#b16286
 set $red			#bf6374
 set $yellow			#d79921
 set $dark           #323732
+set $fore			#222222
 
 #--- Programs --------------------------------------------------------------
 set
@@ -35,8 +36,8 @@ set $font			"Fira Mono Regular 9"
 #--- GUI -------------------------------------------------------------------
 set
 {
-	$gtk_theme	'MGT-DarkX' #'Fantome' #Won't work #klorax.dracula
-	$icon_theme		'Tela-black-dark'
+	$gtk_theme	'Tee' #'Fantome' #Won't work #klorax.dracula
+	$icon_theme		'Tela-black'
 	$cursor_theme	'Breeze'
 }
 
@@ -51,10 +52,10 @@ set
 #--- Window Decortations ---------------------------------------------------
 set
 {
-   	$border      	2
+   	$border      	3
   	$nofocus     	$background
 	$focus       	$foreground
-	$titletxt    	#ebdbb1
+	$titletxt    	$fore
 	$titlepad		3	
 	$gaps_inner  	10
 	$gaps_outer  	30

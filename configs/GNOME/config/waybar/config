@@ -88,8 +88,8 @@
 	"pulseaudio": {
 		"format": "{icon}",
 		"format-bluetooth": "{icon}{volume}% {format_source}",
-		"format-bluetooth-muted": "{icon} {format_source}",
-		"format-muted": "{format_source}",
+		"format-bluetooth-muted": "婢{icon}  {format_source}",
+		"format-muted": "婢",
 		//"format-source": "{volume}%",
 		"format-source": "",
 		"format-source-muted": "",
@@ -184,7 +184,7 @@
 		"all-outputs": false,
 		"format": "{icon}",
 		"icon-theme": "Tela-grey-dark",
-		"icon-size": 42,
+		"icon-size": 40,
 		"on-click": "activate",
 		"on-click-right": "minimize",
 		"on-click-middle": "close"

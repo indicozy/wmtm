@@ -55,7 +55,6 @@ window#waybar.bottom {
 #pulseaudio,
 #memory,
 #cpu,
-#clock,
 #battery,
 #backlight,
 #disk,
@@ -68,8 +67,16 @@ window#waybar.bottom {
 #custom-covid,
 #taskbar,
 #tray {
-	padding: 0px 3px 0 3px;
+	padding: 0px 5px 0 5px;
+	font-size: 12px;
 }
+
+
+#clock, #language {
+	padding: 0px 5px 0px 5px;
+	font-size: 12px;
+}
+
 #custom-shutdown{
 	padding: 0px 10px 0px 10px;
 	font-size:18px;
@@ -83,24 +90,29 @@ window#waybar.bottom {
 	padding: 0px;
 }
 #idle_inhibitor,#network, #battery, #memory, #cpu, #backlight, #pulseaudio{
-	font-size: 15px;
+	font-size: 18px;
+}
+
+#battery {
+ 	font-size: 22px;
 }
 #workspaces {
 	background-color: @fore;
 	padding: 0px 90px 0px 0px;
-	margin-left: 0px;
+	margin: 2px 0px 0px 0px;
 }
 #workspaces button {
 	color: @background;
 	margin: 0;
-	padding: 0px 0px 0px 0px;
+	padding: 0px 1px 0px 1px;
+	border-style: solid;
+	border-width: 0 0 2 0;
+	border-color: @fore;
+	border-radius: 0;
 }
 
 #workspaces button.focused {
-	border-style: solid;
-	border-width: 0 0 2 0;
 	border-color: @cyan;
-	border-radius: 0;
 	color: @background;
 }
 

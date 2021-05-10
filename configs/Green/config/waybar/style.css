@@ -71,6 +71,17 @@ window#waybar.bottom {
 	padding: 0px 7px 0 7px;
 }
 
+
+#idle_inhibitor
+{
+	font-size: 18px;
+}
+
+#battery
+{
+	font-size: 22px;
+}
+
 #custom-separator {
 	opacity: 0;
 	padding: 0px;

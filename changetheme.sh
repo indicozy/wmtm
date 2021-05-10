@@ -1,6 +1,6 @@
 #! /bin/bash
 
-path=~/sway-dotfiles-script
+path=~/Apps/git/sway-advanced-config
 
 function checksave () {
 	cd $path
@@ -34,7 +34,7 @@ function checkNum (){
 	if [[ "$folder" =~ ^[0-9]+$ || "$folder" -eq -1 ]]
     then 
 		echo "$(( (( (( folder + ${#themes[@]} )) % ${#themes[@]}  )) ))" > "$path/themeNumber.txt"
-		folder=${themes[(( (( folder - 1 + ${#themes[@]} )) % ${#themes[@]}  ))]}
+		folder=${themes[(( (( folder - 1 + ${#themes[@]} )) % ${#themes[@]}  ))]%?}
 	fi
 	cd $path
 }
@@ -118,6 +118,9 @@ bindsym
 	\$layer3+9 exec \$code 9
 	\$layer3+left exec \$code prev
 	\$layer3+right exec \$code next
+	\$layer3+Space exec \$code
+	\$layer3+s exec \$code save
+
 }
 " >> ~/.config/sway/config
 cd $path
@@ -295,6 +298,7 @@ function cleanBackupConfig () {
 
 function wordCheck () {
 	cd $path
+	checksave #function
 	checkNextPrev #function
 	checkNum #function
 	checker=$(findFolder)
@@ -341,32 +345,29 @@ function wordCheck () {
 function runZenity () {
 	zenity_text='zenity --list --title="Theme Switcher" --text="Choose your theme" --width=300 --height=300 --column="Id" --column="Theme"'
 	cd $path/configs
-	folderNumber=($(ls -d *))
+	folderNumber=($(ls -d */))
 	zenity_array+="\\ "
+	zenity_array+="prev 'Go to the previous theme' \\ "
+	zenity_array+="next 'Go to the next theme' \\ "
+	zenity_array+="save 'Save your config' \\ "
+	zenity_array+="goback 'Back to previous config' \\ "
+
 	for (( i=0; i<${#folderNumber[@]}; i++ ))
 	do
 		zenity_array+="$(( i + 1 )) " 
-		zenity_array+="${folderNumber[i]} "
+		zenity_array+="${folderNumber[i]%?} "
 		if ! [ "$(( $i + 1 ))" -eq ${#folderNumber[@]} ]
 		then
 		zenity_array+="\\ "
 			fi
 	done
 	zenity_text+=" $zenity_array"
-	now=($(eval $zenity_text))
-	echo $now
-	writeNow
-	changeFolder
+	folder=($(eval $zenity_text))
+	if ! [ -z "$folder" ]
+	then
 	wordCheck
+	fi
 	cd $path
-}
-
-function changeFolder () {
-	folder=$now
-}
-
-function writeNow () {
-	echo $now > "$path/themeNumber.txt"
 }
 
 # Main function
@@ -382,8 +383,11 @@ then
 
 elif [ $# -eq 1 ]
 then
-	checksave #function
 	wordCheck
+elif [ $# -gt 1 ]
+then
+	echo "Given more than one argument. Please check your config"
+	notify-send "Given more than one argument" "Please check your config"
 else
 	echo "No arguments given."
 		notify-send "Error at Theme Changer" "No arguments given."

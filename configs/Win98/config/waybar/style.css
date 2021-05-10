@@ -66,7 +66,7 @@ window#waybar.bottom {
 #language,
 #network,
 #tray {
-	padding: 0px 3px 0 3px;
+	padding: 0px 5px 0 5px;
 	color: @background;
 	margin: 3px 1px;
 	padding: 0px 2px 0px 2px;
@@ -91,7 +91,8 @@ window#waybar.bottom {
 	text-shadow: 1px 1px 1px @background;
 }
 #idle_inhibitor,#network, #battery, #memory, #cpu, #backlight, #pulseaudio{
-	font-size: 15px;
+	font-size: 16px;
+	padding: 0px 5px 0px 5px;
 }
 #workspaces {
 	border-style:inset;
@@ -187,6 +188,7 @@ window#waybar.bottom {
 
 #tray {
 	padding: 0 3px 0px 3px;
+	margin: 3px 0px;
 
 }
 #window{

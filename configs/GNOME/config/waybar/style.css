@@ -32,12 +32,12 @@ window#waybar {
 }
 
 window#waybar.left{ 
-	background: rgba(0,0,0,.14);
+	background: alpha(#2f343f,0);
 	margin: 0;
 }
 
 window#waybar.top {
-	background: rgba(0,0,0,.34);
+	background: alpha(#2f343f,1);
 }
 
 .modules-left,
@@ -62,18 +62,7 @@ window#waybar.top {
 	/* padding: 0px 0px 0px 8px; */
 	border-width: 2px 0px 0px 2px;
 }
-#workspaces {
-}
-#workspaces button{
-	margin: 1px 0px 0px 0px;
-	/* padding: 0px 5px; */
-	color: white;
-	background-color: rgba(0,0,0,0);
-	border-color: rgba(0,0,0,0);
-}
-#workspaces button.focused {
-	font-weight: bold;
-}
+
 
 
 #mode {
@@ -141,13 +130,11 @@ window#waybar.top {
 /* Base styling for modules */
 #workspaces,
 #mode,
-#window,
 #idle_inhibitor,
 #custom-weather,
 #pulseaudio,
 #memory,
 #cpu,
-#clock,
 #battery,
 #backlight,
 #disk,
@@ -160,6 +147,29 @@ window#waybar.top {
 #custom-covid,
 #tray {
 	padding: 0px 7px 0 7px;
+	font-size: 16px;
+}
+
+#workspaces {
+	}
+#workspaces button{
+	margin: 1px 0px 0px 0px;
+	/* padding: 0px 5px; */
+	color: white;
+	background-color: rgba(0,0,0,0);
+	border-color: rgba(0,0,0,0);
+	border-radius: 0;
+}
+#workspaces button.focused {
+	border-color: white;
+	border-width: 0 0 1 0;
+	border-style: solid;
+	font-weight: bold;
+}
+
+#battery,
+#pulseaudio {
+	font-size: 20px;
 }
 
 #language,

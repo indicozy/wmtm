@@ -6,11 +6,11 @@
  */
 
 configuration {
-    columns: 5;
-    width: 30;
-    lines: 3;
+    columns: 1;
+    width: 300;
+    lines: 24;
     font: "Hack 9";
-    //sidebar-mode: true;
+    sidebar-mode: true;
     show-icons: true;
     terminal: "alacritty";
     disable-history: false;
@@ -21,23 +21,23 @@ configuration {
 }
 
 element {                  
-orientation: vertical; 
+orientation: horizontal; 
 spacing: 5px;          
 }    
 
 element-icon {             
-size: 40;              
+size: 3%;              
 }
 
 element-text {             
-horizontal-align: 0.5; 
+horizontal-align: 0; 
 }                          
 
 * {
     /* Base */
-    default-background: rgba(50, 55, 50, 100%); // <- change this for transparency
-    default-foreground: rgba(209, 194, 157, 100%);
-    default-border: rgba(217, 132, 113, 100%);
+    default-background: rgba(255, 246, 246, 90%); // <- change this for transparency
+    default-foreground: #000000;
+    default-border: #4f6878;
     alternative-background: rgba(40, 42, 54, 100%);
     invisible: rgba(0, 0, 0, 0%);
 
@@ -61,10 +61,11 @@ horizontal-align: 0.5;
 }
 
 #window {
+    height: 100%;
+    location: north west;
+    anchor: north west;
     background-color: @default-background;
-    border: 2;
     border-radius: 0;
-    border-color: @yellow;
     padding: 0;
 }
 

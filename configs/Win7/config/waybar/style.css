@@ -13,10 +13,11 @@
 
 
 * {
-	font-size: 12px;
+	font-size: 18px;
 	font-family: "Sans";
 	padding: 0px;
 	margin: 0px;
+	color: white;
 }
 
 window#waybar {
@@ -89,19 +90,20 @@ window#waybar.bottom {
 	text-shadow: 1px 1px 1px @background;
 }
 #idle_inhibitor,#network, #battery, #memory, #cpu, #backlight, #pulseaudio{
-	font-size: 15px;
+	padding: 0px 4px 0px 4px;
+	font-size: 18px;
 }
 #workspaces {
-	margin: 5px 5px;
 }
 #workspaces button {
 	color: @foreground;
-	padding: 0px 2px 0px 2px;
+	padding: 0px 4px 0px 4px;
+	border-radius: 0px;
 }
 
 #workspaces button.focused {
 	border-style: solid;
-	border-color: @background;
+	border-color: white;
 	border-width:0px 0px 1px 0px;
 	
 	color: @background;
@@ -140,8 +142,11 @@ window#waybar.bottom {
 
 #taskbar,
 #tray,
-#window {
-	padding: 0;
+#window,
+#language,
+#clock {
+	padding: 0px 4px;
+	font-size: 14px;
 	margin: 0 0px 0 0px;
 }
 #taskbar {

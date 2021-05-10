@@ -1,9 +1,9 @@
 @define-color background	#323732;
-@define-color foreground	#ebdbb1;
+@define-color foreground	#302828;
 @define-color selection		#44475a;
 @define-color unfocused		#6272a4;
-@define-color cyan			#689d6a;
-@define-color green			#3e6656;
+@define-color cyan			#5d7380;
+@define-color green			#fff6f6;
 @define-color orange		#d65d0e;
 @define-color pink			#ff5370;
 @define-color purple		#b16286;
@@ -14,9 +14,10 @@
 
 * {
 	font-size: 14px;
-	font-family: "Fira Mono";
+	font-family: "Hack";
 	padding: 0px;
 	margin: 0px;
+/* text-shadow:1px 1px 2px rgba(0,0,0,.6); */
 }
 
 window#waybar {
@@ -25,7 +26,7 @@ window#waybar {
 }
 
 window#waybar.left {
-	background: @green;
+	background: alpha(@green, .78);
 	border-top-left-radius: 0px;
 	border-top-right-radius: 0px;
 	border-top: none;
@@ -67,8 +68,33 @@ window#waybar.bottom {
 #custom-reboot,
 #custom-covid,
 #taskbar,
-#tray {
-	padding: 0px 7px 0 7px;
+#tray,
+#custom-menu{
+	padding: 1px 0px 1px 0px;
+	margin: 0px;
+}
+
+
+
+#pulseaudio,
+#memory,
+#cpu,
+#backlight,
+#battery,
+#idle_inhibitor{
+	font-size: 14px;
+	margin: 0px 2px;
+}
+
+
+#battery
+{
+	font-size: 20px;
+}
+
+#pulseaudio
+{
+	font-size: 16px;
 }
 
 #custom-separator {
@@ -76,24 +102,6 @@ window#waybar.bottom {
 	padding: 0px;
 }
 
-#workspaces {
-	padding: 0px 0px 0px 0px;
-	margin-left: 0px;
-}
-#workspaces button {
-	color: @foreground;
-	margin: 0;
-	padding: 0px 0px 0px 0px;
-	border-radius: 0px;
-}
-
-#workspaces button.focused {
-	border-style: solid;
-	border-width: 2 0 0 0;
-	border-color: @foreground;
-	border-radius: 0;
-	color: @foreground;
-}
 
 #mode {
 	color: @orange;
@@ -139,15 +147,51 @@ window#waybar.bottom {
 #taskbar button {
 	color: @foreground;
 	border-radius: 0px;
-	padding: 0px 3px 0px 3px;
+	padding: 3px 0px 3px 0px;
 }
 #taskbar button.active {
+	icon-shadow: 0px 0px 3px alpha(#111131, .9);
 	border-style: dashed;
-	border-width: 2 0 0 0;
+	border-width: 0 0 0 0;
 	border-color: @foreground;
-	border-radius: 20;
+	border-radius: 0;
 }
 
 #tray {
-	padding: 0 3px 0px 3px;
+	color: black;
+	icon-shadow: 0px 1px 2px alpha(#020000, .9);
+	padding: 2px 0px 2px 0px;
+}
+
+#custom-menu{
+	font-size: 20px;
+}
+
+#clock,
+#language{
+	font-size: 11px;
+}
+#custom-shutdown{
+	font-size: 12px;
+	padding: 2px 0px 6px 0px;
+}
+
+#workspaces {
+	padding: 0px 0px 0px 0px;
+	margin-left: 0px;
+}
+#workspaces button {
+	margin: 0;
+	padding: 0px 0px 0px 0px;
+	border-radius: 0px;
+	color: @background;
+}
+
+#workspaces button.focused {
+	color: @background;
+	text-shadow: 0px 0px 4px @background;
+	border-style: solid;
+	border-width: 0 0 0 0;
+	border-color: @foreground;
+	border-radius: 0;
 }

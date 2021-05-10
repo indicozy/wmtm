@@ -4,8 +4,8 @@
 	"height":50,
 	"position": "bottom",
 	"margin-top": 5,
-	"margin-right": 80,
-	"margin-left": 80,
+	"margin-right": 200,
+	"margin-left": 200,
 	"margin-bottom":5,
 	"modules-center": [
 		"wlr/taskbar",
@@ -116,8 +116,8 @@
 	"pulseaudio": {
 		"format": "{icon}",
 		"format-bluetooth": "{icon}{volume}% {format_source}",
-		"format-bluetooth-muted": "{icon} {format_source}",
-		"format-muted": "{format_source}",
+		"format-bluetooth-muted": "婢{icon} {format_source}",
+		"format-muted": "婢",
 		//"format-source": "{volume}%",
 		"format-source": "",
 		"format-source-muted": "",

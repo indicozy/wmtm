@@ -7,8 +7,8 @@
 
 #<[# QUICK SETTINGS ########################################################
 #--- Include --------------------------------------------------------------
-set $background		#d2dfeb
-set $foreground		#01acf9
+set $background		#01acf9
+set $foreground		#d2dfeb
 set $selection		#6272a4
 set $unfocused		#44475a
 set $cyan			#689d6a
