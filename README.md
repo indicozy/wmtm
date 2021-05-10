@@ -44,6 +44,7 @@ The script has several features:
 * mako -> Notification daemon
 * zenity -> GUI application for my script
 * autotiling from https://github.com/nwg-piotr/autotiling
+* nerd-fonts-fira-code -> icons for panels
 
 Link for icons/cursors/themes (Required): https://drive.google.com/drive/folders/1QrF2_8l0AQaOtExoguOcq1iMjT7dkP9Q?usp=sharing
 ### Optional
