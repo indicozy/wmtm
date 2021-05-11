@@ -1,6 +1,6 @@
 #! /bin/bash
 
-path=~/Apps/git/sway-advanced-config
+path=~/.sway-dotfiles-script
 
 function checksave () {
 	cd $path
@@ -100,26 +100,22 @@ function killAllProcesses () {
 function autoAppend () {
 			# append text to make any sway config to work with this script
 	echo "######[Auto-Appended] Theme switch script
-set
-{
-\$layer3			Mod4+Ctrl
-\$code			$path/changetheme.sh
-}
+
 bindsym
 {
-	\$layer3+1 exec \$code 1 
-	\$layer3+2 exec \$code 2
-	\$layer3+3 exec \$code 3 
-	\$layer3+4 exec \$code 4 
-	\$layer3+5 exec \$code 5 
-	\$layer3+6 exec \$code 6 
-	\$layer3+7 exec \$code 7 
-	\$layer3+8 exec \$code 8 
-	\$layer3+9 exec \$code 9
-	\$layer3+left exec \$code prev
-	\$layer3+right exec \$code next
-	\$layer3+Space exec \$code
-	\$layer3+s exec \$code save
+	Mod4+Ctrl+1 exec $path/changetheme.sh 1 
+	Mod4+Ctrl+2 exec $path/changetheme.sh 2
+	Mod4+Ctrl+3 exec $path/changetheme.sh 3 
+	Mod4+Ctrl+4 exec $path/changetheme.sh 4 
+	Mod4+Ctrl+5 exec $path/changetheme.sh 5 
+	Mod4+Ctrl+6 exec $path/changetheme.sh 6 
+	Mod4+Ctrl+7 exec $path/changetheme.sh 7 
+	Mod4+Ctrl+8 exec $path/changetheme.sh 8 
+	Mod4+Ctrl+9 exec $path/changetheme.sh 9
+	Mod4+Ctrl+left exec $path/changetheme.sh prev
+	Mod4+Ctrl+right exec $path/changetheme.sh next
+	Mod4+Ctrl+Space exec $path/changetheme.sh
+	Mod4+Ctrl+s exec $path/changetheme.sh save
 
 }
 " >> ~/.config/sway/config
