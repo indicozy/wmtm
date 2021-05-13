@@ -1,10 +1,36 @@
+#! /bin/bash
+TRUE=1
+FALSE=0
 
-if zenity --question --width=400 --title="Theme Changer" --text="Would you like to install the Theme Changer?\nPlease check if you installed all dependencies first"
+function checkPackages () {
+DISTRO=$(hostnamectl | grep Operating\ System)
+if [[ "$DISTRO" == *"Arch Linux" ]]
 then
-	git_path=($(pwd))
-	path=~/.sway-dotfiles-script
+	REQUIRED_PKG=(alacritty bspwm autotiling nerd-fonts-fira-code mako polkit polkit-gnome sway swaylock-effects waybar wlogout zenity)
+	for i in ${REQUIRED_PKG[@]}
+	do
+		if ! [[ "$(pacman -Q $i)" == "$i"* ]]
+		then
+			echo "$i was not found"
+			TO_INSTALL+="$i"
+		fi
+	done
 
-	mkdir -p ~/Documents/sway_configs_saved
+	read -p 'Some packages are not installed, do you to install them now? y/n:' distro_answer
+	if [ "$distro_answer" == "y" -o "$distro_answer" == "Y"  ]
+	then 
+		for i in ${TO_INSTALL[@]}
+		do 
+			yay -S $i
+		done
+	fi
+else
+	echo "Your Distribution is not Arch Linux, so I cannot find what packages you have. Please check that you have all packages needed."
+fi
+}
+
+function prepareSavedConfigs () {
+		mkdir -p ~/Documents/sway_configs_saved
 	cd ~/Documents/sway_configs_saved
 	saved_folders=($(ls -d YourDefault*))
 		for (( i=${#saved_folders[@]}; i>0; i--))
@@ -15,19 +41,10 @@ then
 		do
 			rm -r ~/Documents/sway_configs_saved/${saved_folders[(($i - 1))]}
 		done
+}
 
-	backupfolders=(alacritty mako nwg-dock nwg-launchers nwg-panel rofi sway swaylock waybar wlogout zathura) 
-	for i in "${backupfolders[@]}"
-	do
-		mkdir -p ~/Documents/sway_configs_saved/YourDefault1/$i
-		cp -r ~/.config/$i/* ~/Documents/sway_configs_saved/YourDefault1/$i/
-	done
-
-	mkdir $path
-	cd $git_path
-	cp -r configs changetheme.sh install.sh LICENSE README.md $path
-
-	echo "######[Auto-Appended] Theme switch script
+function autoAppend () {
+		echo "######[Auto-Appended] Theme switch script
 
 bindsym
 {
@@ -47,6 +64,47 @@ bindsym
 
 }
 " >> ~/.config/sway/config
+}
+
+function createBackup () {
+	backupfolders=(alacritty mako nwg-dock nwg-launchers nwg-panel rofi sway swaylock waybar wlogout zathura) 
+	for i in "${backupfolders[@]}"
+	do
+		mkdir -p ~/Documents/sway_configs_saved/YourDefault1/$i
+		cp -r ~/.config/$i/* ~/Documents/sway_configs_saved/YourDefault1/$i/
+	done
+
+	mkdir $path
+	cd $git_path
+	cp -r configs changetheme.sh install.sh LICENSE README.md $path
+}
+
+function checkRoot () {
+	# Test if user is root
+if [ "$EUID" -eq 0 ]
+	then 
+		echo "Please do not run as root."
+		exit 1
+fi
+}
+
+# MAIN
+
+checkRoot
+checkPackages
+
+if zenity --question --width=400 --title="Theme Changer" --text="Would you like to install the Theme Changer?\nPlease check if you installed all dependencies first"
+then
+
+	git_path=($(pwd))
+	path=~/.sway-advanced-config
+
+
+	prepareSavedConfigs
+
+	createBackup
+
+	autoAppend
 
 	swaymsg reload
 
@@ -57,6 +115,3 @@ bindsym
 else
 	notify-send "You chose not to install" "No files has been changed"
 fi
-
-
-
