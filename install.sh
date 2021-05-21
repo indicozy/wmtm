@@ -102,8 +102,7 @@ if dialog --title "Install Theme Changer" \
 then
 
 	git_path=($(pwd))
-	echo $git_path
-	if ! [[ "$git_path" == *"sway-advanced-config" ]]; then
+	if ! [[ "$git_path" == *"sway-dotfiles-script" ]]; then
 		echo "ERROR: Most likely you are installing from the wrong folder, please check my github: https://github.com/indicozy/sway-advanced-config"
 		exit
 	fi
