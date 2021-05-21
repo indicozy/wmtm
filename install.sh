@@ -1,50 +1,27 @@
 #! /bin/bash
-TRUE=1
-FALSE=0
+# Installer script for sway-advanced-config
+# Developed and maintained by indicozy
+# ver: 1.0
 
-function checkPackages () {
-DISTRO=$(hostnamectl | grep Operating\ System)
-if [[ "$DISTRO" == *"Arch Linux" ]]
-then
-	REQUIRED_PKG=(alacritty bspwm autotiling nerd-fonts-fira-code mako polkit polkit-gnome sway swaylock-effects waybar wlogout zenity)
-	for i in ${REQUIRED_PKG[@]}
-	do
-		if ! [[ "$(pacman -Q $i)" == "$i"* ]]
-		then
-			echo "$i was not found"
-			TO_INSTALL+="$i"
-		fi
-	done
-
-	read -p 'Some packages are not installed, do you to install them now? y/n:' distro_answer
-	if [ "$distro_answer" == "y" -o "$distro_answer" == "Y"  ]
-	then 
-		for i in ${TO_INSTALL[@]}
-		do 
-			yay -S $i
-		done
-	fi
-else
-	echo "Your Distribution is not Arch Linux, so I cannot find what packages you have. Please check that you have all packages needed."
-fi
-}
-
-function prepareSavedConfigs () {
-		mkdir -p ~/Documents/sway_configs_saved
-	cd ~/Documents/sway_configs_saved
-	saved_folders=($(ls -d YourDefault*))
+function prepareSavedConfigs {
+	mkdir -p ~/Documents/sway_configs_saved
+	local saved_folders=($(ls -d ~/Documents/sway_configs_saved/YourDefault*))
 		for (( i=${#saved_folders[@]}; i>0; i--))
 		do
-			mv ~/Documents/sway_configs_saved/"${saved_folders[$(( i - 1 ))]}" ~/Documents/sway_configs_saved/YourDefault$(( i + 1))
+			mv "${saved_folders[$(( i - 1 ))]}" ~/Documents/sway_configs_saved/YourDefault$(( i + 1))
 		done
-		for (( i=${#saved_folders[@]}; i>7; i--)) #removes old folers up to 7+1 (1 is newly created) folders
+
+	#update new arrangement of saved folders
+	local saved_folders=($(ls -d ~/Documents/sway_configs_saved/YourDefault*))
+
+		for (( i=${#saved_folders[@]}; i>7; i--)) #removes old folers up to 7+1 (1 is newly created) folder
 		do
-			rm -r ~/Documents/sway_configs_saved/${saved_folders[(($i - 1))]}
+			rm -r ${saved_folders[$(($i - 1))]}
 		done
 }
 
-function autoAppend () {
-		echo "######[Auto-Appended] Theme switch script
+function autoAppend {
+	echo "######[Auto-Appended] Theme switch script
 
 bindsym
 {
@@ -66,43 +43,80 @@ bindsym
 " >> ~/.config/sway/config
 }
 
-function createBackup () {
-	backupfolders=(alacritty mako nwg-dock nwg-launchers nwg-panel rofi sway swaylock waybar wlogout zathura) 
+function backupConfig {
+	local backupfolders=(alacritty mako rofi sway swaylock waybar wlogout zathura) 
 	for i in "${backupfolders[@]}"
 	do
-		mkdir -p ~/Documents/sway_configs_saved/YourDefault1/$i
-		cp -r ~/.config/$i/* ~/Documents/sway_configs_saved/YourDefault1/$i/
+		mkdir -p ~/Documents/sway_configs_saved/YourDefault/$i > /dev/null
+		cp -r ~/.config/$i/* ~/Documents/sway_configs_saved/YourDefault/$i/
 	done
+}
 
-	mkdir $path
+function installSwitcher {
+	mkdir $path 2> /dev/null
 	cd $git_path
 	cp -r configs changetheme.sh install.sh LICENSE README.md $path
 }
 
-function checkRoot () {
-	# Test if user is root
-if [ "$EUID" -eq 0 ]
-	then 
-		echo "Please do not run as root."
-		exit 1
-fi
+function installApplications {
+
+	if dialog --title "Install Packages" \
+		--yesno "Do you want to install necessary packages first?" 7 50
+	then
+	dialog --title "Note"\
+		--msgbox "This script will install only required packages, check out for additional packages on README.md" 10 50
+		clear
+		sudo pacman -S --needed alacritty mako sway wlogout  zenity waybar
+		yay -S --needed swaylock-effects rofi-lbonn-wayland-git wlogout autotiling nerd-fonts-fira-code
+		echo "Packages are installed, now insalling the script..."
+	else
+		clear
+		echo "You chose not to install packages."
+	fi
+	sleep 2
 }
 
-# MAIN
+function distroIsArch {
+	if ! cat /etc/*-release | grep Arch\ Linux > /dev/null
+	then
+		return 1
+	fi
+	return 0
+}
 
-checkRoot
-checkPackages
+function checkPackageManager {
+	if distroIsArch; then
+		installApplications
+	else
+		echo "Sorry, but your distro is not Arch linux (or script could not find your distro)\nPlease contact me at github.com/indicozy to add your distro"
+	fi
+}
 
-if zenity --question --width=400 --title="Theme Changer" --text="Would you like to install the Theme Changer?\nPlease check if you installed all dependencies first"
+
+
+####### MAIN
+
+
+if dialog --title "Install Theme Changer" \
+	--yesno "Would you like to install the Theme Changer?\nPlease check if you installed all dependencies first" 10 50
 then
 
 	git_path=($(pwd))
+	echo $git_path
+	if ! [[ "$git_path" == *"sway-advanced-config" ]]; then
+		echo "ERROR: Most likely you are installing from the wrong folder, please check my github: https://github.com/indicozy/sway-advanced-config"
+		exit
+	fi
+
 	path=~/.sway-advanced-config
 
+	checkPackageManager
 
 	prepareSavedConfigs
 
-	createBackup
+	backupConfig
+
+	installSwitcher
 
 	autoAppend
 
@@ -110,8 +124,12 @@ then
 
 	notify-send "You are ready to go!" "Just click Ctrl+Super+Space"
 
-	zenity --info --title="Installation Complete" --width=400 --text="Installation complete! \nYour previous theme before installation was saved in ~/Documents/sway_configs_saved/YourDefault \nJust click Ctrl+Super+Space to start"
+	dialog --title "Installation Complete"\
+		--msgbox "Your previous theme before installation was saved in ~/Documents/sway_configs_saved/YourDefault\n\n\n     Just click Ctrl+Super+Space to start!" 10 50
+
 
 else
-	notify-send "You chose not to install" "No files has been changed"
+	clear
+	echo "You chose not to install. No files has been changed."
 fi
+
