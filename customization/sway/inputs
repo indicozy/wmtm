@@ -1,0 +1,20 @@
+#<[# INPUTS ################################################################
+#input * xkb_layout "us"
+input * {
+    xkb_layout "us,ru"
+    xkb_options "grp:alt_shift_toggle"
+}
+#input "Synaptics_s3203"
+#{
+#	tap enabled
+#	middle_emulation enabled
+#}
+input type:touchpad {
+    tap enabled
+	scroll_factor 0.53
+    natural_scroll enabled
+	middle_emulation disabled
+	drag enabled
+	click_method clickfinger
+}
+#]>#########################################################################

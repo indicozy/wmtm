@@ -1,0 +1,23 @@
+#<[# AUTOSTART ##############################################################
+exec 
+{
+autotiling
+nm-applet --indicator
+systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+hash dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+telegram-desktop -autostart
+cpupower-gui
+blueman-applet
+keepassxc
+xset b off
+}
+
+exec_always
+{
+mako
+}
+
+exec swayidle -w \
+	timeout 900 	'swaylock'
+#]>#########################################################################

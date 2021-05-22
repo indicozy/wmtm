@@ -8,7 +8,7 @@ save_path=~/Documents/sway_configs_saved
 
 function checksave () {
 	now=0
-	if [[ $(cat $path/system/themeNumber.txt) =~ ^[0-9]+$ ]] && [[ -s $path/themeNumber.txt ]]; then
+	if [[ $(cat $path/system/themeNumber.txt 2> /dev/null) =~ ^[0-9]+$ ]]; then
 		 now=$(cat $path/system/themeNumber.txt)
 	fi
 }
@@ -50,6 +50,11 @@ function killAllProcesses () {
 
 function autoAppend () {
 			# append text to make any sway config to work with this script
+	local custom_files=($(ls -d $path/customization/sway/*))
+	for i in ${custom_files[@]}; do
+		cat $i >> ~/.config/sway/config
+	done
+
 	echo "######[Auto-Appended] Theme switch script
 
 bindsym
@@ -137,7 +142,35 @@ function prepareFolders {
 	done
 }
 
-### lol
+function customizeConfig {
+	zenity_text='zenity --list --title="Theme Switcher" --text="Choose what to config" --width=300 --height=300 --column="Section"'
+	local zenity_array=""
+	zenity_array+="\\ "
+
+	local folderNumber=($(ls -d $path/customization/sway/*))
+	local folderNumber=(${folderNumber[*]/%\/})
+	local folderNumber=(${folderNumber[*]/*\/})
+
+	for (( i=0; i<${#folderNumber[@]}; i++ ))
+	do
+		zenity_array+="${folderNumber[i]} "
+		if ! [ "$(( $i + 1 ))" -eq ${#folderNumber[@]} ]; then
+		zenity_array+="\\ "
+			fi
+	done
+	zenity_text+=" $zenity_array"
+	folder="customize"
+	changeFile=($(eval $zenity_text))
+	echo $changeFile
+	if [[ "$changeFile" = "" ]]; then
+		runZenity 
+		exit
+	else
+		exec $VISUAL $path/customization/sway/$changeFile
+	fi
+	
+}
+
 function wordCheck () {
 
 	#working with $folder
@@ -145,18 +178,15 @@ function wordCheck () {
 	checkNextPrev #function
 	checkNum #function
 	
-	if [ "$folder" == "fuck" ]
-	then
+	if [ "$folder" == "fuck" ]; then
 		echo "Hey, it's you messed that up, don't blame me for that. Or send an issue to github.com/indicozy"
 		notify-send "Hey, it's you messed that up, don't blame me for that." "Or send an issue to github.com/indicozy"
 
-	elif [ "$folder" == "save" ]
-	then
+	elif [ "$folder" == "save" ]; then
 		backupConfig #function
 		echo "Files saved to $save_path/backup"
 		notify-send "Config saved!" "Folder is located at: $save_path/backup"
-	elif [ "$folder" == "fuckgoback" -o "$folder" == "goback" ]
-	then
+	elif [ "$folder" == "fuckgoback" -o "$folder" == "goback" ]; then
 		if goback; then
 			swaymsg reload
 			echo "Back to the previous theme from history."
@@ -165,12 +195,16 @@ function wordCheck () {
 			echo "[Error] No older folder found"
 			notify-send "Error at Theme Changer" "No older folder found"
 		fi
-	elif [ -d "$path/configs/$folder" ]
-		then
+	elif [ "$folder" == "customize" ]; then
+		customizeConfig	
+		if zenity --question --title="Reload?" --text="Do you want to reload config?" --width=300 --height=300; then
+			$path/install.sh $now
+		fi
+	elif [ -d "$path/configs/$folder" ]; then
 			prepareFolders old
 			moveBackupConfig $save_path/old move
 			copyToConfig #function
-			autoAppend #function
+			autoAppend
 			killAllProcesses #function	
 		#To change this script to work with outher WMs, just change this part of code to reload your WM
 			swaymsg reload
@@ -185,12 +219,13 @@ function wordCheck () {
 
 function runZenity () {
 	zenity_text='zenity --list --title="Theme Switcher" --text="Choose your theme" --width=300 --height=300 --column="Id" --column="Theme"'
-
+	local zenity_array=""
 	zenity_array+="\\ "
 	zenity_array+="prev 'Go to the previous theme' \\ "
 	zenity_array+="next 'Go to the next theme' \\ "
 	zenity_array+="save 'Save your config' \\ "
 	zenity_array+="goback 'Back to previous config' \\ "
+	zenity_array+="customize 'Edit your config' \\ "
 
 	local folderNumber=($(ls -d $path/configs/*/))
 	local folderNumber=(${folderNumber[*]/%\/})
@@ -207,7 +242,7 @@ function runZenity () {
 	done
 	zenity_text+=" $zenity_array"
 	folder=($(eval $zenity_text))
-	if [[ $? -eq 0 ]]; then
+	if [[ "$folder" != "" ]]; then
 		wordCheck
 	fi
 }

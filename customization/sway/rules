@@ -1,0 +1,13 @@
+#<[# SPECIAL WINDOW RULES ##################################################
+#--- Floating Rules --------------------------------------------------------
+for_window [app_id="mpv"] floating enable
+for_window [app_id="zenity"] floating enable
+for_window [app_id="xfce4-appfinder"] floating enable
+for_window [app_id="zoom"] floating enable
+for_window [app_id="keepassxc"] floating enable
+for_window [app_id="imv"] floating enable
+for_window [app_id="cpupower-gui"] floating enable
+
+#--- Workspace Assignment --------------------------------------------------
+
+#]>#########################################################################

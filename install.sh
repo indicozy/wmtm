@@ -55,7 +55,7 @@ function backupConfig {
 function installSwitcher {
 	mkdir $path 2> /dev/null
 	cd $git_path
-	cp -r configs changetheme.sh install.sh LICENSE README.md $path
+	cp -r configs system customization changetheme.sh install.sh LICENSE README.md $path
 }
 
 function installApplications {

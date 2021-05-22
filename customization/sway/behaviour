@@ -1,0 +1,6 @@
+#<[# BEHAVIOUR #############################################################
+focus_follows_mouse     	yes
+focus_wrapping          	false
+popup_during_fullscreen 	leave_fullscreen
+floating_modifier       	Mod4
+#]>#########################################################################
