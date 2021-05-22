@@ -1,0 +1,8 @@
+alacritty
+mako
+rofi
+sway
+swaylock
+waybar
+wlogout
+zathura 

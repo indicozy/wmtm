@@ -1,12 +1,15 @@
 #! /bin/bash
+# Script for changing themes of sway-dotfiles-script
+# Developed and maintained by indicozy
+# ver: 1.0
 
 path=~/.sway-dotfiles-script
 save_path=~/Documents/sway_configs_saved
 
 function checksave () {
 	now=0
-	if [[ $(cat $path/themeNumber.txt) =~ ^[0-9]+$ ]] && [[ -s $path/themeNumber.txt ]]; then
-		 now=$(cat $path/themeNumber.txt)
+	if [[ $(cat $path/system/themeNumber.txt) =~ ^[0-9]+$ ]] && [[ -s $path/themeNumber.txt ]]; then
+		 now=$(cat $path/system/themeNumber.txt)
 	fi
 }
 
@@ -41,7 +44,7 @@ function copyToConfig () {
 
 function killAllProcesses () {
 	#kill all panel processes
-	killall hybridbar nwgbar nwg-menu nwgdmenu nwg-panel nwg-dock nwg-panel-config nwggrid waybar 2> /dev/null
+	killall $(cat $path/system/killprocesses.txt) 2> /dev/null
 	cd $path
 }
 
@@ -110,7 +113,7 @@ function backupConfig () {
 }
 
 function moveBackupConfig {
-	local backupfolders=($(cat ~/.sway-dotfiles-script/configFolders.txt))
+	local backupfolders=($(cat $path/system/configFolders.txt))
 	mkdir -p $1
 	for i in "${backupfolders[@]}"; do
 		mkdir -p $1/$i 2> /dev/null

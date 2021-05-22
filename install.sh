@@ -1,5 +1,5 @@
 #! /bin/bash
-# Installer script for sway-advanced-config
+# Installer script for sway-dotfiles-script
 # Developed and maintained by indicozy
 # ver: 1.0
 
@@ -107,20 +107,14 @@ then
 		exit
 	fi
 
-	path=~/.sway-advanced-config
+	path=~/.sway-dotfiles-script
 
 	checkPackageManager
-
 	prepareSavedConfigs
-
 	backupConfig
-
 	installSwitcher
-
 	autoAppend
-
 	swaymsg reload
-
 	notify-send "You are ready to go!" "Just click Ctrl+Super+Space"
 
 	dialog --title "Installation Complete"\
