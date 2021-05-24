@@ -54,13 +54,25 @@ Link for icons/cursors/themes (Required): https://drive.google.com/drive/folders
 * thunar -> file manager
 * Chromium -> browser
 
-Preferred OS would be **Arch Linux**, since it's much easier to install packages and get same results as mine
+### Future Plans
+- [X] Add customizability of Sway config (Autostart, Behaviour, Rules)
+- [ ] Add Gtk-2.0, Gtk-3.0, Gtk-4.0 (if possible), and qt5ct folders
+- [ ] Add customizability of other Config folders (Rofi, Mako, Waybar)
+- [ ] Create a Wiki and Q&A with guides on rircing sway
+
+### Under consideration
+- [ ] Creating a website/server similar to [gnome-look.org](https://www.gnome-look.org/) which will download themes and icons from their site + custom .config builds, and automatically install and manage files and required packages on userspace. The only obstacle is my skills, I'm only a beginner developer yet
+- [ ] Creating a frontend for easier configuration, like in DEs where u can just tick which apps to autostart, which things to add and etc. However, it's much easier to configure with plain text, so there's no reason creating this feature
+- [ ] 
+
+Preferred OS would be **Arch Linux**, since, at least for now, my code is made to install packages *only* to Arch Linux
 
 Hope you found this repo helpful/inspirational!
-If you want to tip for a coffee, I will add bitcoin/monero/dogecoin later.
 
-P.S. FYI I'm total noob in git and bash. I made the code to be as safe as possible (so there's no rm -rf ~), yet if you have some programming skills, please check my bash script
+Please tip me for a coffee! It would motivate a beginner programmer to study and develop the project further!
 
 `Bitcoin: zpub6mytQoyr5y5LMfw8evkTHaUtnuac4vgNusx6bdKrrR8r59GAiPWa3zV7WGJgZAfB2Kn25MRmZ4tpLzY7WnHnSvPL4yLxs7PYjHMXjJKHipo`
 
 `Monero: 4Ayjpc8iQtAZrZLT5PhskyFdbNgYow1h9gW3g17J7vjN3KgMCPoGCyVKD4ziTKM9S2aDdEDeYi59E6SNKqbCWjLbQGQrUH9`
+
+P.S. I'm a beginner developer, if you have some bash scripting skills, please check my script, I made the code as human-readable and maintainable as much as possible
