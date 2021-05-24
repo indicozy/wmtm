@@ -42,22 +42,6 @@ set
 	$gaps_inner  	10
 	$gaps_outer  	30
 }
-
-#--- Workspace Names -------------------------------------------------------
-set
-{
-	$ws1 1
-	$ws2 2
-	$ws3 3
-	$ws4 4
-	$ws5 5
-	$ws6 6
-	$ws7 7
-	$ws8 8
-	$ws9 9
-	$ws10 10
-}
-
 #]>#########################################################################
 
 #<[# OUTPUTS ###############################################################
@@ -85,10 +69,7 @@ client.urgent           $nofocus $nofocus $titletxt $nofocus  $nofocus
 seat seat0 xcursor_theme $cursor_theme 12
 
 #--- Bars ------------------------------------------------------------------
-bar
-{
-	swaybar_command	waybar
-}
+bar swaybar_command	waybar
 
 #--- Gaps ------------------------------------------------------------------
 gaps inner $gaps_inner

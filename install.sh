@@ -92,6 +92,11 @@ function checkPackageManager {
 	fi
 }
 
+function killAllProcesses () {
+	#kill all panel processes
+	killall $(cat $path/system/killprocesses.txt) 2> /dev/null
+	cd $path
+}
 
 
 ####### MAIN
@@ -114,6 +119,7 @@ then
 	backupConfig
 	installSwitcher
 	autoAppend
+	killAllProcesses
 	swaymsg reload
 	notify-send "You are ready to go!" "Just click Ctrl+Super+Space"
 

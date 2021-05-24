@@ -45,6 +45,7 @@ function copyToConfig () {
 function killAllProcesses () {
 	#kill all panel processes
 	killall $(cat $path/system/killprocesses.txt) 2> /dev/null
+	echo $(cat $path/system/killprocesses.txt)
 	cd $path
 }
 
