@@ -4,9 +4,6 @@ A Bash script for Sway Window Manager with preconfigured themes:
 * MacOS 1.0/15.0;
 * Ubuntu 20.04;
 * Additional two Sway themes.
-## Themes and Code are ready!
-There are configs for some themes, be free to use them!
-The code is WM-free, meaning **you can use it with other WMs just by adding your configs to "config" folder and editing the reload command.**
 
 
 
@@ -63,16 +60,17 @@ Link for icons/cursors/themes (Required): https://drive.google.com/drive/folders
 ### Under consideration
 - [ ] Creating a website/server similar to [gnome-look.org](https://www.gnome-look.org/) which will download themes and icons from their site + custom .config builds, and automatically install and manage files and required packages on userspace. The only obstacle is my skills, I'm only a beginner developer yet
 - [ ] Creating a frontend for easier configuration, like in DEs where u can just tick which apps to autostart, which things to add and etc. However, it's much easier to configure with plain text, so there's no reason creating this feature
-- [ ] 
 
 Preferred OS would be **Arch Linux**, since, at least for now, my code is made to install packages *only* to Arch Linux
 
-Hope you found this repo helpful/inspirational!
-
-Please tip me for a coffee! It would motivate a beginner programmer to study and develop the project further!
+**Please tip me for a coffee!** It would motivate a beginner programmer to study and develop the project further!
 
 `Bitcoin: zpub6mytQoyr5y5LMfw8evkTHaUtnuac4vgNusx6bdKrrR8r59GAiPWa3zV7WGJgZAfB2Kn25MRmZ4tpLzY7WnHnSvPL4yLxs7PYjHMXjJKHipo`
 
 `Monero: 4Ayjpc8iQtAZrZLT5PhskyFdbNgYow1h9gW3g17J7vjN3KgMCPoGCyVKD4ziTKM9S2aDdEDeYi59E6SNKqbCWjLbQGQrUH9`
 
+Hope you found this repo helpful/inspirational!
+
 P.S. I'm a beginner developer, if you have some bash scripting skills, please check my script, I made the code as human-readable and maintainable as much as possible
+
+P.S.S The code is WM-agnostic, meaning **you can use fork this code to make your own theme changer for your own WM, more details will be in the Wiki (under development).**
