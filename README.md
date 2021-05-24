@@ -5,12 +5,11 @@ A Bash script for Sway Window Manager with preconfigured themes:
 * Ubuntu 20.04;
 * Additional two Sway themes.
 
-
-
 The script has several features:
 * Basic GUI
 * Easy and intuitive usage
-* Notifications
+* Automatic install
+* Customization
 * Auto-backup your previous config up to 8 histories at "~/Documents/sway_configs_saved"
 * Hotkeys are automatically appended to the Sway config, so there is no need to manually add it to your config!
 
