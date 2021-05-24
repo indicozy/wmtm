@@ -29,18 +29,19 @@ The script has several features:
 (I couldn't make it automatic, because Sway is launching it from Desktop)
 
 # Installation
-## Requirements
+## Requirements 
+**(Script can automatically install packages for Arch Linux)**
 * [rofi-lbonn-wayland-git](https://github.com/lbonn/rofi) -> Menu
 * Sway -> Window Manager
-* Swaylock-effects
+* Swaylock-effects -> Lock Screen
 * waybar -> bar
 * alacritty -> terminal
 * wlogout -> logout screen
 * polkit -> authentification for stacer, gparted, etc
-* polkit-gnome -> required addition for polkit
+* polkit-gnome -> required addition for polkit, preferred version is polkit-gnome-git from AUR
 * mako -> Notification daemon
 * zenity -> GUI application for my script
-* autotiling from https://github.com/nwg-piotr/autotiling
+* autotiling from (nwg-piotr)[https://github.com/nwg-piotr/autotiling], can be installed by AUR
 * nerd-fonts-fira-code -> icons for panels
 
 Link for icons/cursors/themes (Required): https://drive.google.com/drive/folders/1QrF2_8l0AQaOtExoguOcq1iMjT7dkP9Q?usp=sharing
@@ -55,7 +56,7 @@ Link for icons/cursors/themes (Required): https://drive.google.com/drive/folders
 - [X] Add customizability of Sway config (Autostart, Behaviour, Rules)
 - [ ] Add Gtk-2.0, Gtk-3.0, Gtk-4.0 (if possible), and qt5ct folders
 - [ ] Add customizability of other Config folders (Rofi, Mako, Waybar)
-- [ ] Create a Wiki and Q&A with guides on rircing sway
+- [ ] Create a Wiki and Q&A with guides on ricing sway
 
 ### Under consideration
 - [ ] Creating a website/server similar to [gnome-look.org](https://www.gnome-look.org/) which will download themes and icons from their site + custom .config builds, and automatically install and manage files and required packages on userspace. The only obstacle is my skills, I'm only a beginner developer yet
