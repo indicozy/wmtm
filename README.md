@@ -26,7 +26,7 @@ The script has several features:
 * ./changetheme MacOSBigSur - change to an exact theme
 * ./changetheme (number) - change theme to an N'th theme
 * ./changetheme goback (or fuckgoback) - if you was editing your theme and suddenly used this script which overwrites your config, this command gets your overwritten files back, up to 7 saves!
-* ./changetheme fuck - well, it's just for fun, if you somehow messed up your config and want to swear at my code, feel free to do that, but I will defend myself ━╤デ╦︻(▀̿̿Ĺ̯̿̿▀̿ ̿)
+* ./changetheme fuck - well, it's just for fun, if you somehow messed up your config and want to swear at my code, feel free to do that :)
 
 ### Before using a script, make sure that the "path" value is pointing to the location of the script
 (I couldn't make it automatic, because Sway is launching it from Desktop)
@@ -59,4 +59,8 @@ Preferred OS would be **Arch Linux**, since it's much easier to install packages
 Hope you found this repo helpful/inspirational!
 If you want to tip for a coffee, I will add bitcoin/monero/dogecoin later.
 
-P.S. FYI I'm total noob in git and bash. I made the code to be as safe as possible (so there's no rm -rf ~), yet if you have some programming skills, please check my bash script ( ͡^ ͜ʖ ͡^)
+P.S. FYI I'm total noob in git and bash. I made the code to be as safe as possible (so there's no rm -rf ~), yet if you have some programming skills, please check my bash script
+
+`Bitcoin: zpub6mytQoyr5y5LMfw8evkTHaUtnuac4vgNusx6bdKrrR8r59GAiPWa3zV7WGJgZAfB2Kn25MRmZ4tpLzY7WnHnSvPL4yLxs7PYjHMXjJKHipo`
+
+`Monero: 4Ayjpc8iQtAZrZLT5PhskyFdbNgYow1h9gW3g17J7vjN3KgMCPoGCyVKD4ziTKM9S2aDdEDeYi59E6SNKqbCWjLbQGQrUH9`
