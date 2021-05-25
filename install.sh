@@ -4,15 +4,15 @@
 # ver: 1.0
 
 function prepareSavedConfigs {
-	mkdir -p ~/Documents/sway_configs_saved
-	local saved_folders=($(ls -d ~/Documents/sway_configs_saved/YourDefault*))
+	mkdir -p $save_path
+	local saved_folders=($(ls -d $save_path/YourDefault*))
 		for (( i=${#saved_folders[@]}; i>0; i--))
 		do
-			mv "${saved_folders[$(( i - 1 ))]}" ~/Documents/sway_configs_saved/YourDefault$(( i + 1))
+			mv "${saved_folders[$(( i - 1 ))]}" $save_path/YourDefault$(( i + 1)) 2> /dev/null
 		done
 
 	#update new arrangement of saved folders
-	local saved_folders=($(ls -d ~/Documents/sway_configs_saved/YourDefault*))
+	local saved_folders=($(ls -d $save_path/YourDefault*))
 
 		for (( i=${#saved_folders[@]}; i>7; i--)) #removes old folers up to 7+1 (1 is newly created) folder
 		do
@@ -47,9 +47,13 @@ function backupConfig {
 	local backupfolders=(alacritty mako rofi sway swaylock waybar wlogout zathura) 
 	for i in "${backupfolders[@]}"
 	do
-		mkdir -p ~/Documents/sway_configs_saved/YourDefault/$i > /dev/null
-		cp -r ~/.config/$i/* ~/Documents/sway_configs_saved/YourDefault/$i/
+		mkdir -p $save_path/YourDefault/$i > /dev/null
+		cp -r ~/.config/$i/* $save_path/YourDefault/$i/
 	done
+}
+function backupSwitcher {
+	rm -r $save_path/SwitcherBackup
+	mv $path $save_path/SwitcherBackup
 }
 
 function installSwitcher {
@@ -106,17 +110,20 @@ if dialog --title "Install Theme Changer" \
 	--yesno "Would you like to install the Theme Changer?\nPlease check if you installed all dependencies first" 10 50
 then
 
+	path=~/.sway-dotfiles-script
 	git_path=($(pwd))
+	save_path=~/Documents/sway_configs_saved
+
 	if ! [[ "$git_path" == *"sway-dotfiles-script" ]]; then
 		echo "ERROR: Most likely you are installing from the wrong folder, please check my github: https://github.com/indicozy/sway-advanced-config"
 		exit
 	fi
 
-	path=~/.sway-dotfiles-script
 
 	checkPackageManager
 	prepareSavedConfigs
 	backupConfig
+	backupSwitcher
 	installSwitcher
 	autoAppend
 	killAllProcesses
@@ -124,7 +131,7 @@ then
 	notify-send "You are ready to go!" "Just click Ctrl+Super+Space"
 
 	dialog --title "Installation Complete"\
-		--msgbox "Your previous theme before installation was saved in ~/Documents/sway_configs_saved/YourDefault\n\n\n     Just click Ctrl+Super+Space to start!" 10 50
+		--msgbox "Your previous theme before installation was saved in $save_path/YourDefault\n\n\n     Just click Ctrl+Super+Space to start!" 10 50
 
 
 else

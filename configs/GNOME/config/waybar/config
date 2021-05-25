@@ -160,6 +160,11 @@
 		"on-click": "wlogout",
 		"tooltip": false
 	},
+	"sway/language": {
+               "format": "{}",
+			   "on-click": "swaymsg 'input * xkb_switch_layout next'",
+               "max-length": 50
+           },
 
 },
 
@@ -188,7 +193,7 @@
 		"on-click": "activate",
 		"on-click-right": "minimize",
 		"on-click-middle": "close"
-	} 
+	},
 
 }
 ]

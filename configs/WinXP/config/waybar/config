@@ -171,5 +171,10 @@
 	"custom/winxp_separator":{
 		"format": " ",
 		"tooltip": false
-	}
+	},
+	"sway/language": {
+               "format": "{}",
+			   "on-click": "swaymsg 'input * xkb_switch_layout next'",
+               "max-length": 50
+           },
 }
