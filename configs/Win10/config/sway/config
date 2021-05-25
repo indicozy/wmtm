@@ -56,11 +56,6 @@ exec_always
 	gsettings set org.gnome.desktop.interface icon-theme	$icon_theme
 	gsettings set org.gnome.desktop.interface cursor-theme	$cursor_theme
 }
-#<[# BEHAVIOUR #############################################################
-focus_follows_mouse     	yes
-focus_wrapping          	false
-popup_during_fullscreen 	leave_fullscreen
-floating_modifier       	$layer1
 
 #]>#########################################################################
 

@@ -20,7 +20,7 @@ function checkNextPrev (){
 	esac
 }
 
-function checkNum (){ #later
+function checkNum (){
 	local themes=($(ls -d $path/configs/*/))
 	local themes=(${themes[*]/%\/})
 	local themes=(${themes[*]/*\/})
@@ -32,7 +32,7 @@ function checkNum (){ #later
 	#Updates the themeNumber.txt
 	for (( i = 0; i < ${#themes[@]}; i++ )); do
 		if [[ "$folder" = "${themes[$i]}" ]]; then
-			echo "$(( $i + 1 ))" > "$path/themeNumber.txt"
+			echo "$(( $i + 1 ))" > "$path/system/themeNumber.txt"
 		fi
 	done
 }
