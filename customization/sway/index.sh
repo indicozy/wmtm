@@ -1,3 +1,8 @@
+#! /bin/bash
+# Script for changing themes of sway-dotfiles-script
+# Developed and maintained by indicozy
+# ver: 1.0
+
 path=$1			
 theme_folder=$2
 #copy files from $folder/config to .config
