@@ -151,10 +151,71 @@ function changeTheme {
 		fi
 }
 
-function customizeConfig {
-	local zenity_text="zenity --list --title='Theme Switcher' --text='Choose your theme' --width=300 --height=300 --column='Id' --column='Theme' \\"
+function findEditor {
+if [[ -v VISUAL ]]; then
+	echo $VISUAL	
+elif where mousepad 1> /dev/null 2> /dev/null; then
+	echo mousepad
+elif where sublime-text 1> /dev/null 2> /dev/null; then
+	echo sublime-text
+elif where gedit 1> /dev/null 2> /dev/null; then
+	echo gedit
+elif where kate 1> /dev/null 2> /dev/null; then
+	echo kate
+else 
+	echo error
+fi
+}
 
+function customizeSpecificConfig {
+	local zenity_text="zenity --list --title='Theme Switcher' --text='Choose config section' --width=300 --height=300 --column='Section' "
+	local textNumber=($(ls -d $path/customization/$1/*.txt))
+	local textNumber=(${textNumber[*]/%\.txt})
+	local textNumber=(${textNumber[*]/*\/})
+	echo ${textNumber[@]}
 	
+	for i in ${textNumber[@]}; do
+		zenity_text+="$i "
+	done
+
+	changeFile=($(eval $zenity_text))
+	if [[ "$changeFile" = "" ]]; then
+		eval $path/changetheme.sh customize
+		# exit
+	else
+		visual_editor=$(findEditor)
+		if [[ $visual_editor = error ]]; then
+			notify-send "No visual editor found" "You should find your config files in $path/customization"
+			echo "No visual editor found, you should find your config files in $path/customization"
+			exit
+		fi
+		eval $visual_editor $path/customization/$1/$changeFile\.txt
+		if zenity --question --title="Reload?" --text="Do you want to reload config?" --width=300 --height=300; then
+			$path/install.sh $now
+		fi
+	fi
+}
+
+function customizeConfig {
+	local zenity_text="zenity --list --title='Theme Switcher' --text='Choose config section' --width=300 --height=300 --column='Section' "
+		
+	local textNumber=($(ls -d $path/customization/*/))
+	local textNumber=(${textNumber[*]/%\/})
+	local textNumber=(${textNumber[*]/*\/})
+	
+	for i in ${textNumber[@]}; do
+		zenity_text+="$i "
+	done
+
+	changeFile=($(eval $zenity_text))
+
+	if [[ "$changeFile" = "" ]]; then
+		eval $path/changetheme.sh 
+		# exit
+	else
+		customizeSpecificConfig $changeFile
+	fi
+
 }
 
 function  wellFuckMeThen {
@@ -213,7 +274,7 @@ customize 'Edit your config' \\ "
 
 
 ##### MAIN
-if [[ "$path" != *sway-dotfiles-script ]]; then
+if [[ "$path" != *sway-dotfiles-script ]]; then # basic foolproof design
 	echo "Error: Wrong path specified! Please check that the script wasa launched from the proper folder."
 	notify-send "Error: Wrong path specified!" "Please check that the script was launched from the proper folder."
 	exit
