@@ -63,21 +63,38 @@ function installSwitcher {
 }
 
 function installApplications {
+	clear
+	install_answer=1
 
+if [ $dialog_found -eq 1 ]; then
 	if dialog --title "Install Packages" \
-		--yesno "Do you want to install necessary packages first?" 7 50
-	then
-	dialog --title "Note"\
-		--msgbox "This script will install only required packages, check out for additional packages on README.md" 10 50
-		clear
-		sudo pacman -S --needed alacritty mako sway wlogout  zenity waybar
-		yay -S --needed swaylock-effects rofi-lbonn-wayland-git wlogout autotiling nerd-fonts-fira-code
-		echo "Packages are installed, now insalling the script..."
-	else
-		clear
-		echo "You chose not to install packages."
+		--yesno "Would you like to install necessary packages first?" 7 50
+		then
+			dialog --title "Note"\
+				--msgbox "This script will install only required packages, check out for additional packages on README.md" 10 50
+			install_answer=0
 	fi
-	sleep 2
+
+else
+	read -p "Would you like to install necessary packages first? y/n: " install_answer
+	if [ $install_answer = 'y' -o $install_answer = 'Y' ]; then
+		echo "This script will install only required packages, check out for additional packages on README.md."
+		read -p " Type anything to continue..." -n 1 install_answer
+		install_answer=0
+	else 
+		install_answer=1
+	fi
+fi
+if [ $install_answer -eq 0 ]; then
+			clear
+			sudo pacman -S --needed alacritty mako sway wlogout zenity waybar dialog
+			yay -S --needed swaylock-effects rofi-lbonn-wayland-git wlogout autotiling nerd-fonts-fira-code
+			echo "Packages are installed, now insalling the script..."
+		else
+			clear
+			echo "You chose not to install packages."
+	fi
+sleep 1
 }
 
 function distroIsArch {
@@ -93,6 +110,7 @@ function checkPackageManager {
 		installApplications
 	else
 		echo "Sorry, but your distro is not Arch linux (or script could not find your distro)\nPlease contact me at github.com/indicozy to add your distro"
+		sleep 5
 	fi
 }
 
@@ -104,22 +122,33 @@ function killAllProcesses () {
 
 
 ####### MAIN
+path=~/.sway-dotfiles-script
+git_path=($(pwd))
+save_path=~/Documents/sway_configs_saved
+answer=1
+dialog_found=0
+
+if ! [[ "$git_path" == *"sway-dotfiles-script" ]]; then
+	echo "ERROR: Most likely you are installing from the wrong folder, please check my github: https://github.com/indicozy/sway-advanced-config"
+	exit
+fi
 
 
-if dialog --title "Install Theme Changer" \
-	--yesno "Would you like to install the Theme Changer?\nPlease check if you installed all dependencies first" 10 50
-then
-
-	path=~/.sway-dotfiles-script
-	git_path=($(pwd))
-	save_path=~/Documents/sway_configs_saved
-
-	if ! [[ "$git_path" == *"sway-dotfiles-script" ]]; then
-		echo "ERROR: Most likely you are installing from the wrong folder, please check my github: https://github.com/indicozy/sway-advanced-config"
-		exit
+if [ -f /usr/bin/dialog ] || [ -f /bin/dialog ]; then
+	dialog --title "Install Theme Changer" \
+		--yesno "Would you like to install the Theme Changer? y/n: " 10 50
+	answer=$?
+	dialog_found=1
+else
+	echo "Welcome to Sway Theme Changer!"
+	read -p "Would you like to install the Theme Changer? y/n: " answer
+	if [ "$answer" == "y" -o "$answer" == "Y" ]; then
+		answer=0
 	fi
+fi
 
-
+#0 is True, i.e. no errors
+if [ $answer -eq 0 ]; then
 	checkPackageManager
 	prepareSavedConfigs
 	backupConfig
@@ -130,12 +159,16 @@ then
 	swaymsg reload
 	notify-send "You are ready to go!" "Just click Ctrl+Super+Space"
 
-	dialog --title "Installation Complete"\
-		--msgbox "Your previous theme before installation was saved in $save_path/YourDefault\n\n\n     Just click Ctrl+Super+Space to start!" 10 50
+	clear
+	if [ $dialog_found -eq 1 ]; then
+		dialog --title "Installation Complete"\
+			--msgbox "Your previous theme before installation was saved in $save_path/YourDefault\n\n\n     Just click Ctrl+Super+Space to start!" 10 50
 
+	else
+		echo -e "Installation Complete!\n\nYour previous theme before installation was saved in $save_path/YourDefault\n\nJust click Ctrl+Super+Space to start!\n"
+	fi
 
 else
 	clear
 	echo "You chose not to install. No files has been changed."
 fi
-

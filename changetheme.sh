@@ -188,7 +188,7 @@ function customizeSpecificConfig {
 			exit
 		fi
 		eval $visual_editor $path/customization/$1/$changeFile\.txt
-		if zenity --question --title="Reload?" --text="Do you want to reload config?" --width=300 --height=300; then
+		if zenity --question --title="Reload?" --text="Would you like to recompile your config?" --width=300 --height=300; then
 			folder=$now
 			wordCheck
 
