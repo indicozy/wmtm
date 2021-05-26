@@ -37,7 +37,7 @@ function checkNum (){
 	done
 }
 
-function copyToConfig () { #!Note think about adding rules and customization to copying to config
+function copyToConfig () { 
 	#parse which folder are in the theme
 	local theme_folders=($(ls -d $path/configs/$folder/config/*/))
 	local theme_folders=(${theme_folders[*]/%\/})
@@ -152,19 +152,18 @@ function changeTheme {
 }
 
 function findEditor {
-if [[ -v VISUAL ]]; then
-	echo $VISUAL	
-elif where mousepad 1> /dev/null 2> /dev/null; then
-	echo mousepad
-elif where sublime-text 1> /dev/null 2> /dev/null; then
-	echo sublime-text
-elif where gedit 1> /dev/null 2> /dev/null; then
-	echo gedit
-elif where kate 1> /dev/null 2> /dev/null; then
-	echo kate
-else 
-	echo error
-fi
+	### Somehow by using a hotkey combination Mod4+Ctrl+Space doesn't work with 'which' and '-v $VISUAL' commands, so I made an alternative script
+	### Sorry not sorry, cry your eyes out of my coding solutions
+ local finder=(mousepad gedit kwrite sublime-text gvim geany leafpad bluefish atom)
+ for i in ${finder[@]}; do
+	if [ -f /usr/bin/$i ]; then
+		echo $i
+		return 0
+	fi
+ done
+
+ echo error
+ return 1
 }
 
 function customizeSpecificConfig {
@@ -172,7 +171,6 @@ function customizeSpecificConfig {
 	local textNumber=($(ls -d $path/customization/$1/*.txt))
 	local textNumber=(${textNumber[*]/%\.txt})
 	local textNumber=(${textNumber[*]/*\/})
-	echo ${textNumber[@]}
 	
 	for i in ${textNumber[@]}; do
 		zenity_text+="$i "
@@ -185,13 +183,15 @@ function customizeSpecificConfig {
 	else
 		visual_editor=$(findEditor)
 		if [[ $visual_editor = error ]]; then
-			notify-send "No visual editor found" "You should find your config files in $path/customization"
-			echo "No visual editor found, you should find your config files in $path/customization"
+			notify-send "No visual editor found" "You can find your config files in $path/customization"
+			echo "No visual editor found, you can find your config files in $path/customization"
 			exit
 		fi
 		eval $visual_editor $path/customization/$1/$changeFile\.txt
 		if zenity --question --title="Reload?" --text="Do you want to reload config?" --width=300 --height=300; then
-			$path/install.sh $now
+			folder=$now
+			wordCheck
+
 		fi
 	fi
 }
