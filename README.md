@@ -6,30 +6,28 @@ A Bash script for Sway Window Manager with preconfigured themes:
 * Additional two Sway themes.
 
 The script has several features:
-* Basic GUI
+* Simple GUI
 * Easy and intuitive usage
 * Automatic install
 * Customization
 * Auto-backup your previous config up to 8 histories at "~/Documents/sway_configs_saved"
-* Hotkeys are automatically appended to the Sway config, so there is no need to manually add it to your config!
+* Hotkeys are automatically appended to the Sway config
 
 # Usage
 * Ctrl+Super+Space - Open GUI of the app
 * Ctrl+Super+s - Save your config to the folder ~/Documents/sway_configs_saved
 * Ctrl+Super+(1-9) - change theme tho N'th theme
 * Ctrl+Super+(left/right) - change theme to the next/previous one
-* ./changetheme next - next theme
-* ./changetheme MacOSBigSur - change to an exact theme
-* ./changetheme (number) - change theme to an N'th theme
-* ./changetheme goback (or fuckgoback) - if you was editing your theme and suddenly used this script which overwrites your config, this command gets your overwritten files back, up to 7 saves!
+* ./changetheme.sh next - next theme
+* ./changetheme.sh MacOSBigSur - change to an exact theme
+* ./changetheme.sh customize - start customization
+* ./changetheme.sh (number) - change theme to an N'th theme
+* ./changetheme.sh goback (or fuckgoback) - if you was editing your theme and suddenly used this script which overwrites your config, this command gets your overwritten files back, up to 7 saves!
 * ./changetheme fuck - well, it's just for fun, if you somehow messed up your config and want to swear at my code, feel free to do that :)
-
-### Before using a script, make sure that the "path" value is pointing to the location of the script
-(I couldn't make it automatic, because Sway is launching it from Desktop)
 
 # Installation
 ## Requirements 
-**(Script can automatically install packages for Arch Linux)**
+**(Script can automatically install packages for Arch Linux, but for other distros feel free to open issues or pull a request)**
 * [rofi-lbonn-wayland-git](https://github.com/lbonn/rofi) -> Menu
 * Sway -> Window Manager
 * grimshot -> Screenshot application
@@ -56,10 +54,10 @@ Link for icons/cursors/themes (Required): https://drive.google.com/drive/folders
 ### Future Plans
 - [X] Add customizability of Sway config (Autostart, Behaviour, Rules)
 - [ ] Add Gtk-2.0, Gtk-3.0, Gtk-4.0 (if possible), and qt5ct folders
-- [ ] Add customizability of other Config folders (Rofi, Mako, Waybar)
+- [X] Add customizability of other Config folders (Rofi, Mako, Waybar)
 - [ ] Create a Wiki and Q&A with guides on ricing sway
 - [ ] Create an AUR package
-- [ ] Basic logging for maintenance
+- [ ] Basic logging for maintenance (Under decision, idk how even it could be helpful)
 
 ### Under consideration
 - [ ] Creating a website/server similar to [gnome-look.org](https://www.gnome-look.org/) which will download themes and icons from their site + custom .config builds, and automatically add, install or delete files, themes, icons and required packages on userspace. The only obstacle is my skills, I'm only a beginner developer yet
