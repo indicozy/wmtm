@@ -88,7 +88,7 @@ fi
 if [ $install_answer -eq 0 ]; then
 			clear
 			sudo pacman -S --needed alacritty mako sway wlogout zenity waybar dialog
-			yay -S --needed swaylock-effects rofi-lbonn-wayland-git wlogout autotiling nerd-fonts-fira-code
+			yay -S --needed swaylock-effects rofi-lbonn-wayland-git wlogout autotiling nerd-fonts-fira-code grimshot
 			echo "Packages are installed, now insalling the script..."
 		else
 			clear

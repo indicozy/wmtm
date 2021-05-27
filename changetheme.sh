@@ -168,7 +168,7 @@ function findEditor {
 
 function customizeSpecificConfig {
 	local zenity_text="zenity --list --title='Theme Switcher' --text='Choose config section' --width=300 --height=300 --column='Section' "
-	local textNumber=($(ls -d $path/customization/$1/*.txt))
+	local textNumber=($(ls -d $path/customization/$1/*.txt 2> /dev/null))
 	local textNumber=(${textNumber[*]/%\.txt})
 	local textNumber=(${textNumber[*]/*\/})
 	

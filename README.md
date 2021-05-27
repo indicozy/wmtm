@@ -32,6 +32,7 @@ The script has several features:
 **(Script can automatically install packages for Arch Linux)**
 * [rofi-lbonn-wayland-git](https://github.com/lbonn/rofi) -> Menu
 * Sway -> Window Manager
+* grimshot -> Screenshot application
 * Swaylock-effects -> Lock Screen
 * waybar -> bar
 * alacritty -> terminal
@@ -48,6 +49,7 @@ Link for icons/cursors/themes (Required): https://drive.google.com/drive/folders
 * [Greetd](https://git.sr.ht/~kennylevinsen/greetd) -> Login Manager
 * [greetd-gtkgreet](https://git.sr.ht/~kennylevinsen/gtkgreet) -> GTK-based addition for Greetd 
 * zathura -> PDF (and others) reader
+### My personal Applications, you can change to your own at config
 * thunar -> file manager
 * Chromium -> browser
 

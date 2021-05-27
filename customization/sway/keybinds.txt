@@ -16,9 +16,12 @@ bindsym --to-code
 	$layer2+e				exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
 
-	Print					exec grim -c -s 2 ~/Pictures/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
-	Ctrl+Print				exec grim -g "$(slurp)" -s 2 ~/Pictures/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
-	Ctrl+Alt+Print			exec grim -g "$(slurp)" - | swappy -f -
+	Print					exec grimshot --notify save screen ~/Pictures/Screenshots/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
+	Ctrl+Print				exec grimshot --notify copy screen
+	Mod4+Print				exec grimshot --notify save window ~/Pictures/Screenshots/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
+	Mod4+Ctrl+Print			exec grimshot --notify copy window
+	Alt+Print				exec grimshot --notify save area ~/Pictures/Screenshots/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
+	Ctrl+Alt+Print			exec grimshot --notify copy area
 
 	XF86AudioRaiseVolume 	exec --no-startup-id pamixer -i 5
 	XF86AudioLowerVolume	exec --no-startup-id pamixer -d 5
