@@ -1,0 +1,101 @@
+.xfce4-panel { font-size: 14px; border-color: transparent; }
+
+
+/* .xfce4-panel.background .tasklist button { padding: 0 10px; } */
+.xfce4-panel.background button:active,
+.xfce4-panel.background button:hover,
+.xfce4-panel.background button:active:hover,
+.xfce4-panel.background .tasklist button:active,
+.xfce4-panel.background .tasklist button:hover,
+.xfce4-panel.background .tasklist button:active:hover { background-color: rgba(255,255,255,0.05); }
+.xfce4-panel button:checked { background-color: rgba(255,255,255,0.07); }
+
+.tasklist { -XfceTasklist-max-button-length: 160; }
+#pulseaudio-button image { -gtk-icon-theme: 'Tela'; }
+#xfce4-power-manager-plugin image { -gtk-icon-transform: scale(0.8); -gtk-icon-theme: 'Tela'; }
+
+
+
+
+
+#whiskermenu-window { color: rgba(255,255,255,0.8); }
+#whiskermenu-window>frame>stack>box>box * {
+	margin: 0px;
+	padding: 3px;
+	font-size: 14px;
+	border-radius: 5px;
+}
+window#whiskermenu-window>frame>border { border: 5px solid transparent; }
+
+window#whiskermenu-window scrolledwindow { margin: 2px; }
+#whiskermenu-window button { font-size: 14px; }
+
+#whiskermenu-window treeview { padding: 7px 0px 7px 10px; background-color: transparent; }
+#whiskermenu-window treeview:hover { background-color: rgba(255,255,255,0.1); }
+#whiskermenu-window iconview { font-size: 12px; padding: 5px 0; }
+#whiskermenu-window iconview:hover { background-color: rgba(255,255,255,0.1); }
+
+
+
+
+* {
+	-ThunarAbstractIconView-row-spacing: 10;
+	-ThunarAbstractIconView-column-spacing: 10;
+}
+.thunar .standard-view .view { background-color: rgba(12,17,26,0.2); }
+.thunar .standard-view .view:hover{background-color: rgba(191,97,106,0.6);}
+.thunar .standard-view .view:selected{background-color: rgba(191,97,106,1.0);}
+ .thunar .sidebar .view { padding: 3px 0px; background-color: rgba(12,17,26,0.2);} 
+  .thunar .sidebar .view:selected{ background-color: rgba(191,97,106,1.0);} 
+.thunar .sidebar .view:hover {background-color: rgba(191,97,106,0.6); }
+.thunar {background-color: rgba(47,52,63,0.0); }
+/*.thunar .sidebar {background-color: rgba(47,52,63,0.49);}*/
+/*.thunar .sidebar .view { background-color: rgba(47,52,63,0.49);}*/
+.thunar .sidebar{background-color: rgba(47,52,63,0.0); }
+/*.thunar .standard-view { background-color: rgba(47,52,63,0.49); }*/
+/*.thunar .statusbar { background-color: rgba(47,52,63,0.49);}*/
+/*.thunar .statusbar .view { background-color: rgba(47,52,63,0.49);}*/
+.thunar .background, .thunar .menuar { background-color: rgba(12,17,26,0.2);}
+.thunar toolbar{background-color: rgba(12,17,26,0.2);}
+.thunar .path-bar-button {background-color: rgba (196,214,255,0.1)}
+.thunar .path-bar-button:hover {background-color: rgba(255,255,255,0.3)}
+* {
+	-XfdesktopIconView-ellipsize-icon-labels:10;
+	-XfdesktopIconView-cell-spacing:10;
+	-XfdesktopIconView-cell-padding:10;
+}
+
+
+
+
+XfdesktopIconView.label:active { background-color: rgba(255,255,255,0.3); }
+
+
+
+
+VteTerminal, vte-terminal { padding: 9px; }
+
+
+
+
+.xfsm-logout-dialog { background-color: rgb(50,52,61); border-color: rgb(50,52,61); }
+.xfsm-logout-dialog * { margin: 3px; }
+
+
+
+
+#XfceNotifyWindow progressbar { border-radius: 5px; }
+#XfceNotifyWindow progressbar progress { min-height: 4px; }
+#XfceNotifyWindow progressbar trough { min-height: 4px; }
+
+
+
+
+menu, .context-menu {  }
+menu menuitem, .menu menuitem, .context-menu menuitem { padding: 6px 16px; }
+menu menuitem:hover, .menu menuitem:hover, .context-menu menuitem:hover { background-color: rgba(255,255,255,0.1); }
+.csd.popup decoration { }
+
+button { animation: none; } /*I don't want that ripple effect*/
+button, entry { border: none; margin: 1px; }
+
