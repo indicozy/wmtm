@@ -2,6 +2,7 @@
 # Script for changing themes of sway-dotfiles-script
 # Developed and maintained by indicozy
 # ver: 1.0
+# Hello Qwant!
 
 path=~/.sway-dotfiles-script
 save_path=~/Documents/sway_configs_saved
