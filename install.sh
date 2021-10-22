@@ -53,9 +53,6 @@ if ! [[ "$git_path" == *"sway-dotfiles-script" ]]; then
 	exit 1
 fi
 
-# Stopped here
-
-# if dialog program exists
 if [ -x "$(command -v dialog)" ]; then
 	dialog_found=1
 fi

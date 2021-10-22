@@ -1,11 +1,8 @@
 #! /bin/bash
 # Script for changing themes of sway-dotfiles-script
 # Developed and maintained by indicozy
-# ver: 1.0
-# Hello Qwant!
+# ver: 0.11
 
-path=~/.sway-dotfiles-script
-save_path=~/Documents/sway_configs_saved
 
 function checksave () {
 	now=0
@@ -258,6 +255,7 @@ customize 'Edit your config' \\ "
 	local folderNumber=(${folderNumber[*]/%\/})
 	local folderNumber=(${folderNumber[*]/*\/})
 
+	# STOPPED HERE
 	for (( i=0; i<${#folderNumber[@]}; i++ ))
 	do
 		zenity_text+="$(( i + 1 )) " 
@@ -271,17 +269,22 @@ customize 'Edit your config' \\ "
 	if [[ "$folder" != "" ]]; then
 		wordCheck
 	fi
+	exit 0
 }
 
 
 ##### MAIN
+
+path=~/.sway-dotfiles-script
+save_path=~/Documents/sway_configs_saved
+
+# Some Security check
 if [[ "$path" != *sway-dotfiles-script ]]; then # basic foolproof design
-	echo "Error: Wrong path specified! Please check that the script wasa launched from the proper folder."
+	echo "Error: Wrong path specified! Please check that the script was launched from the proper folder."
 	notify-send "Error: Wrong path specified!" "Please check that the script was launched from the proper folder."
 	exit
 fi
 
-cd $path #just for safety
 folder=($1)
 case $# in
 	0)
@@ -292,3 +295,4 @@ case $# in
 		echo "Given more than one argument. Please check your config"
 		notify-send "Given more than one argument" "Please check your config";;
 esac
+exit 1
