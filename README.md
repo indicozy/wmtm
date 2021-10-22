@@ -1,6 +1,14 @@
 # sway-dotfiles-script
-A Bash script for Sway Window Manager with preconfigured themes:
+
+<table border="0">
+ <tr>
+    <td><img src="https://user-images.githubusercontent.com/51142471/138446793-ce215d53-d9bf-45dd-936a-ebc3ee2cc62b.png" width="200" height="200"></td>
+    <td><b style="font-size:30px">A Bash script for Sway Window Manager with preconfigured themes</b></td>
+ </tr>
+</table>
+
 * Windows 98/XP/7/10;
+
 * MacOS 1.0/15.0;
 * Ubuntu 20.04;
 * Additional two Sway themes.
