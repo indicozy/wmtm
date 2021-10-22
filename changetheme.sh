@@ -3,7 +3,6 @@
 # Developed and maintained by indicozy
 # ver: 0.11
 
-
 function checksave () {
 	now=0
 	if [[ $(cat $path/system/themeNumber.txt ) =~ ^[0-9]+$ ]]; then
@@ -67,15 +66,10 @@ function goBack () {
 	fi
 
 	prepareFolders new
-
 	prepareFolders movedBack
-
 	moveBackupConfig $save_path/movedBack move
-
-	moveLatestBack #function
-
-	sortOld #function
-
+	moveLatestBack
+	sortOld
 	swaymsg reload
 
 	echo "Back to the previous theme from history."
@@ -120,7 +114,7 @@ function moveBackupConfig {
 }
 
 function prepareFolders {
-	local backupones=($(ls -d $save_path/$1*/ ))
+	local backupones=($(ls -d $save_path/$1*/ )) # Wtf is 1??? ah, it's the argument given to the function dummy
 	local backupones=(${backupones[*]/%\/})
 
 	for (( j=${#backupones[@]}; j>7; j-- )); do
@@ -134,19 +128,17 @@ function prepareFolders {
 
 function changeTheme {
 	if [ -d "$path/configs/$folder" ]; then
-
-			prepareFolders old
-			moveBackupConfig $save_path/old move
-			copyToConfig #function
-			killAllProcesses #function	
-			swaymsg reload
-
-			echo "Theme changed to $folder"
-			notify-send "Theme changed to $folder" "Enjoy your Sway!"
+		prepareFolders old
+		moveBackupConfig $save_path/old move
+		copyToConfig #function
+		killAllProcesses #function	
+		swaymsg reload
+		echo "Theme changed to $folder"
+		notify-send "Theme changed to $folder" "Enjoy your Sway!"
 	else
-			echo "Wrong Argument, check your config."
-			notify-send "Error at Theme Changer" "Wrong Argument, check your config."
-		fi
+		echo "Wrong Argument, check your config."
+		notify-send "Error at Theme Changer" "Wrong Argument, check your config."
+	fi
 }
 
 function findEditor {
@@ -189,7 +181,6 @@ function customizeSpecificConfig {
 		if zenity --question --title="Reload?" --text="Would you like to recompile your config?" --width=300 --height=300; then
 			folder=$now
 			wordCheck
-
 		fi
 	fi
 }
@@ -208,12 +199,11 @@ function customizeConfig {
 	changeFile=($(eval $zenity_text))
 
 	if [[ "$changeFile" = "" ]]; then
-		eval $path/changetheme.sh 
-		# exit
-	else
-		customizeSpecificConfig $changeFile
+		eval $path/changetheme.sh
+		exit 0
+        else
+                customizeSpecificConfig $changeFile
 	fi
-
 }
 
 function  wellFuckMeThen {
@@ -222,14 +212,14 @@ function  wellFuckMeThen {
 }
 
 function handleFolder {
-	#working with $folder, the output is the folder's name
-	checksave #function
+	#working with $folder, input is number, the output is the folder's name
+	checksave #function TODO
 	checkNextPrev #function
 	checkNum #function
 }
 
 function wordCheck () {
-	#This part of code is a bit messy, sorry for that (past indicozy)
+	#This part of code is a bit messy, sorry for that (past indicozy)x2
 
 	handleFolder
 	
@@ -269,12 +259,10 @@ customize 'Edit your config' \\ "
 	if [[ "$folder" != "" ]]; then
 		wordCheck
 	fi
-	exit 0
 }
 
 
 ##### MAIN
-
 path=~/.sway-dotfiles-script
 save_path=~/Documents/sway_configs_saved
 
@@ -285,7 +273,7 @@ if [[ "$path" != *sway-dotfiles-script ]]; then # basic foolproof design
 	exit
 fi
 
-folder=($1)
+folder=($1) # Global variable
 case $# in
 	0)
 		runZenity;;
@@ -295,4 +283,4 @@ case $# in
 		echo "Given more than one argument. Please check your config"
 		notify-send "Given more than one argument" "Please check your config";;
 esac
-exit 1
+exit 0

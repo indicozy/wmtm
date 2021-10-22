@@ -39,7 +39,6 @@ function killAllProcesses () {
 	cd $path
 }
 
-
 ####### MAIN
 path=/home/$USER/.sway-dotfiles-script
 git_path=($(pwd))
@@ -72,7 +71,6 @@ fi
 
 clear
 
-#0 is True, i.e. no errors
 if [ $answer -eq 1 ]; then # 1 is False
 	echo "You chose not to install. No files has been changed."
 	exit 0
@@ -96,7 +94,5 @@ else
 fi
 
 notify-send "You are ready to go!" "Just click Ctrl+Super+Space"
-
 $path/changetheme.sh
-
 exit 0
