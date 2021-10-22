@@ -21,16 +21,15 @@ function prepareBackedConfigs {
 
 function backupConfig {
 	local backupfolders=$(cat $path/system/configFolders.txt)
-	for i in "${backupfolders[@]}"
+	for i in $backupfolders
 	do
 		mkdir -p $save_path/YourDefault/$i > /dev/null
-		cp -r ~/.config/$i/* $save_path/YourDefault/$i/
+		cp -r /home/$USER/.config/$i/* $save_path/YourDefault/$i/
 	done
 }
 
 function installSwitcher {
 	mkdir -p $path 2> /dev/null
-	echo lmao
 	cp -r $git_path/configs $git_path/system $git_path/customization $git_path/changetheme.sh $git_path/install.sh $git_path/LICENSE $git_path/README.md $path
 }
 
@@ -44,7 +43,7 @@ function killAllProcesses () {
 ####### MAIN
 path=/home/$USER/.sway-dotfiles-script
 git_path=($(pwd))
-save_path=~/Documents/sway_configs_saved
+save_path=/home/$USER/Documents/sway_configs_saved
 answer=1
 dialog_found=0
 
