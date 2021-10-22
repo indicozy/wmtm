@@ -24,7 +24,7 @@ function backupConfig {
 	for i in $backupfolders
 	do
 		mkdir -p $save_path/YourDefault/$i > /dev/null
-		cp -r /home/$USER/.config/$i/* $save_path/YourDefault/$i/
+		cp -r /home/$USER/.config/$i/* $save_path/YourDefault/$i/ 2>/dev/null
 	done
 }
 
