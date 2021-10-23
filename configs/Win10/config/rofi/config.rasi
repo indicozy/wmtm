@@ -9,7 +9,7 @@ configuration {
     columns: 1;
     width: 23;
     lines: 13;
-    font: "Sans 10";
+    font: "Source Sans Pro 10";
     //sidebar-mode: true;
     show-icons: true;
     icon-theme: "KwinDE";
@@ -64,7 +64,6 @@ vertical-align:0.5;
     /* Universal */
     background-color: @invisible;
     border-color: @yellow;
-    /*font: "Noto Sans 10";*/
     text-color: @default-foreground;
 }
 

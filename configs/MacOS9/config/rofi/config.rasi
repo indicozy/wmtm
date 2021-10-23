@@ -9,8 +9,8 @@ configuration {
     columns: 1;
     width: 18;
     lines: 13;
-    font: "Pixel Operator Bold 12";
-	font-weight: bold;
+    font: "Perfect Dos Vga 437 12";
+    font-weight: bold;
     //sidebar-mode: true;
     show-icons: true;
     icon-theme: "GNUstep";
@@ -59,7 +59,6 @@ vertical-align:0.5;
     /* Universal */
     background-color: @invisible;
     border-color: @yellow;
-    /*font: "Noto Sans 10";*/
     text-color: @default-foreground;
 }
 

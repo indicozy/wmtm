@@ -9,20 +9,20 @@
 font:
   # The normal (roman) font face to use.
   normal:
-    family: Fira Mono
+    family: FiraMono Nerd Font
     # Style can be specified to pick a specific face.
     style: Medium
 
   # The bold font face
   bold:
-    family: Fira Mono
+    family: FiraMono Nerd Font
     # Style can be specified to pick a specific face.
     #
     #style: Bold
 
   # The italic font face
   italic:
-    family: Fira Mono
+    family: FiraMono Nerd Font
     # Style can be specified to pick a specific face.
     style: Regular
   size: 10.0

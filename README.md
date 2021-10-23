@@ -76,3 +76,7 @@ Hope you found this repo helpful/inspirational!
 P.S. I'm a beginner developer, if you have some bash scripting skills, please check my script, I made the code as human-readable and maintainable as much as possible
 
 P.S.S The code is WM-agnostic, meaning **you can use fork this code to make your own theme changer for your own WM, more details will be in the Wiki (under development).**
+
+
+### Bugs
+* In MacOSBigSur, rofi is not working in VM

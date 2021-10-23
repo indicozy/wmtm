@@ -9,7 +9,7 @@ configuration {
     columns: 1;
     width: 23;
     lines: 13;
-    font: "Sans 9";
+    font: "Source Sans Pro 9";
     //sidebar-mode: true;
     show-icons: true;
     icon-theme: "Windows 7 Ultimate";
@@ -63,7 +63,6 @@ vertical-align:0.5;
     /* Universal */
     background-color: @invisible;
     border-color: @yellow;
-    /*font: "Noto Sans 10";*/
     text-color: @default-foreground;
 }
 
