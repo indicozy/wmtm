@@ -78,10 +78,6 @@ Preferred OS would be **Arch Linux**, since, at least for now, my code is made t
 
 **Please tip me for a coffee!** It would motivate a beginner programmer to study and develop the project further!
 
-`Bitcoin: zpub6mytQoyr5y5LMfw8evkTHaUtnuac4vgNusx6bdKrrR8r59GAiPWa3zV7WGJgZAfB2Kn25MRmZ4tpLzY7WnHnSvPL4yLxs7PYjHMXjJKHipo`
-
-`Monero: 4Ayjpc8iQtAZrZLT5PhskyFdbNgYow1h9gW3g17J7vjN3KgMCPoGCyVKD4ziTKM9S2aDdEDeYi59E6SNKqbCWjLbQGQrUH9`
-
 Hope you found this repo helpful/inspirational!
 
 P.S. I'm a beginner developer, if you have some bash scripting skills, please check my script, I made the code as human-readable and maintainable as much as possible
