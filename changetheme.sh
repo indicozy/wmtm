@@ -126,13 +126,46 @@ function prepareFolders {
 	done
 }
 
+function prepareResources {
+# $1 is the same as $folder
+if ! [ -d "$path/configs/$folder/resources" ]; then
+	return 1
+fi
+
+if [ -d "$path/configs/$folder/resources/fonts" ]; then
+	mkdir -p /home/$USER/.local/share/fonts
+
+	local fileNumber=($(ls -d $path/configs/$folder/resources/fonts/* 2> /dev/null))
+	local fileNumber=(${fileNumber[*]/*\/})
+	echo "${fileNumber[@]}"
+
+	local fileNumberNoEnd=(${fileNumber[*]/%\.zip})
+	echo "${fileNumberNoEnd[@]}"
+
+	mkdir -p /home/$USER/.local/fonts
+
+	for i in ${fileNumberNoEnd[@]}; do
+		echo $i
+		if ! [ -d "/home/$USER/.local/fonts/$i" ]; then
+			mkdir -p /home/$USER/.local/fonts/$i
+			unzip -d /home/$USER/.local/fonts/$i "$path/configs/$folder/resources/fonts/$i.zip"
+		fi
+	done
+fi
+}
+
+function reloadProcesses {
+	swaymsg reload
+}
+
 function changeTheme {
 	if [ -d "$path/configs/$folder" ]; then
 		prepareFolders old
 		moveBackupConfig $save_path/old move
-		copyToConfig #function
-		killAllProcesses #function	
-		swaymsg reload
+		prepareResources $folder
+		copyToConfig
+		killAllProcesses
+		reloadProcesses
 		echo "Theme changed to $folder"
 		notify-send "Theme changed to $folder" "Enjoy your Sway!"
 	else
