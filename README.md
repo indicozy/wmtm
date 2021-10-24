@@ -80,3 +80,4 @@ P.S.S The code is WM-agnostic, meaning **you can use fork this code to make your
 
 ### Bugs
 * In MacOSBigSur, rofi is not working in VM
+* In resources files, you cannot name archives with spaces!

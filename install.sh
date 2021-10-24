@@ -3,6 +3,41 @@
 # Developed and maintained by indicozy
 # ver: 0.11
 
+function prepareResources {
+	local folderNumber=($(ls -d $git_path/configs/*/))
+        local folderNumber=(${folderNumber[*]/%\/})
+	for i in ${folderNumber[@]}; do
+		unzipResources fonts /home/$USER/.local/share/fonts
+		unzipResources icons /home/$USER/.icons
+		unzipResources themes /home/$USER/.themes
+	done
+}
+
+function unzipResources { # $1 is the local folder from, $2 is the global folder to
+        if [ -d "$path/configs/$folder/resources/$1" ]; then
+                local fileNumber=($(ls -d $path/configs/$folder/resources/$1/* 2> /dev/null))
+                local fileNumber=(${fileNumber[*]/*\/})
+
+                local fileNumberNoEnd=(${fileNumber[*]/%\.tar\.?z})
+                local fileNumberNoEnd=(${fileNumberNoEnd[*]/%\.zip})
+
+                mkdir -p $2
+                for (( i=0; i<${#fileNumber[@]}; i++ )); do
+                        echo ${fileNumber[i]}
+                        if ! [ -d "$2/${fileNumberNoEnd[$i]}" ]; then
+                                if [[ ${fileNumber[$i]} == *".tar"* ]]; then
+                                        echo "Unzipping ${fileNumber[$i]} to $2..."
+                                        tar -xf $path/configs/$folder/resources/$1/${fileNumber[$i]} -C $2 > /dev/null
+                                elif [[ ${fileNumber[$i]} == *".zip"* ]]; then
+                                        echo "Unzipping ${fileNumber[$i]} to $2..."
+                                        mkdir -p $2
+                                        unzip -d $2/${fileNumberNoEnd[$i]} "$path/configs/$folder/resources/$1/${fileNumber[$i]}" > /dev/null
+                                fi
+                        fi
+                done
+        fi
+}
+
 function prepareBackedConfigs {
 	mkdir -p $save_path
 	local saved_folders=($(ls -d $save_path/YourDefault*))
@@ -39,6 +74,13 @@ function killAllProcesses () {
 	cd $path
 }
 
+function startInstallation {
+	prepareBackedConfigs
+	backupConfig
+	installSwitcher
+	prepareResources
+}
+
 ####### MAIN
 path=/home/$USER/.sway-dotfiles-script
 git_path=($(pwd))
@@ -52,47 +94,25 @@ if ! [[ "$git_path" == *"sway-dotfiles-script" ]]; then
 	exit 1
 fi
 
-if [ -x "$(command -v dialog)" ]; then
-	dialog_found=1
-fi
-
-if [ $dialog_found -eq 1 ]; then
+if [ -x "$(command -v dialog)" ]; then # dialog found
 	dialog --title "Install Theme Changer" \
 		--yesno "Would you like to install the Theme Changer? y/n: " 10 50
-	answer=$? #0 is True, i.e. no errors
+
+	if [ $? -eq 0 ]; then # 1 is False
+		answer="y"
+	fi
 else
 	echo 'Warning: dialog is not installed, starting session in TUI' >&2
 	echo "Welcome to Sway Theme Changer!"
 	read -p "Would you like to install the Theme Changer? y/n: " answer
-	if [ "$answer" == "y" -o "$answer" == "Y" ]; then
-		answer=0 #0 is True, i.e. no errors
-	fi
 fi
 
-clear
-
-if [ $answer -eq 1 ]; then # 1 is False
-	echo "You chose not to install. No files has been changed."
-	exit 0
-fi
-
-prepareBackedConfigs
-backupConfig
-installSwitcher
-killAllProcesses
-swaymsg reload # change for other WMs
-
-clear
-
-if [ $dialog_found -eq 1 ]; then
-	dialog --title "Installation Complete"\
-		--msgbox "Your previous theme before installation was saved in $save_path/YourDefault\n\n\n     Just click Ctrl+Super+Space to start!" 10 50
-	clear
-
+if [ "$answer" == "y" -o "$answer" == "Y" ]; then
+	startInstallation
+	notify-send "Theme Changer successfully installed!" "Just click Ctrl+Super+Space"
+	$path/changetheme.sh
 else
-	echo -e "Installation Complete!\n\nYour previous theme before installation was saved in $save_path/YourDefault\n\nJust click Ctrl+Super+Space to start!\n"
+	notify-send "You chose not to install" "No files have been changed."
 fi
 
-notify-send "You are ready to go!" "Just click Ctrl+Super+Space"
-$path/changetheme.sh
 exit 0
