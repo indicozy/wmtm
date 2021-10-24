@@ -126,32 +126,36 @@ function prepareFolders {
 	done
 }
 
+function unzipResources {
+	if [ -d "$path/configs/$folder/resources/$1" ]; then
+		local fileNumber=($(ls -d $path/configs/$folder/resources/$1/* 2> /dev/null))
+		local fileNumber=(${fileNumber[*]/*\/})
+		echo "${fileNumber[@]}"
+		local fileNumberNoEnd=(${fileNumber[*]/%\.tar\.?z})
+		local fileNumberNoEnd=(${fileNumberNoEnd[*]/%\.zip})
+		echo "${fileNumberNoEnd[@]}"
+		mkdir -p $2
+		for (( i=0; i<${#fileNumber[@]}; i++ )); do
+			echo ${fileNumber[$i]}
+			if ! [ -d "$2/${fileNumberNoEnd[$i]}" ]; then
+				if [[ ${fileNumber[$i]} == *".tar"* ]]; then
+					tar -xvf $path/configs/$folder/resources/$1/${fileNumber[$i]} -C $2
+				elif [[ ${fileNumber[$i]} == *".zip"* ]]; then
+					mkdir -p $2
+					unzip -d $2/${fileNumber[$i]} "$path/configs/$folder/resources/fonts/${fileNumber[$i]}"
+				fi
+			fi
+		done
+	fi
+}
+
 function prepareResources {
-# $1 is the same as $folder
 if ! [ -d "$path/configs/$folder/resources" ]; then
 	return 1
 fi
-
-if [ -d "$path/configs/$folder/resources/fonts" ]; then
-	mkdir -p /home/$USER/.local/share/fonts
-
-	local fileNumber=($(ls -d $path/configs/$folder/resources/fonts/* 2> /dev/null))
-	local fileNumber=(${fileNumber[*]/*\/})
-	echo "${fileNumber[@]}"
-
-	local fileNumberNoEnd=(${fileNumber[*]/%\.zip})
-	echo "${fileNumberNoEnd[@]}"
-
-	mkdir -p /home/$USER/.local/fonts
-
-	for i in ${fileNumberNoEnd[@]}; do
-		echo $i
-		if ! [ -d "/home/$USER/.local/fonts/$i" ]; then
-			mkdir -p /home/$USER/.local/fonts/$i
-			unzip -d /home/$USER/.local/fonts/$i "$path/configs/$folder/resources/fonts/$i.zip"
-		fi
-	done
-fi
+unzipResources fonts /home/$USER/.local/share/fonts
+unzipResources icons /home/$USER/.icons
+unzipResources themes /home/$USER/.themes
 }
 
 function reloadProcesses {
@@ -162,7 +166,7 @@ function changeTheme {
 	if [ -d "$path/configs/$folder" ]; then
 		prepareFolders old
 		moveBackupConfig $save_path/old move
-		prepareResources $folder
+		prepareResources
 		copyToConfig
 		killAllProcesses
 		reloadProcesses
