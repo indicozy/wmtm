@@ -4,9 +4,11 @@
 # ver: 0.11
 
 function prepareResources {
-	local folderNumber=($(ls -d $git_path/configs/*/))
+	local folderNumber=($(ls -d $path/configs/*/))
         local folderNumber=(${folderNumber[*]/%\/})
+	local folderNumber=(${folderNumber[*]/*\/})
 	for i in ${folderNumber[@]}; do
+		folder="$i"
 		unzipResources fonts /home/$USER/.local/share/fonts
 		unzipResources icons /home/$USER/.icons
 		unzipResources themes /home/$USER/.themes
@@ -23,7 +25,6 @@ function unzipResources { # $1 is the local folder from, $2 is the global folder
 
                 mkdir -p $2
                 for (( i=0; i<${#fileNumber[@]}; i++ )); do
-                        echo ${fileNumber[i]}
                         if ! [ -d "$2/${fileNumberNoEnd[$i]}" ]; then
                                 if [[ ${fileNumber[$i]} == *".tar"* ]]; then
                                         echo "Unzipping ${fileNumber[$i]} to $2..."
@@ -78,6 +79,7 @@ function startInstallation {
 	prepareBackedConfigs
 	backupConfig
 	installSwitcher
+	clear
 	prepareResources
 }
 
