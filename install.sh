@@ -114,6 +114,7 @@ if [ "$answer" == "y" -o "$answer" == "Y" ]; then
 	notify-send "Theme Changer successfully installed!" "Just click Ctrl+Super+Space"
 	$path/changetheme.sh
 else
+	clear
 	notify-send "You chose not to install" "No files have been changed."
 fi
 
