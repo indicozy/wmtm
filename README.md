@@ -6,6 +6,7 @@
     <td><b style="font-size:30px">WM-agnostic Theme Manager</b></td>
  </tr>
 </table>
+
 ## About
 WM-agnostic Theme Manager made with Bash only. Simply, it copy-pastes configs and manages them. It was preconfigured to work with Sway WM but there are lots of possibilities to use with other WMs, testing now with i3-gaps and bspwm. **If you have made advances with these testing WMs, please let me know!**
 
@@ -89,3 +90,4 @@ P.S.S The code is WM-agnostic, meaning **you can use fork this code to make your
 ### Bugs
 * In MacOSBigSur, rofi is not working in VM
 * In resources files, you cannot name archives with spaces!
+* Potential: tar.\*z and zip files are being opened differently, need to fix that
