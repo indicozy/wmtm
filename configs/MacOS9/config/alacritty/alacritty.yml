@@ -9,23 +9,23 @@
 font:
   # The normal (roman) font face to use.
   normal:
-    family: Pixel Operator
+    family: Perfect Dos Vga 437
     # Style can be specified to pick a specific face.
     style: Bold
 
   # The bold font face
   bold:
-    family: Pixel Operator
+    family: Perfect Dos Vga 437
     # Style can be specified to pick a specific face.
     #
-    #style: Bold
+    style: Regular
 
   # The italic font face
   italic:
-    family: Pixel Operator
+    family: Perfect Dos Vga 437
     # Style can be specified to pick a specific face.
     style: Regular
-  size: 12.0
+  size: 11.0
 
 # Colors (Dracula)
 colors:

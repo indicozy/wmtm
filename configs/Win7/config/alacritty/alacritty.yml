@@ -9,20 +9,19 @@
 font:
   # The normal (roman) font face to use.
   normal:
-    family: Windows Command Prompt
+    family: Perfect Dos Vga 437
     # Style can be specified to pick a specific face.
-    style: Medium
+    style: Regular
 
   # The bold font face
   bold:
-    family: Windows Command Prompt
+    family: Perfect Dos Vga 437
     # Style can be specified to pick a specific face.
-    
     style: Regular
 
   # The italic font face
   italic:
-    family: Windows Command Prompt
+    family: Perfect Dos Vga 437
     # Style can be specified to pick a specific face.
     style: Regular
   size: 12.0

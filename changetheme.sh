@@ -1,11 +1,7 @@
 #! /bin/bash
 # Script for changing themes of sway-dotfiles-script
 # Developed and maintained by indicozy
-# ver: 1.0
-# Hello Qwant!
-
-path=~/.sway-dotfiles-script
-save_path=~/Documents/sway_configs_saved
+# ver: 0.11
 
 function checksave () {
 	now=0
@@ -70,15 +66,10 @@ function goBack () {
 	fi
 
 	prepareFolders new
-
 	prepareFolders movedBack
-
 	moveBackupConfig $save_path/movedBack move
-
-	moveLatestBack #function
-
-	sortOld #function
-
+	moveLatestBack
+	sortOld
 	swaymsg reload
 
 	echo "Back to the previous theme from history."
@@ -123,7 +114,7 @@ function moveBackupConfig {
 }
 
 function prepareFolders {
-	local backupones=($(ls -d $save_path/$1*/ ))
+	local backupones=($(ls -d $save_path/$1*/ )) # Wtf is 1??? ah, it's the argument given to the function dummy
 	local backupones=(${backupones[*]/%\/})
 
 	for (( j=${#backupones[@]}; j>7; j-- )); do
@@ -135,21 +126,58 @@ function prepareFolders {
 	done
 }
 
+function unzipResources {
+	if [ -d "$path/configs/$folder/resources/$1" ]; then
+		local fileNumber=($(ls -d $path/configs/$folder/resources/$1/* 2> /dev/null))
+		local fileNumber=(${fileNumber[*]/*\/})
+
+		local fileNumberNoEnd=(${fileNumber[*]/%\.tar\.?z})
+		local fileNumberNoEnd=(${fileNumberNoEnd[*]/%\.zip})
+
+		mkdir -p $2
+		for (( i=0; i<${#fileNumber[@]}; i++ )); do
+			echo ${fileNumber[i]}
+			if ! [ -d "$2/${fileNumberNoEnd[$i]}" ]; then
+				if [[ ${fileNumber[$i]} == *".tar"* ]]; then
+					echo "Unzipping ${fileNumber[$i]} to $2..."
+					tar -xf $path/configs/$folder/resources/$1/${fileNumber[$i]} -C $2 > /dev/null
+				elif [[ ${fileNumber[$i]} == *".zip"* ]]; then
+					echo "Unzipping ${fileNumber[$i]} to $2..."
+					mkdir -p $2
+					unzip -d $2/${fileNumberNoEnd[$i]} "$path/configs/$folder/resources/$1/${fileNumber[$i]}" > /dev/null
+				fi
+			fi
+		done
+	fi
+}
+
+function prepareResources {
+	if ! [ -d "$path/configs/$folder/resources" ]; then
+		return 1
+	fi
+	unzipResources fonts /home/$USER/.local/share/fonts
+	unzipResources icons /home/$USER/.icons
+	unzipResources themes /home/$USER/.themes
+}
+
+function reloadProcesses {
+	swaymsg reload
+}
+
 function changeTheme {
 	if [ -d "$path/configs/$folder" ]; then
-
-			prepareFolders old
-			moveBackupConfig $save_path/old move
-			copyToConfig #function
-			killAllProcesses #function	
-			swaymsg reload
-
-			echo "Theme changed to $folder"
-			notify-send "Theme changed to $folder" "Enjoy your Sway!"
+		prepareFolders old
+		moveBackupConfig $save_path/old move
+		prepareResources
+		copyToConfig
+		killAllProcesses
+		reloadProcesses
+		echo "Theme changed to $folder"
+		notify-send "Theme changed to $folder" "Enjoy your Sway!"
 	else
-			echo "Wrong Argument, check your config."
-			notify-send "Error at Theme Changer" "Wrong Argument, check your config."
-		fi
+		echo "Wrong Argument, check your config."
+		notify-send "Error at Theme Changer" "Wrong Argument, check your config."
+	fi
 }
 
 function findEditor {
@@ -192,7 +220,6 @@ function customizeSpecificConfig {
 		if zenity --question --title="Reload?" --text="Would you like to recompile your config?" --width=300 --height=300; then
 			folder=$now
 			wordCheck
-
 		fi
 	fi
 }
@@ -211,12 +238,11 @@ function customizeConfig {
 	changeFile=($(eval $zenity_text))
 
 	if [[ "$changeFile" = "" ]]; then
-		eval $path/changetheme.sh 
-		# exit
-	else
-		customizeSpecificConfig $changeFile
+		eval $path/changetheme.sh
+		exit 0
+        else
+                customizeSpecificConfig $changeFile
 	fi
-
 }
 
 function  wellFuckMeThen {
@@ -225,14 +251,14 @@ function  wellFuckMeThen {
 }
 
 function handleFolder {
-	#working with $folder, the output is the folder's name
-	checksave #function
+	#working with $folder, input is number, the output is the folder's name
+	checksave #function TODO
 	checkNextPrev #function
 	checkNum #function
 }
 
 function wordCheck () {
-	#This part of code is a bit messy, sorry for that (past indicozy)
+	#This part of code is a bit messy, sorry for that (past indicozy)x2
 
 	handleFolder
 	
@@ -258,6 +284,7 @@ customize 'Edit your config' \\ "
 	local folderNumber=(${folderNumber[*]/%\/})
 	local folderNumber=(${folderNumber[*]/*\/})
 
+	# STOPPED HERE
 	for (( i=0; i<${#folderNumber[@]}; i++ ))
 	do
 		zenity_text+="$(( i + 1 )) " 
@@ -275,14 +302,17 @@ customize 'Edit your config' \\ "
 
 
 ##### MAIN
+path=~/.sway-dotfiles-script
+save_path=~/Documents/sway_configs_saved
+
+# Some Security check
 if [[ "$path" != *sway-dotfiles-script ]]; then # basic foolproof design
-	echo "Error: Wrong path specified! Please check that the script wasa launched from the proper folder."
+	echo "Error: Wrong path specified! Please check that the script was launched from the proper folder."
 	notify-send "Error: Wrong path specified!" "Please check that the script was launched from the proper folder."
 	exit
 fi
 
-cd $path #just for safety
-folder=($1)
+folder=($1) # Global variable
 case $# in
 	0)
 		runZenity;;
@@ -292,3 +322,4 @@ case $# in
 		echo "Given more than one argument. Please check your config"
 		notify-send "Given more than one argument" "Please check your config";;
 esac
+exit 0

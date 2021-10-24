@@ -21,7 +21,7 @@
 
 * {
 	font-size: 14px;
-	font-family: "Pixel Operator";
+	font-family: "Perfect Dos Vga 437";
 	padding: 0px;
 	margin: 0px;
 }
@@ -142,7 +142,7 @@ window#waybar.bottom {
 	padding: 0px 15px 0px 15px;
 	font-size: 17px;
 	margin: 0px 0px 1px 0px;
-  font-weight: bold;
+  	font-weight: bold;
 	background-image: url('logo.png');
 	background-repeat: no-repeat;
   background-position: 50% 50%;

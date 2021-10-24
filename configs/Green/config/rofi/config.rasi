@@ -56,7 +56,6 @@ horizontal-align: 0.5;
     /* Universal */
     background-color: @invisible;
     border-color: @yellow;
-    /*font: "Noto Sans 10";*/
     text-color: @default-foreground;
 }
 
