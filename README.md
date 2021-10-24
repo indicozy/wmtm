@@ -9,9 +9,10 @@
 ## About
 WM-agnostic Theme Manager made with Bash only. Simply, it copy-pastes configs and manages them. It was preconfigured to work with Sway WM but there are lots of possibilities to use with other WMs, testing now with i3-gaps and bspwm. **If you have made advances with these testing WMs, please let me know!**
 
+Information below is pretty old, I will update information and new features later.
+
 ### Themes Available
 * Windows 98/XP/7/10;
-
 * MacOS 1.0/15.0;
 * Ubuntu 20.04;
 * Additional two Sway themes.
