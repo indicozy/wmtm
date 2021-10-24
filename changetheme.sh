@@ -136,6 +136,7 @@ function unzipResources {
 
 		mkdir -p $2
 		for (( i=0; i<${#fileNumber[@]}; i++ )); do
+			echo ${fileNumber[i]}
 			if ! [ -d "$2/${fileNumberNoEnd[$i]}" ]; then
 				if [[ ${fileNumber[$i]} == *".tar"* ]]; then
 					echo "Unzipping ${fileNumber[$i]} to $2..."
@@ -143,7 +144,7 @@ function unzipResources {
 				elif [[ ${fileNumber[$i]} == *".zip"* ]]; then
 					echo "Unzipping ${fileNumber[$i]} to $2..."
 					mkdir -p $2
-					unzip -d $2/${fileNumberNoEnd[$i]} "$path/configs/$folder/resources/fonts/${fileNumber[$i]}" > /dev/null
+					unzip -d $2/${fileNumberNoEnd[$i]} "$path/configs/$folder/resources/$1/${fileNumber[$i]}" > /dev/null
 				fi
 			fi
 		done
