@@ -79,6 +79,7 @@ P.S. I'm a beginner developer, if you have some bash scripting skills, please pe
 
 
 ### Bugs
+* rofi everywhere is broken, I guess an update broke something
 * In MacOSBigSur, rofi is not working in VM
 * In resources files, you cannot name archives with spaces!
 * Potential: tar.\*z and zip files are being opened differently
