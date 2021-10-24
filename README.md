@@ -62,8 +62,6 @@ Copy this and try to install to your Distro:
 * `polkit-gnome` -> required addition for polkit, preferred version is polkit-gnome-git from AUR
 
 ### Optional
-* [Greetd](https://git.sr.ht/~kennylevinsen/greetd) -> Login Manager
-* [greetd-gtkgreet](https://git.sr.ht/~kennylevinsen/gtkgreet) -> GTK-based addition for Greetd 
 * `zathura` -> PDF (and others) reader
 * `zathura-pdf-poppler` -> PDF addon for `zathura`
 
@@ -72,7 +70,7 @@ Copy this and try to install to your Distro:
 - [X] Add Gtk-2.0, Gtk-3.0, Gtk-4.0 (if possible)
 - [X] Add customizability of other Config folders (Rofi, Mako, Waybar)
 - [ ] Create a Wiki and Q&A with guides on ricing sway and other WMs
-- [ ] Basic logging for maintenance (Under decision, idk how even it could be helpful)
+- [ ] Basic logging for maintenance (I don't know how)
 
 ## Under consideration
 - [ ] Create a website/server similar to [gnome-look.org](https://www.gnome-look.org/) which will download ready configs from my site
@@ -83,5 +81,11 @@ P.S. I'm a beginner developer, if you have some bash scripting skills, please pe
 ### Bugs
 * In MacOSBigSur, rofi is not working in VM
 * In resources files, you cannot name archives with spaces!
-* Potential: tar.\*z and zip files are being opened differently, need to fix that
+* Potential: tar.\*z and zip files are being opened differently
+
+
+### Notes
+Yes, I'm lazy af
+* [Greetd](https://git.sr.ht/~kennylevinsen/greetd) -> Login Manager
+* [greetd-gtkgreet](https://git.sr.ht/~kennylevinsen/gtkgreet) -> GTK-based addition for Greetd 
 
