@@ -94,3 +94,6 @@ P.S.S The code is WM-agnostic, meaning **you can use fork this code to make your
 
 ### Packages
 sway swaylock wlogout rofi dialog alacritty waybar
+
+### Additional Packages
+mako grim grimshot slurp

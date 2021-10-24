@@ -16,12 +16,12 @@ bindsym --to-code
 	$layer2+e				exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
 
-	Print					exec grimshot --notify save screen ~/Pictures/Screenshots/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
-	Ctrl+Print				exec grimshot --notify copy screen
-	Mod4+Print				exec grimshot --notify save window ~/Pictures/Screenshots/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
-	Mod4+Ctrl+Print			exec grimshot --notify copy window
-	Alt+Print				exec grimshot --notify save area ~/Pictures/Screenshots/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
-	Ctrl+Alt+Print			exec grimshot --notify copy area
+	Print					exec grimshot save screen
+	Ctrl+Print				exec grimshot copy screen
+	Mod4+Print				exec grimshot save window
+	Mod4+Ctrl+Print			        exec grimshot copy window
+	Alt+Print				exec grimshot save area
+	Ctrl+Alt+Print			        exec grimshot copy area
 
 	XF86AudioRaiseVolume 	exec --no-startup-id pamixer -i 5
 	XF86AudioLowerVolume	exec --no-startup-id pamixer -d 5
@@ -49,28 +49,28 @@ bindsym --to-code
 	$layer2+q     			kill
 
 	$layer1+h	    		focus left
-	$layer1+j 	  			focus down
-	$layer1+k 	  			focus up
-	$layer1+l 	  			focus right
+	$layer1+j 	  		focus down
+	$layer1+k 	  		focus up
+	$layer1+l 	  		focus right
 
   	$layer2+h     			move left
   	$layer2+j     			move down
  	$layer2+k     			move up
   	$layer2+l     			move right
 
-  	$layer1+b 				splith
-  	$layer1+v 				splitv
+  	$layer1+b 			splith
+  	$layer1+v 			splitv
 
-  	$layer1+s 				layout stacking
-  	$layer1+w 				layout tabbed
-  	$layer1+e 				layout toggle split
+  	$layer1+s 			layout stacking
+  	$layer1+w 			layout tabbed
+  	$layer1+e 			layout toggle split
 
-  	$layer1+f 				fullscreen
+  	$layer1+f 			fullscreen
 
   	$layer2+space 			floating toggle
 	$layer1+space 			focus mode_toggle
 
-  	$layer1+a 				focus parent
+  	$layer1+a 			focus parent
 
 	$layer1+r     			mode "resize"
 }
@@ -81,12 +81,12 @@ mode "resize" {
 		j 		resize shrink height 10px
 		k 		resize grow height 10px
 		l 		resize grow width 10px
-		Left 	resize shrink width 10px
-		Down 	resize shrink height 10px
+		Left 	        resize shrink width 10px
+		Down 	        resize shrink height 10px
 		Up 		resize grow height 10px
-		Right	resize grow width 10px
-		Return 	mode "default"
-		Escape 	mode "default"
+		Right	        resize grow width 10px
+		Return 	        mode "default"
+		Escape 	        mode "default"
     }
 }
 
