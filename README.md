@@ -1,12 +1,15 @@
-# sway-dotfiles-script
+# WMTM
 
 <table border="0">
  <tr>
     <td><img src="https://user-images.githubusercontent.com/51142471/138446793-ce215d53-d9bf-45dd-936a-ebc3ee2cc62b.png" width="200" height="200"></td>
-    <td><b style="font-size:30px">A Bash script for Sway Window Manager with preconfigured themes</b></td>
+    <td><b style="font-size:30px">WM-agnostic Theme Manager</b></td>
  </tr>
 </table>
+## About
+WM-agnostic Theme Manager made with Bash only. Simply, it copy-pastes configs and manages them. It was preconfigured to work with Sway WM but there are lots of possibilities to use with other WMs, testing now with i3-gaps and bspwm. **If you have made advances with these testing WMs, please let me know!**
 
+### Themes Available
 * Windows 98/XP/7/10;
 
 * MacOS 1.0/15.0;
