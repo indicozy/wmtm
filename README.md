@@ -91,3 +91,6 @@ P.S.S The code is WM-agnostic, meaning **you can use fork this code to make your
 * In MacOSBigSur, rofi is not working in VM
 * In resources files, you cannot name archives with spaces!
 * Potential: tar.\*z and zip files are being opened differently, need to fix that
+
+### Packages
+sway swaylock wlogout rofi dialog alacritty waybar
