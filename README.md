@@ -26,16 +26,16 @@ The script has several features:
 * Auto-backup your previous config up to 8 histories at "~/Documents/wmtm_configs_saved"
 
 ## Usage
-* Ctrl+Super+Space - Open GUI of the app
-* Ctrl+Super+s - Save your config to the folder ~/Documents/wmtm_configs_saved
-* Ctrl+Super+(1-9) - change theme tho N'th theme
-* Ctrl+Super+(left/right) - change theme to the next/previous one
-* ./changetheme.sh next - next theme
-* ./changetheme.sh <Theme Name> - change to an exact theme
-* ./changetheme.sh customize - open customization menu
-* ./changetheme.sh <number> - change theme to an N'th theme
-* ./changetheme.sh goback (or fuckgoback) - revert changes if you have suddenly overwritten them
-* ./changetheme fuck - feel free to swear at my code if you somehow messed up your config
+* `Ctrl+Super+Space` - Open GUI of the app
+* `Ctrl+Super+s` - Save your config to the folder ~/Documents/wmtm_configs_saved
+* `Ctrl+Super+(1-9)` - change theme tho N'th theme
+* `Ctrl+Super+(left|right)` - change theme to the next/previous one
+* `./changetheme.sh (next|prev)` - change to next or previous theme
+* `./changetheme.sh <Theme Name>` - change to an exact theme
+* `./changetheme.sh customize` - open customization menu
+* `./changetheme.sh <number>` - change theme to an N'th theme
+* `./changetheme.sh goback` (or fuckgoback) - revert changes if you have suddenly overwritten them
+* `./changetheme fuck` - feel free to swear at my code if you somehow messed up your config
  
 # Installation
 
