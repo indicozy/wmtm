@@ -1,5 +1,5 @@
 #! /bin/bash
-# Installer script for sway-dotfiles-script
+# Installer script for wmtm
 # Developed and maintained by indicozy
 # ver: 0.11
 
@@ -84,15 +84,15 @@ function startInstallation {
 }
 
 ####### MAIN
-path=/home/$USER/.sway-dotfiles-script
+path=/home/$USER/.wmtm
 git_path=($(pwd))
 save_path=/home/$USER/Documents/sway_configs_saved
 answer=1
 dialog_found=0
 
 # Safety measure
-if ! [[ "$git_path" == *"sway-dotfiles-script" ]]; then
-	echo "ERROR: Most likely you are installing from the wrong folder, please check my github: https://github.com/indicozy/sway-advanced-config"
+if ! [[ "$git_path" == *"wmtm" ]]; then
+	echo "ERROR: Most likely you are installing from the wrong folder, please check my github: https://github.com/indicozy/wmtm"
 	exit 1
 fi
 

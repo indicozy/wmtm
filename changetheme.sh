@@ -1,5 +1,5 @@
 #! /bin/bash
-# Script for changing themes of sway-dotfiles-script
+# Script for changing themes of wmtm
 # Developed and maintained by indicozy
 # ver: 0.11
 
@@ -302,11 +302,11 @@ customize 'Edit your config' \\ "
 
 
 ##### MAIN
-path=~/.sway-dotfiles-script
-save_path=~/Documents/sway_configs_saved
+path=~/.wmtm
+save_path=~/Documents/wmtm_configs_saved
 
 # Some Security check
-if [[ "$path" != *sway-dotfiles-script ]]; then # basic foolproof design
+if [[ "$path" != *wmtm ]]; then # basic foolproof design
 	echo "Error: Wrong path specified! Please check that the script was launched from the proper folder."
 	notify-send "Error: Wrong path specified!" "Please check that the script was launched from the proper folder."
 	exit

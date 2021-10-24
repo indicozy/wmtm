@@ -1,5 +1,5 @@
 #! /bin/bash
-# Script for changing themes of sway-dotfiles-script
+# Script for changing themes of wmtm
 # Developed and maintained by indicozy
 # ver: 1.0
 
