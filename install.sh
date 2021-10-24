@@ -3,6 +3,7 @@
 # Developed and maintained by indicozy
 # ver: 0.11
 
+
 function prepareResources {
 	local folderNumber=($(ls -d $path/configs/*/))
         local folderNumber=(${folderNumber[*]/%\/})
@@ -87,8 +88,6 @@ function startInstallation {
 path=/home/$USER/.wmtm
 git_path=($(pwd))
 save_path=/home/$USER/Documents/sway_configs_saved
-answer=1
-dialog_found=0
 
 # Safety measure
 if ! [[ "$git_path" == *"wmtm" ]]; then

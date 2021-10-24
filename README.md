@@ -10,81 +10,74 @@
 ## About
 WM-agnostic Theme Manager made with Bash only. Simply, it copy-pastes configs and manages them. It was preconfigured to work with Sway WM but there are lots of possibilities to use with other WMs, testing now with i3-gaps and bspwm. **If you have made advances with these testing WMs, please let me know!**
 
-Information below is pretty old, I will update information and new features later.
+**Information below is pretty old, I will update information and new features later.**
 
-### Themes Available
+### 9 Themes are Pre-Configured
 * Windows 98/XP/7/10;
 * MacOS 1.0/15.0;
 * Ubuntu 20.04;
 * Additional two Sway themes.
 
 The script has several features:
-* Simple GUI
+* Simple GUI with `zenity`
 * Easy and intuitive usage
-* Automatic install
-* Customization
-* Auto-backup your previous config up to 8 histories at "~/Documents/sway_configs_saved"
-* Hotkeys are automatically appended to the Sway config
+* Easy Installation script
+* Easy Customization
+* Auto-backup your previous config up to 8 histories at "~/Documents/wmtm_configs_saved"
 
-# Usage
+## Usage
 * Ctrl+Super+Space - Open GUI of the app
-* Ctrl+Super+s - Save your config to the folder ~/Documents/sway_configs_saved
+* Ctrl+Super+s - Save your config to the folder ~/Documents/wmtm_configs_saved
 * Ctrl+Super+(1-9) - change theme tho N'th theme
 * Ctrl+Super+(left/right) - change theme to the next/previous one
 * ./changetheme.sh next - next theme
-* ./changetheme.sh MacOSBigSur - change to an exact theme
-* ./changetheme.sh customize - start customization
-* ./changetheme.sh (number) - change theme to an N'th theme
-* ./changetheme.sh goback (or fuckgoback) - if you was editing your theme and suddenly used this script which overwrites your config, this command gets your overwritten files back, up to 7 saves!
-* ./changetheme fuck - well, it's just for fun, if you somehow messed up your config and want to swear at my code, feel free to do that :)
-
+* ./changetheme.sh <Theme Name> - change to an exact theme
+* ./changetheme.sh customize - open customization menu
+* ./changetheme.sh <number> - change theme to an N'th theme
+* ./changetheme.sh goback (or fuckgoback) - revert changes if you have suddenly overwritten them
+* ./changetheme fuck - feel free to swear at my code if you somehow messed up your config
+ 
 # Installation
-## Requirements 
-**(Script can automatically install packages for Arch Linux, but for other distros feel free to open issues or pull a request)**
-* [rofi-lbonn-wayland-git](https://github.com/lbonn/rofi) -> Menu
-* Sway -> Window Manager
-* grimshot -> Screenshot application
-* Swaylock-effects -> Lock Screen
-* waybar -> bar
-* alacritty -> terminal
-* wlogout -> logout screen
-* polkit -> authentification for stacer, gparted, etc
-* polkit-gnome -> required addition for polkit, preferred version is polkit-gnome-git from AUR
-* mako -> Notification daemon
-* zenity -> GUI application for my script
-* autotiling from (nwg-piotr)[https://github.com/nwg-piotr/autotiling], can be installed by AUR
-* nerd-fonts-fira-code -> icons for panels
 
-Link for icons/cursors/themes (Required): https://drive.google.com/drive/folders/1QrF2_8l0AQaOtExoguOcq1iMjT7dkP9Q?usp=sharing
+## Requirements 
+ 
+Copy this and try to install to your Distro:
+ 
+    sway swaylock wlogout rofi dialog alacritty waybar zenity polkit polkit-gnome grim grimshot
+
+### List of Required Applications 
+* [rofi-lbonn-wayland-git](https://github.com/lbonn/rofi) -> Apps menu
+* `sway` -> Wayland Window Manager
+* `dialog` -> Terminal Interface
+* `grimshot` -> Screenshots
+* `swaylock` OR `swaylock-effects` -> Lock Screen
+* `waybar` -> Panel
+* `alacritty` -> Terminal
+* `wlogout` -> GTK logout screen
+* `mako` -> Notification daemon
+* `zenity` -> GUI application for my script
+* `autotiling` from (nwg-piotr)[https://github.com/nwg-piotr/autotiling], can be installed by AUR
+* nerd-fonts-fira-code -> icons for panels
+* `polkit` -> authentification for stacer, gparted, etc
+* `polkit-gnome` -> required addition for polkit, preferred version is polkit-gnome-git from AUR
+
 ### Optional
 * [Greetd](https://git.sr.ht/~kennylevinsen/greetd) -> Login Manager
 * [greetd-gtkgreet](https://git.sr.ht/~kennylevinsen/gtkgreet) -> GTK-based addition for Greetd 
-* zathura -> PDF (and others) reader
-### My personal Applications, you can change to your own at config
-* thunar -> file manager
-* Chromium -> browser
+* `zathura` -> PDF (and others) reader
+* `zathura-pdf-poppler` -> PDF addon for `zathura`
 
-### Future Plans
+## Future Plans
 - [X] Add customizability of Sway config (Autostart, Behaviour, Rules)
-- [ ] Add Gtk-2.0, Gtk-3.0, Gtk-4.0 (if possible), and qt5ct folders
+- [X] Add Gtk-2.0, Gtk-3.0, Gtk-4.0 (if possible)
 - [X] Add customizability of other Config folders (Rofi, Mako, Waybar)
-- [ ] Create a Wiki and Q&A with guides on ricing sway
-- [ ] Create an AUR package
+- [ ] Create a Wiki and Q&A with guides on ricing sway and other WMs
 - [ ] Basic logging for maintenance (Under decision, idk how even it could be helpful)
 
-### Under consideration
-- [ ] Creating a website/server similar to [gnome-look.org](https://www.gnome-look.org/) which will download themes and icons from their site + custom .config builds, and automatically add, install or delete files, themes, icons and required packages on userspace. The only obstacle is my skills, I'm only a beginner developer yet
-- [ ] Creating a frontend for easier configuration, like in DEs where u can just tick which apps to autostart, which things to add and etc. However, it's much easier to configure with plain text, so there's no reason creating this feature
+## Under consideration
+- [ ] Create a website/server similar to [gnome-look.org](https://www.gnome-look.org/) which will download ready configs from my site
 
-Preferred OS would be **Arch Linux**, since, at least for now, my code is made to install packages *only* to Arch Linux
-
-**Please tip me for a coffee!** It would motivate a beginner programmer to study and develop the project further!
-
-Hope you found this repo helpful/inspirational!
-
-P.S. I'm a beginner developer, if you have some bash scripting skills, please check my script, I made the code as human-readable and maintainable as much as possible
-
-P.S.S The code is WM-agnostic, meaning **you can use fork this code to make your own theme changer for your own WM, more details will be in the Wiki (under development).**
+P.S. I'm a beginner developer, if you have some bash scripting skills, please peer-review my script. I made the code as human-readable and maintainable as much as possible, but it's still a mess.
 
 
 ### Bugs
@@ -92,8 +85,3 @@ P.S.S The code is WM-agnostic, meaning **you can use fork this code to make your
 * In resources files, you cannot name archives with spaces!
 * Potential: tar.\*z and zip files are being opened differently, need to fix that
 
-### Packages
-sway swaylock wlogout rofi dialog alacritty waybar
-
-### Additional Packages
-mako grim grimshot slurp
