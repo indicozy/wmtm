@@ -130,19 +130,20 @@ function unzipResources {
 	if [ -d "$path/configs/$folder/resources/$1" ]; then
 		local fileNumber=($(ls -d $path/configs/$folder/resources/$1/* 2> /dev/null))
 		local fileNumber=(${fileNumber[*]/*\/})
-		echo "${fileNumber[@]}"
+
 		local fileNumberNoEnd=(${fileNumber[*]/%\.tar\.?z})
 		local fileNumberNoEnd=(${fileNumberNoEnd[*]/%\.zip})
-		echo "${fileNumberNoEnd[@]}"
+
 		mkdir -p $2
 		for (( i=0; i<${#fileNumber[@]}; i++ )); do
-			echo ${fileNumber[$i]}
 			if ! [ -d "$2/${fileNumberNoEnd[$i]}" ]; then
 				if [[ ${fileNumber[$i]} == *".tar"* ]]; then
-					tar -xvf $path/configs/$folder/resources/$1/${fileNumber[$i]} -C $2
+					echo "Unzipping ${fileNumber[$i]} to $2..."
+					tar -xf $path/configs/$folder/resources/$1/${fileNumber[$i]} -C $2 > /dev/null
 				elif [[ ${fileNumber[$i]} == *".zip"* ]]; then
+					echo "Unzipping ${fileNumber[$i]} to $2..."
 					mkdir -p $2
-					unzip -d $2/${fileNumber[$i]} "$path/configs/$folder/resources/fonts/${fileNumber[$i]}"
+					unzip -d $2/${fileNumberNoEnd[$i]} "$path/configs/$folder/resources/fonts/${fileNumber[$i]}" > /dev/null
 				fi
 			fi
 		done
@@ -150,12 +151,12 @@ function unzipResources {
 }
 
 function prepareResources {
-if ! [ -d "$path/configs/$folder/resources" ]; then
-	return 1
-fi
-unzipResources fonts /home/$USER/.local/share/fonts
-unzipResources icons /home/$USER/.icons
-unzipResources themes /home/$USER/.themes
+	if ! [ -d "$path/configs/$folder/resources" ]; then
+		return 1
+	fi
+	unzipResources fonts /home/$USER/.local/share/fonts
+	unzipResources icons /home/$USER/.icons
+	unzipResources themes /home/$USER/.themes
 }
 
 function reloadProcesses {
