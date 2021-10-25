@@ -1,7 +1,7 @@
 #<[# AUTOSTART ##############################################################
 exec 
 {
-autotiling
+python3 /home/$USER/.wmtm/system/autotiling/main.py
 nm-applet --indicator
 systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 hash dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK

@@ -66,7 +66,12 @@ function backupConfig {
 }
 
 function installSwitcher {
-	mkdir -p $path 2> /dev/null
+        if [ -d /home/$USER/.wmtm ]; then
+          mkdir -p /home/$USER/Documents/wmtm_configs_saved
+          mv /home/$USER/.wmtm /home/$USER/Documents/wmtm_configs_saved/wmtm_saved
+        fi
+
+	mkdir -p $path
 	cp -r $git_path/configs $git_path/system $git_path/customization $git_path/changetheme.sh $git_path/install.sh $git_path/LICENSE $git_path/README.md $path
 }
 
