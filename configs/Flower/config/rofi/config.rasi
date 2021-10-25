@@ -30,7 +30,7 @@ size: 3%;
 }
 
 element-text {             
-horizontal-align: 0; 
+horizontal-align: 0;
 }                          
 
 * {
@@ -65,12 +65,12 @@ horizontal-align: 0;
     anchor: north west;
     background-color: @default-background;
     border-radius: 0;
-    padding: 0;
+    padding: 2;
 }
 
 #mainbox {
     border:  0;
-    padding: 5 15;
+    padding: 5 5 5 40;
 
 }
 
