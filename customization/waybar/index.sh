@@ -3,7 +3,7 @@ theme_folder=$2
 cp -r $path/configs/$theme_folder/config/waybar ~/.config
 old=$IFS
 IFS='\n'
-for i in $(< $path/customization/waybar/toRemove.txt); do
+for i in $(cat $path/customization/waybar/toRemove.txt); do
 	#if the word was commented out...
 	if [[ "$i" == "#"* ]] ;then
 		continue
