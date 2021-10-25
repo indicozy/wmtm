@@ -92,7 +92,7 @@ function startInstallation {
 ####### MAIN
 path=/home/$USER/.wmtm
 git_path=($(pwd))
-save_path=/home/$USER/Documents/sway_configs_saved
+save_path=/home/$USER/Documents/wmtm_configs_saved
 
 # Safety measure
 if ! [[ "$git_path" == *"wmtm" ]]; then
@@ -101,7 +101,7 @@ if ! [[ "$git_path" == *"wmtm" ]]; then
 fi
 
 if [ -x "$(command -v dialog)" ]; then # dialog found
-	dialog --title "Install Theme Changer" \
+	dialog --title "Install WMTM" \
 		--yesno "Would you like to install the Theme Changer? y/n: " 10 50
 
 	if [ $? -eq 0 ]; then # 1 is False
@@ -109,7 +109,7 @@ if [ -x "$(command -v dialog)" ]; then # dialog found
 	fi
 else
 	echo 'Warning: dialog is not installed, starting session in TUI' >&2
-	echo "Welcome to Sway Theme Changer!"
+	echo "Welcome to WMTM"
 	read -p "Would you like to install the Theme Changer? y/n: " answer
 fi
 

@@ -173,7 +173,7 @@ function changeTheme {
 		killAllProcesses
 		reloadProcesses
 		echo "Theme changed to $folder"
-		notify-send "Theme changed to $folder" "Enjoy your Sway!"
+		notify-send "Theme changed to $folder" "Enjoy your WMTM!"
 	else
 		echo "Wrong Argument, check your config."
 		notify-send "Error at Theme Changer" "Wrong Argument, check your config."
