@@ -69,8 +69,8 @@ function goBack () {
 	prepareFolders movedBack
 	moveBackupConfig $save_path/movedBack move
 	moveLatestBack
-	sortOld
-	swaymsg reload
+        sortOld
+        reloadProcesses	
 
 	echo "Back to the previous theme from history."
 	notify-send "Back to the previous theme." "Be careful next time"
