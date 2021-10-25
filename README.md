@@ -73,9 +73,7 @@ Copy this and try to install to your Distro:
 * `wl-clipboard` -> Wayland Copy/Paste Utility
 * `light` -> Screen Brightness TUI app
 * `playerctl` -> Does smth with sound
-
-### Required but problematic and easily interchangible
-* `pamixer` -> Raises and Lowers volume
+* `pamixer` -> Raises and Lowers volume, problematic to install in Fedora, I recommend just to compile on your own
 
 ### Optional
 * `zathura` -> PDF (and others) reader
