@@ -53,7 +53,7 @@ WM-agnostic Theme Manager made with Bash only. Simply, it copy-pastes configs an
  
 Copy this and try to install to your Distro:
  
-    sway swaylock wlogout rofi dialog alacritty waybar zenity polkit polkit-gnome grim grimshot wl-clipboard light playerctl
+    sway swaylock wlogout rofi dialog alacritty waybar zenity polkit polkit-gnome grim grimshot wl-clipboard light playerctl pamixer
 
 ### Required Packages
 * [rofi-lbonn-wayland-git](https://github.com/lbonn/rofi) -> Apps menu
@@ -90,8 +90,10 @@ Copy this and try to install to your Distro:
 ## Under consideration
 - [ ] Create a website/server similar to [gnome-look.org](https://www.gnome-look.org/) which will download ready configs from my site
 
-P.S. I'm a beginner developer, if you have some bash scripting skills, please peer-review my script. I made the code as human-readable and maintainable as much as possible, but it's still a mess.
+## I want to upload my own theme, how can I do that?
+I still thinking on how to do that, but for now feel free to send to indicozy@protonmail.com 
 
+P.S. I'm a beginner developer, if you have some bash scripting skills, please peer-review my script. I made the code as human-readable and maintainable as much as possible, but it's still a big mess.
 
 ### Bugs
 * rofi everywhere is broken, I guess an update broke something
