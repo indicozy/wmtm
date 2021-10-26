@@ -7,6 +7,9 @@
  </tr>
 </table>
 
+## Video
+[![Youtube](https://img.youtube.com/vi/hl9kMFCGd9Q/0.jpg)](https://www.youtube.com/watch?v=hl9kMFCGd9Q)
+
 ## About
 WM-agnostic Theme Manager made with Bash only. Simply, it copy-pastes configs and manages them. It was preconfigured to work with Sway WM but there are lots of possibilities to use with other WMs, testing now with i3-gaps and bspwm. **If you have made advances with these testing WMs, please let me know!**
 
