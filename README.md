@@ -56,7 +56,7 @@ WM-agnostic Theme Manager made with Bash only. Simply, it copy-pastes configs an
  
 Copy this and try to install to your Distro:
  
-    sway swaylock wlogout rofi dialog alacritty waybar zenity polkit polkit-gnome grim grimshot wl-clipboard light playerctl pamixer
+    sway swaylock wlogout rofi dialog alacritty waybar zenity polkit polkit-gnome grim grimshot wl-clipboard light playerctl pamixer tar zip unzip
 
 ### Required Packages
 * [rofi-lbonn-wayland-git](https://github.com/lbonn/rofi) -> Apps menu
