@@ -78,6 +78,12 @@ Copy this and try to install to your Distro:
 * `playerctl` -> Does smth with sound
 * `pamixer` -> Raises and Lowers volume, problematic to install in Fedora, I recommend just to compile on your own
 
+### Required configs
+- To `light` package to work, add your user to `video` group:
+```bash
+sudo usermod -aG your_username
+```
+
 ### Optional
 * `zathura` -> PDF (and others) reader
 * `zathura-pdf-poppler` -> PDF addon for `zathura`
